@@ -1,0 +1,31 @@
+{
+  "name": "heringsfish-cli",
+  "title": "Heringsfish CLI",
+  "version": "0.0.1",
+  "description": "Command Line Interface to admin the Glassfish / Payara Application Server",
+  "author": "BlueSkyFish <blueskyfish@kirchnerei.de>",
+  "license": "MIT",
+  "readme": "See @ readme.md",
+  "main": "index.js",
+  "bin": {
+    "hf": "index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "./node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blueskyfish/heringsfish-cli"
+  },
+  "dependencies": {
+    "colors": "1.1.2",
+    "dateformat": "1.0.12",
+    "lodash": "3.10.1",
+    "minimist": "1.2.0",
+    "q": "1.4.1"
+  },
+  "devDependencies": {
+    "mocha": "2.3.4"
+  }
+}

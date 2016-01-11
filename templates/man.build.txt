@@ -1,0 +1,29 @@
+
+Display help for "build"
+
+Description:
+  Build the application with maven.
+
+Requirement in the configure file:
+  maven.home           The maven home directory.
+  maven.project        The maven project pom.xml
+
+Usage:
+  $ hf build [--skip] | [-c | --clean] | [-p profiles | --profile=profiles]
+
+Additional Arguments:
+  --skip               Skip to execute the test cases.
+  -c | --clean         Add the clean goal to the maven build process.
+  -p profiles
+  --profile=profiles   Add the maven profile(s). If multiple profiles are to
+                       be used, they must be separated with a comma.
+
+Example:
+  $ hf build
+  $ hf build -c
+  $ hf build -c -p integration,bigData
+  $ hf build -qc
+
+Note:
+  -v | --verbose       display more information.
+  -q | --quiet         display only errors or warnings

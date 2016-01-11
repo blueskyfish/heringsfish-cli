@@ -1,0 +1,21 @@
+
+Display help for "config"
+
+Description:
+  The action allows you to write, read and erase one or more values in the
+  config settings in the project directory.
+  The file name is ".server-conf.json" in the project directory.
+
+Usage:
+  $ hf config [[key value [key value]] | [key [key] --delete]] | [-l | --list]
+
+Additional Arguments:
+  key value            the key and its value. It can be more then a key value
+                       pair.
+  key --delete         delete the key from the config settings
+  -l --list            display the complete config settings.
+
+Example:
+  $ hf config domain.name "test-project"
+  $ hf config domain.home "/path/to/domain" server.ports.base 20000 -l
+  $ hf config test.name --delete

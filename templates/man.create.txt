@@ -1,0 +1,25 @@
+
+Display help for "create"
+
+Description:
+  Creates the domain on the application server. This is the step before it can
+  be an application on the server deploy.
+
+Requirement in the configure file:
+  server.home          The path to the application server
+  domain.name          The name of the domain
+  domain.home          The path to the domain directory.
+
+Usage:
+  $ hf create
+
+Additional Arguments:
+
+Example:
+  $ hf create
+  $ hf create -v
+  $ hf create -q
+
+Note:
+  -v | --verbose       display more information.
+  -q | --quiet         display only errors or warnings

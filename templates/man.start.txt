@@ -1,0 +1,25 @@
+
+Display help for "start"
+
+Description:
+  Starts the application server with the domain.
+
+Requirement in the configure file:
+  server.home          The path to the application server
+  domain.name          The name of the domain
+  domain.home          The path to the domain directory.
+
+Usage:
+  $ hf start
+
+Additional Arguments:
+  -
+
+Example:
+  $ hf start
+  $ hf start -v
+  $ hf start -q
+
+Note:
+  -v | --verbose       display more information.
+  -q | --quiet         display only errors or warnings

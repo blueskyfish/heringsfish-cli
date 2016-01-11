@@ -1,0 +1,22 @@
+{
+  "name": "Project Name",
+  "version": "0.0.1",
+  "sever": {
+    "home": "/path/to/glassfish/application/server",
+    "deploy": {
+      "nameOfWarApp": "/path/to/maven/target/file.war",
+      "nameOfEarApp": "/path/to/maven/target/file.ear"
+    }
+  },
+  "maven": {
+    "home": "/path/to/maven"
+  },
+  "domain": {
+    "name": "DomainName",
+    "home": "/path/to/domains",
+    "ports": {
+      "base": 8000,
+      "admin": 8048
+    }
+  }
+}

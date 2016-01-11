@@ -1,0 +1,25 @@
+
+Display help for "remove"
+
+Description:
+  Remove and delete the domain on the application server.
+
+Requirement in the configure file:
+  server.home          The path to the application server
+  domain.name          The name of the domain
+  domain.home          The path to the domain directory.
+
+Usage:
+  $ hf remove
+
+Additional Arguments:
+  -
+
+Example:
+  $ hf remove
+  $ hf remove -v
+  $ hf remove --quiet
+
+Note:
+  -v | --verbose       display more information.
+  -q | --quiet         display only errors or warnings

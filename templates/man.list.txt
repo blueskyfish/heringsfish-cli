@@ -1,0 +1,27 @@
+
+Display help for "list" Action
+
+Description:
+  Display either the domains of the application server or the list of deployed
+  application on the server.
+
+Requirement in the configure file:
+  server.home          The path to the application server
+  domain.name          The name of the domain
+  domain.home          The path to the domain directory.
+
+Usage:
+  $ hf list [--app | [-d | --domain]]
+
+Additional Arguments:
+  --app                (default) Display the deployed application on the
+                       application server.
+  -d | --domain        Display the domains of the application server.
+
+Example:
+  $ hf list
+  $ hf list -d
+  $ hf list -dv
+
+Note:
+  -v | --verbose       display more information.

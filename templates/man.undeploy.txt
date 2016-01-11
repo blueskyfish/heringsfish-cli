@@ -1,0 +1,26 @@
+
+Display help for "undeploy"
+
+Description:
+  Undeploy and remove the application from the application server.
+
+Requirement in the configure file:
+  server.home          The path to the application server
+  domain.name          The name of the domain
+  domain.home          The path to the domain directory.
+
+Usage:
+  $ hf undeploy [application]
+
+Additional Arguments:
+  [application]        (optional) the name of the deploying application. If no
+                       application is specified, all Applications are deployed.
+
+Example:
+  $ hf undeploy
+  $ hf undeploy "test-application" -v
+  $ hf undeploy --quiet
+
+Note:
+  -v | --verbose       display more information.
+  -q | --quiet         display only errors or warnings

@@ -1,0 +1,19 @@
+{
+  "name": "-",
+  "version": "0.0.1",
+  "server": {
+    "home": "-"
+  },
+  "maven": {
+    "home": "-"
+  },
+  "domain": {
+    "name": "-",
+    "home": "{project.home}/domains",
+    "deploy": {
+    },
+    "ports": {
+      "base": 30000
+    }
+  }
+}
