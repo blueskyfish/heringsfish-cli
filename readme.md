@@ -1,4 +1,6 @@
 
+![Logo](logo.png)
+
 # Heringsfish Command Line Interface (cli)
 
 > Command Line Interface to admin the Glassfish / Payara Application Server
