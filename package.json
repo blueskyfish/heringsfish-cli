@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/blueskyfish/heringsfish-cli"
+    "url": "https://github.com/blueskyfish/heringsfish-cli.git"
   },
   "dependencies": {
     "colors": "1.1.2",
