@@ -14,7 +14,7 @@ Usage:
 
 Additional Arguments:
   [application]        (optional) the name of the deploying application. If no
-                       application is specified, all Applications are deployed.
+                       application is specified, all Applications are undeployed.
 
 Example:
   $ hf undeploy

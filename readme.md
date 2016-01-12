@@ -6,14 +6,15 @@
 > Command Line Interface to admin the Glassfish / Payara Application Server
 
 
-## Content
+## Table of Content
 
 * [Overview](#user-content-overview)
 * [Requirement](#user-content-requirement)
 * [Installation](#user-content-installation)
 * [Quick Startup](#user-content-quick-startup)
-* [Introduction of Action](#user-content-introduction-of-action)
-* [List of Action](#user-content-list-of-content)
+* [Configure](#user-content-configure)
+    * [Example of Configure](#user-content-example-of-configure)
+    * [List of Action](#user-content-list-of-action)
 * [History](#user-content-history)
 * [License](#user-content-license)
 * [Third Party](#user-content-third-party)
@@ -96,64 +97,77 @@ console window `hf ...`. May you need to call `sudo npm link`.
 16. Remove and delete the domain.
 
 
-## Introduction of Action
-
-
-### Debugging
-
-It is possible to get more output on the console. Add simple the argument -d on the end of your command.
-
-```sh
-$ hf init
-$ hf init --verbose
-```
-
-
-### Call action
-
-If the program name the first argument does not begin with the characters x, then is evaluated as the action. It is also possible to define with the argument -a action an action name.
-
-**Example**
-
-```sh
-$ hf version -v
-$ hf -v -a version
-```
-
-### Get Help
-
-```sh
-$ hf help action
-```
-
 ## Configure
+
+The configure settings are in the file `server-config.json`. This file is in the project root directory and has format `JSON`.
+
+There are 2 ways to edit the configuration:
+
+* call the cli with the action `config`<br>
+  example: `$ hf config server.home "{project.home}/tools/glassfish4"`
+* edit the file `server-config.json` directly.<br>
+  example: `$ nano server-config.json`
+
+### Example of Configure
 
 ```json
 {
-    "name": "-",
-    "version": "0.0.1",
+    "name": "test-project",
+    "version": "0.1.0-SNAPSHOT",
     "server": {
-        "home": "-"
+        "home": "{user.home}/bin/payara-4.1.1.154"
     },
     "maven": {
-        "home": "-"
+        "home": "{user.home}/bin/maven-3.3.4"
     },
     "domain": {
-        "name": "-",
+        "name": "test-project",
         "home": "{project.home}/domains",
         "deploy": {
+            "rest-provider": "{project.home}/projects/rest-provider/target/rest-provider-0.1.0-SNAPSHOT.war",
+            "business-beans": "{project.home}/projects/business-beans/target/business-beans-0.1.0-SNAPSHOT.jar"
         },
         "ports": {
-            "base": 30000
+            "base": 50000
         }
     }
 }
 ```
 
+
+### List of Action
+
+Aktion      | Optional add. Arguments  | Description
+------------|--------------------------|------------------------------------------------------------
+`init`      | -                        | Create the config settings in the current project folder.
+`config`    |                          | Set a configuration setting.
+            | `key value`              | the key and its value. It can be more then a key value pair.
+            | `-l | --list`            | Show the current configuration.
+            | `key --delete`           | Delete a configuration setting.
+`create`    | -                        | Creates the domain on the application server.
+`start`     | -                        | Starts the application server with the domain.
+`deploy`    |                          | Build the application with maven.
+            | `application`            | the name of the deploying application. If no application is specified, all Applications are deployed.
+            | `--nobuild`              | Disable the maven build process before deploying.
+            | `--skip`                 | Skip to execute the test cases.
+            | `-c | --clean`           | Add the clean goal to the maven build process.
+            | `-p profiles`            | Add the maven profile(s)
+            | `--profile=profiles`     | Add the maven profile(s)
+`list`      |                          | Display either the domains of the application server or the list of deployed application on the server.
+            | `--app`                  | Display the deployed application on the application server.
+            | `-d | --domain`          | Display the domains of the application server.
+`undeploy`  |                          | Undeploy and remove the application from the application server.
+            | `application`            | the name of the deploying application. If no application is specified, all Applications are undeployed.
+`stop`      |                          | Stops the application server with the domain.
+            | `-k | --kill`            | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
+`remove`    | -                        | Remove and delete the domain on the application server.
+
+
 ## History
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.0.2      |            | Improve documentation
 | 0.0.1      | 2016-01-11 | Initial commit (all started here)
 
 
