@@ -7,6 +7,15 @@
   "license": "MIT",
   "readme": "See @ readme.md",
   "main": "index.js",
+  "keywords": [
+    "glassfish",
+    "payara",
+    "application server",
+    "jee",
+    "jee7",
+    "management console",
+    "admin"
+  ],
   "bin": {
     "hf": "index.js"
   },
