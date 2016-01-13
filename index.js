@@ -9,7 +9,6 @@
 
 'use strict';
 
-
 var actionLoader = require('./lib/action-loader');
 var logger = require('./lib/logger');
 var settings = require('./lib/settings');
@@ -17,6 +16,7 @@ var utilities = require('./lib/utilities');
 
 var pkg = require('./package.json');
 
+logger.info();
 logger.info('%s (%s)', pkg.title, pkg.version);
 logger.info();
 
@@ -26,6 +26,7 @@ settings.print(function (content) {
 });
 
 logger.info('Project: %s', utilities.getExecuteHome());
+logger.info();
 
 actionLoader.find(settings.getAction())
   .then(
@@ -50,6 +51,7 @@ actionLoader.find(settings.getAction())
       if (result && result.exitCode) {
         logger.info('Exist Code %s', result.exitCode || 0);
       }
+      logger.info();
     },
     function (reason) {
       if (reason.stack) {
