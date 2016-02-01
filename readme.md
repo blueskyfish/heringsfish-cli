@@ -15,6 +15,7 @@
 * [Configure](#user-content-configure)
     * [Example of Configure](#user-content-example-of-configure)
     * [List of Action](#user-content-list-of-action)
+* [Road Map](#user-content-road-map)
 * [History](#user-content-history)
 * [License](#user-content-license)
 * [Third Party](#user-content-third-party)
@@ -163,10 +164,19 @@ Aktion      | Optional additional Arguments  | Description
 `remove`    | -                              | Remove and delete the domain on the application server.
 
 
+## Road Map
+
+* Extends and defines project plugins. Every project should have own plugins.
+* Handle [Wildfly Server](http://wildfly.org/)
+* Handle with DataSources
+* Gulp Plugin
+
+
 ## History
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.0.3      | 2016-02-01 | fixed the server base port
 | 0.0.2      |            | Improve documentation
 | 0.0.1      | 2016-01-11 | Initial commit (all started here)
 
