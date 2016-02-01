@@ -3,7 +3,7 @@
   "title": "Heringsfish CLI",
   "version": "0.0.2",
   "description": "Command Line Interface to admin the Glassfish / Payara Application Server",
-  "author": "BlueSkyFish <blueskyfish@kirchnerei.de>",
+  "author": "BlueSkyFish <blueskyfish@blueskyfish.de>",
   "license": "MIT",
   "readme": "See @ readme.md",
   "main": "index.js",
