@@ -15,8 +15,7 @@
     "name": "DomainName",
     "home": "/path/to/domains",
     "ports": {
-      "base": 8000,
-      "admin": 8048
+      "base": 50000
     }
   }
 }
