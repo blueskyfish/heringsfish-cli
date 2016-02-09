@@ -25,7 +25,7 @@ settings.print(function (content) {
   logger.debug(content);
 });
 
-logger.info('Project: %s', utilities.getExecuteHome());
+logger.info('Current Directory: %s', process.cwd());
 logger.info();
 
 actionLoader.find(settings.getAction())
