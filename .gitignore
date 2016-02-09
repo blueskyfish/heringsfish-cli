@@ -4,7 +4,7 @@
 *.iml
 
 node_modules/
-
+npm-debug.log
 
 target/
 *.class
