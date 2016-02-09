@@ -15,6 +15,7 @@
 * [Configure](#user-content-configure)
     * [Example of Configure](#user-content-example-of-configure)
     * [List of Action](#user-content-list-of-action)
+    * [Replaced Variables](#user-content-replaced-variables)
 * [Road Map](#user-content-road-map)
 * [History](#user-content-history)
 * [License](#user-content-license)
@@ -119,7 +120,9 @@ There are 2 ways to edit the configuration:
         "home": "{user.home}/bin/payara-4.1.1.154"
     },
     "maven": {
-        "home": "{user.home}/bin/maven-3.3.4"
+        "home": "{user.home}/bin/maven-3.3.4",
+        "setting": "{project.home}/setting.xml",
+        "project": "{project.home}/projects/pom.xml"
     },
     "domain": {
         "name": "test-project",
@@ -164,6 +167,30 @@ Aktion      | Optional additional Arguments  | Description
 `remove`    | -                              | Remove and delete the domain on the application server.
 
 
+### Replaced Variables
+
+Certain variables can be replaced. The Application Server is included in the project. By means of the variable project.home the directory of the project can be used.
+
+For Example:
+```
+{
+  "server": {
+    "name": "${project.home}/tools/payara-4.1.1.154"
+  }
+}
+```
+
+
+| Name             | Value or description
+|------------------|-----------------------------------
+| `project.home`   | The directory of the project
+| `user.home`      | The user home directory
+| `domain.name`    | The name of the domain
+| `domain.home`    | The domain home directory
+| `version`        | The version
+| `name`           | The project name
+
+
 ## Road Map
 
 * Extends and defines project plugins. Every project should have own plugins.
@@ -176,6 +203,7 @@ Aktion      | Optional additional Arguments  | Description
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.1.0      | 2016-02-09 | add setting.xml for maven
 | 0.0.3      | 2016-02-01 | fixed the server base port
 | 0.0.2      |            | Improve documentation
 | 0.0.1      | 2016-01-11 | Initial commit (all started here)
