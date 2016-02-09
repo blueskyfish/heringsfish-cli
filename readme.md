@@ -203,6 +203,7 @@ For Example:
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.1.1      | 2016-02-09 | show the current directory
 | 0.1.0      | 2016-02-09 | add setting.xml for maven
 | 0.0.3      | 2016-02-01 | fixed the server base port
 | 0.0.2      |            | Improve documentation
