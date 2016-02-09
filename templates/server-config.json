@@ -5,7 +5,9 @@
     "home": "-"
   },
   "maven": {
-    "home": "-"
+    "home": "-",
+    "project": '-',
+    "setting": "-"
   },
   "domain": {
     "name": "-",
