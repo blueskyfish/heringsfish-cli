@@ -1,7 +1,7 @@
 {
   "name": "heringsfish-cli",
   "title": "Heringsfish CLI",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Command Line Interface to admin the Glassfish / Payara Application Server",
   "author": "BlueSkyFish <blueskyfish@blueskyfish.de>",
   "license": "MIT",
