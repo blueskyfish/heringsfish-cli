@@ -11,11 +11,13 @@
 * [Overview](#user-content-overview)
 * [Requirement](#user-content-requirement)
 * [Installation](#user-content-installation)
+* [Find Help](#user-content-find-help)
 * [Quick Startup](#user-content-quick-startup)
 * [Configure](#user-content-configure)
     * [Example of Configure](#user-content-example-of-configure)
     * [List of Action](#user-content-list-of-action)
     * [Replaced Variables](#user-content-replaced-variables)
+    * [Environment Variables](#user-content-environment-variables)
 * [Road Map](#user-content-road-map)
 * [History](#user-content-history)
 * [License](#user-content-license)
@@ -58,6 +60,20 @@ $ npm link
 
 **Note**: the command `npm link` creates an short link to the program. Now your are able to type in your
 console window `hf ...`. May you need to call `sudo npm link`.
+
+
+## Find Help
+
+Every action has a help or explanation page.
+
+The command `hf help [action]` shows the help or explanation page. The help command shows all possible actions, when omitted the action parameter.
+
+```sh
+$ hf help
+$ hf help init
+$ hf help build
+```
+
 
 
 ## Quick Startup
@@ -134,6 +150,13 @@ There are 2 ways to edit the configuration:
         "ports": {
             "base": 50000
         }
+    },
+    "env": {
+        "project.home": "{project.home}",
+        "user.home": "{user.home}",
+        "project.name": "{project.name}",
+        "project.version": "{project.version}",
+        ...
     }
 }
 ```
@@ -180,15 +203,31 @@ For Example:
 }
 ```
 
+| Name              | Value or description
+|-------------------|-----------------------------------
+| `project.home`    | The directory of the project
+| `user.home`       | The user home directory
+| `domain.name`     | The name of the domain
+| `domain.home`     | The domain home directory
+| `version`         | The project version
+| `project.version` | The project version
+| `name`            | The project name
+| `project.name`    | The project name
 
-| Name             | Value or description
-|------------------|-----------------------------------
-| `project.home`   | The directory of the project
-| `user.home`      | The user home directory
-| `domain.name`    | The name of the domain
-| `domain.home`    | The domain home directory
-| `version`        | The version
-| `name`           | The project name
+
+### Environment Variables
+
+In the section env"` it is possible to define environment variables, which are also transferred when the application server starts.
+
+See example above.
+
+There is a conversion rule for the name:
+
+* All signs convert to upper case.
+* All dots (`.`) will be replaced with the underscore `_`.
+* All plus (`+`) will be replaced with the underscore `_`.
+* All whitespaces will be replaced with the underscore `_`
+* All minus (`-`) will be replaced with the underscore `_`
 
 
 ## Road Map
@@ -203,6 +242,7 @@ For Example:
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.2.0      | 2016-02-10 | Environment variables for executing the application server.
 | 0.1.1      | 2016-02-09 | show the current directory
 | 0.1.0      | 2016-02-09 | add setting.xml for maven
 | 0.0.3      | 2016-02-01 | fixed the server base port

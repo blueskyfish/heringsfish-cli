@@ -18,7 +18,7 @@ describe('Configuration Manager:', function () {
 
   it('Should resolve the Home Path of the user', function () {
     var userPath = settings.getHomePath();
-    var result = configure.adjustPath('{user.home}/bin/test');
+    var result = configure.adjustValue('{user.home}/bin/test');
     console.log('user:   %s', userPath);
     console.log('result: %s', result);
     assert(_.startsWith(result, userPath));
