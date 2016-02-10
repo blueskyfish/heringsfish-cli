@@ -6,7 +6,7 @@
   },
   "maven": {
     "home": "-",
-    "project": '-',
+    "project": "-",
     "setting": "-"
   },
   "domain": {
@@ -17,5 +17,11 @@
     "ports": {
       "base": 30000
     }
+  },
+  "env": {
+    "project.home": "{project.home}",
+    "user.home": "{user.home}",
+    "project.name": "{project.name}",
+    "project.version": "{project.version}"
   }
 }
