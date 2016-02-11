@@ -10,6 +10,7 @@
 'use strict';
 
 var actionLoader = require('./lib/action-loader');
+var configure = require('./lib/configure');
 var logger = require('./lib/logger');
 var settings = require('./lib/settings');
 var utilities = require('./lib/utilities');
@@ -25,7 +26,9 @@ settings.print(function (content) {
   logger.debug(content);
 });
 
-logger.info('Current Directory: %s', process.cwd());
+logger.info('Project: %s', configure.get('name', '?'));
+logger.info('Version: %s', configure.get('version', '0.0.0'));
+logger.info('Home:    %s', process.cwd());
 logger.info();
 
 actionLoader.find(settings.getAction())

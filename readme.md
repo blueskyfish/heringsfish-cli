@@ -245,6 +245,7 @@ There is a conversion rule for the name:
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.4.0      | 2016-02-11 | Update node module "lodash"
 | 0.3.0      | 2016-02-11 | add the missing actions "restart" and "redeploy"
 | 0.2.2      | 2016-02-10 | Improve conversion rules for environment name.
 | 0.2.1      | 2016-02-10 | Environment variables for executing the application server.
