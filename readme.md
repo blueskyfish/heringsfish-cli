@@ -173,6 +173,8 @@ Aktion      | Optional additional Arguments  | Description
             | `key --delete`                 | Delete a configuration setting.
 `create`    | -                              | Creates the domain on the application server.
 `start`     | -                              | Starts the application server with the domain.
+`restart`   |                                | Stops and starts the application server with the domain.
+            | `-k | --kill`                  | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
 `deploy`    |                                | Build the application with maven.
             | `application`                  | the name of the deploying application. If no application is specified, all Applications are deployed.
             | `--nobuild`                    | Disable the maven build process before deploying.
@@ -185,6 +187,7 @@ Aktion      | Optional additional Arguments  | Description
             | `-d | --domain`                | Display the domains of the application server.
 `undeploy`  |                                | Undeploy and remove the application from the application server.
             | `application`                  | the name of the deploying application. If no application is specified, all Applications are undeployed.
+`redeploy`  |                                | Unfortunately it is not implemented yet. Instead use the action `stop` and then `start`.
 `stop`      |                                | Stops the application server with the domain.
             | `-k | --kill`                  | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
 `remove`    | -                              | Remove and delete the domain on the application server.
@@ -242,6 +245,7 @@ There is a conversion rule for the name:
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.3.0      | 2016-02-11 | add the missing actions "restart" and "redeploy"
 | 0.2.2      | 2016-02-10 | Improve conversion rules for environment name.
 | 0.2.1      | 2016-02-10 | Environment variables for executing the application server.
 | 0.1.1      | 2016-02-09 | show the current directory
