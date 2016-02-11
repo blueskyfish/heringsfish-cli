@@ -26,4 +26,4 @@ List of action:
 
 Compound Action:
   restart              stops the application server first and then restarts it.
-  redeploy             removes the first maven artifacts and they deployed again.
+  redeploy             removes the deployed maven artifacts and then they deployed again.

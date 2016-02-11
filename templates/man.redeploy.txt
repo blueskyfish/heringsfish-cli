@@ -1,0 +1,7 @@
+
+Display help for "redeploy"
+
+Description:
+  Undeploy the maven artifacts and then deploy its again
+
+  Unfortunately it is not implemented yet.
