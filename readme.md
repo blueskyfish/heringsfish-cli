@@ -220,7 +220,7 @@ For Example:
 
 ### Environment Variables
 
-In the section env"` it is possible to define environment variables, which are also transferred when the application server starts.
+It is possible to define environment variables in the section `env`, which are also transferred when the application server starts.
 
 See example above.
 
@@ -231,6 +231,33 @@ There is a conversion rule for the name:
 * All plus (`+`) will be replaced with the underscore `_`.
 * All whitespaces will be replaced with the underscore `_`
 * All minus (`-`) will be replaced with the underscore `_`
+
+
+## Plugin
+
+It is possible to define own plugins for `heringsfish-cli`. First define in the file `server-config.json` the section
+`plugin` with the property `home`.
+
+e.g:
+
+```json
+{
+  "plugin": {
+    "home": "{project.home}/plugins"
+  }
+}
+```
+
+In the plugin directory must be javascript files with the convention: `action-` + **NAME** + `-provider.js`;
+
+**Filename**: `action-name-provider.js`. e.g action-version-provider.js
+
+**Methods**
+
+```js
+function name(options: Plugin) : Q.promise
+```
+
 
 
 ## Road Map

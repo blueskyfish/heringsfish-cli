@@ -1,0 +1,20 @@
+
+Display help for "clean"
+
+Description:
+  Executes the maven goal "clean" in order to clean the deployment directories.
+
+Usage:
+  $ hf clean [[-v | --verbose] | [-q | --quit]]
+
+Additional Arguments:
+  -
+
+Example:
+  $ hf clean
+  $ hf clean --verbose
+  $ hf clean -q
+
+Note:
+  -v | --verbose       display more information.
+  -q | --quiet         display only errors or warnings
