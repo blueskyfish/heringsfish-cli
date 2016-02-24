@@ -272,6 +272,7 @@ function name(options: Plugin) : Q.promise
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.5.0      | 2016-02-24 | add the environments without modify the name.
 | 0.4.0      | 2016-02-11 | Update node module "lodash"
 | 0.3.0      | 2016-02-11 | add the missing actions "restart" and "redeploy"
 | 0.2.2      | 2016-02-10 | Improve conversion rules for environment name.
