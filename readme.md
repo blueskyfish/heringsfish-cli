@@ -3,7 +3,7 @@
 
 # Heringsfish Command Line Interface (cli)
 
-> Command Line Interface to admin the Glassfish / Payara Application Server
+> Command Line Interface to manages the [Glassfish][glassfish] / [Payara][payara] Application Server and the maven deployment on local machine
 
 
 ## Table of Content
@@ -26,16 +26,16 @@
 
 ## Overview
 
-The CLI allows you to a GlassFish or Payara Application Server easy to use and a encapsulated development environment for your JEE set 7 project.
+The CLI allows you to a [GlassFish][glassfish] or [Payara][payara] Application Server easy to use and a encapsulated development environment for your JEE set 7 project.
 
 
 ## Requirement
 
 The following programs or modules are necessary:
 
-* [Node JS](https://nodejs.org/): This cli is tested with the version 0.12.x
-* Application Server [Glassfish 4.1](https://glassfish.java.net/) or [Payara 4.1](http://www.payara.fish/): Just install the server somewhere on your computer.
-* [Maven](https://maven.apache.org/): The command `mvn` should in your `PATH` or setup in the configuration
+* [Node JS][nodejs]: This cli is tested with the version 0.12.x
+* Application Server [Glassfish 4.1][glassfish] or [Payara 4.1][payara]: Just install the server somewhere on your computer.
+* [Maven][maven]: The command `mvn` should in your `PATH` or setup in the configuration
 * An Java IDE :-)
 
 
@@ -253,6 +253,8 @@ See example above.
 ## License
 
 ```
+The MIT License (MIT)
+
 Copyright (c) 2016 BlueSkyFish
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -278,3 +280,8 @@ THE SOFTWARE.
 ## Third Party
 
 All company, brand and product names are trademarks of their respective owners.
+
+[glassfish]: https://glassfish.java.net/
+[payara]: http://www.payara.fish/
+[nodejs]: https://nodejs.org/
+[maven]: https://maven.apache.org/
