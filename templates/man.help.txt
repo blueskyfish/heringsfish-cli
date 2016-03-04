@@ -19,6 +19,8 @@ List of action:
   remove               removed the application domain.
   start                start the application server.
   stop                 stop the application server.
+  list                 display either the domains of the application server or
+                       the list of deployed application on the server.
   deploy               deployed the maven artifacts to the application domain.
   undeploy             remove the maven artifacts from the application domain.
   build                start the maven build process
