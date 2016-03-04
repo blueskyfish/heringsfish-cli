@@ -238,6 +238,7 @@ See example above.
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.5.3      | 2016-03-04 | show environments, some fixes.
 | 0.5.2      | 2016-02-24 | add the environments without modify the name.
 | 0.4.0      | 2016-02-11 | Update node module "lodash"
 | 0.3.0      | 2016-02-11 | add the missing actions "restart" and "redeploy"
