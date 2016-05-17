@@ -169,27 +169,27 @@ Aktion      | Optional additional Arguments  | Description
 `init`      | -                              | Create the config settings in the current project folder.
 `config`    |                                | Set a configuration setting.
             | `key value`                    | the key and its value. It can be more then a key value pair.
-            | `-l | --list`                  | Show the current configuration.
+            | `-l` or `--list`               | Show the current configuration.
             | `key --delete`                 | Delete a configuration setting.
 `create`    | -                              | Creates the domain on the application server.
 `start`     | -                              | Starts the application server with the domain.
 `restart`   |                                | Stops and starts the application server with the domain.
-            | `-k | --kill`                  | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
+            | `-k` or ``--kill`              | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
 `deploy`    |                                | Build the application with maven.
             | `application`                  | the name of the deploying application. If no application is specified, all Applications are deployed.
             | `--nobuild`                    | Disable the maven build process before deploying.
             | `--skip`                       | Skip to execute the test cases.
-            | `-c | --clean`                 | Add the clean goal to the maven build process.
+            | `-c` or `--clean`              | Add the clean goal to the maven build process.
             | `-p profiles`                  | Add the maven profile(s)
             | `--profile=profiles`           | Add the maven profile(s)
 `list`      |                                | Display either the domains of the application server or the list of deployed application on the server.
             | `--app`                        | Display the deployed application on the application server.
-            | `-d | --domain`                | Display the domains of the application server.
+            | `-d` or `--domain`             | Display the domains of the application server.
 `undeploy`  |                                | Undeploy and remove the application from the application server.
             | `application`                  | the name of the deploying application. If no application is specified, all Applications are undeployed.
 `redeploy`  |                                | Unfortunately it is not implemented yet. Instead use the action `stop` and then `start`.
 `stop`      |                                | Stops the application server with the domain.
-            | `-k | --kill`                  | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
+            | `-k` or `--kill`               | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
 `remove`    | -                              | Remove and delete the domain on the application server.
 
 
