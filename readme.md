@@ -151,6 +151,12 @@ There are 2 ways to edit the configuration:
             "base": 50000
         }
     },
+    "command": {
+        "asadmin": {
+            "win32": "{server.home}/bin/asadmin.bat",
+            "unix": "{server.home}/bin/asadmin"
+        }
+    },
     "env": {
         "project.home": "{project.home}",
         "user.home": "{user.home}",
@@ -238,6 +244,7 @@ See example above.
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.6.0      | 2016-05-18 | read the command.asadmin command from the server-config.json. If a platform command is execute, then it can be separated between `win32``and `unix. See the `server-config.json` example
 | 0.5.3      | 2016-03-04 | show environments, some fixes.
 | 0.5.2      | 2016-02-24 | add the environments without modify the name.
 | 0.4.0      | 2016-02-11 | Update node module "lodash"
