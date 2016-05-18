@@ -244,6 +244,7 @@ See example above.
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.6.2      | 2016-05-18 | fixed: read the config settings
 | 0.6.1      | 2016-05-18 | fixed: execute a command on windows.
 | 0.6.0      | 2016-05-18 | read the command.asadmin command from the server-config.json. If a platform command is execute, then it can be separated between `win32``and `unix. See the `server-config.json` example
 | 0.5.3      | 2016-03-04 | show environments, some fixes.
