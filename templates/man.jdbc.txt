@@ -1,0 +1,29 @@
+
+Display help for "jdbc"
+
+Description:
+  Manages the jdbc pools and resources. It runs together with a sub action.
+
+Sub Actions:
+  - create   create a jdbc pool and resource with the given name
+  - drop     drop or delete a jdbc pool and resources with the given name
+  - list     display all jdbc pools and resources
+  - ping     check the validation of an jdbc name
+
+Usage:
+  $ hf jdbc [subAction] [-n | --name jdbcName] [-v | -q]
+
+Additional Arguments:
+  subAction     a sub action
+  -n | --name   the jdbc name
+  -v            verbose message
+  -q            quite (without output)
+
+Example:
+  $hf jdbc create -n testDB
+  $hf jdbc list -v
+  $hf jdbc ping --name testDB
+  $hf jdbc
+
+Note:
+  -v | -q are optional arguments
