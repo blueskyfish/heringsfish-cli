@@ -160,7 +160,7 @@ There are 2 ways to edit the configuration:
                 "properties": {
                     "user": "user",
                     "password": "password",
-                    "url": "jdbc:mysql://localhost:28306/test"
+                    "url": "jdbc:mysql://localhost:3306/test"
                 },
                 "description": "This is the Test Database"
             }
