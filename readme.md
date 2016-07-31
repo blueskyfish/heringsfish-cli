@@ -16,6 +16,7 @@
 * [Configure](#user-content-configure)
     * [Example of Configure](#user-content-example-of-configure)
     * [List of Action](#user-content-list-of-action)
+    * [JDBC Configuration](#user-content-jdbc-configuration)
     * [Replaced Variables](#user-content-replaced-variables)
     * [Environment Variables](#user-content-environment-variables)
 * [Road Map](#user-content-road-map)
@@ -89,12 +90,13 @@ $ hf help build
 ( 8) $ hf config domain.deploy.nameOfWarApp "{project.home}/target/your-project.war
 ( 9) $ hf create
 (10) $ hf start
-(11) $ hf deploy
-(12) $ open "http://localhost:30048/
-(13) $ open "http://localhost:30080/your-project
-(14) $ hf undeploy
-(15) $ hf stop
-(16) $ hf remove
+(11) $ hf jdbc create --name testDB
+(12) $ hf deploy
+(13) $ open "http://localhost:30048/
+(14) $ open "http://localhost:30080/your-project
+(15) $ hf undeploy
+(16) $ hf stop
+(17) $ hf remove
 ```
 
 1. Change into your project
@@ -107,12 +109,13 @@ $ hf help build
 8. Set the file deploying on the application server
 9. Set create the domain
 10. Start the application server
-11. Start the deployment
-12. Open the Admin Console of the application server
-13. Open your deployed web/rest (etc) application
-14. Undeploy the deployed application
-15. Stop the application server
-16. Remove and delete the domain.
+11. Create a JDB connection pool and JDBC resource
+12. Start the deployment
+13. Open the Admin Console of the application server
+14. Open your deployed web/rest (etc) application
+15. Undeploy the deployed application
+16. Stop the application server
+17. Remove and delete the domain.
 
 
 ## Configure
@@ -149,6 +152,18 @@ There are 2 ways to edit the configuration:
         },
         "ports": {
             "base": 50000
+        },
+        "jdbc": {
+            "testDB": {
+                "dataSourceClassName": "com.mysql.jdbc.jdbc2.optional.MysqlDataSource",
+                "restype": "javax.sql.DataSource",
+                "properties": {
+                    "user": "user",
+                    "password": "password",
+                    "url": "jdbc:mysql://localhost:28306/test"
+                },
+                "description": "This is the Test Database"
+            }
         }
     },
     "command": {
@@ -197,6 +212,27 @@ Aktion      | Optional additional Arguments  | Description
 `stop`      |                                | Stops the application server with the domain.
             | `-k` or `--kill`               | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
 `remove`    | -                              | Remove and delete the domain on the application server.
+`jdbc`      | `list`                         | Show all JDBC connection pools and JDBC resources
+            | `create -n jdbcName`           | Create the JDBC connection pool and the JDBC resource from the given jdbc name.
+            | `delete -n jdbcName`           | Delete the JDBC connection pool and the JDBC resource from the given jdbc name.
+            | `ping -n jdbcName`             | Ping and validate the JDB connection pool and the JDBC resource from given jdbc name.
+
+
+### JDBC Configuration
+
+
+#### Documentation on Oracle
+
+* Create JDBC Connection Pool<br>
+  https://docs.oracle.com/cd/E26576_01/doc.312/e24938/create-jdbc-connection-pool.htm#GSRFM00036
+* Create JDBC Resource<br>
+  https://docs.oracle.com/cd/E26576_01/doc.312/e24938/create-jdbc-resource.htm#GSRFM00037
+* Delete JDBC Connection Pool<br>
+  https://docs.oracle.com/cd/E26576_01/doc.312/e24938/delete-jdbc-connection-pool.htm#GSRFM00088
+* Delete JDBC Resource<br>
+  https://docs.oracle.com/cd/E26576_01/doc.312/e24938/delete-jdbc-resource.htm#GSRFM00089
+* Ping JDBC Connection Pool<br>
+  https://docs.oracle.com/cd/E26576_01/doc.312/e24938/ping-connection-pool.htm#GSRFM00214
 
 
 ### Replaced Variables
