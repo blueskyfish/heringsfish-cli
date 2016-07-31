@@ -16,14 +16,15 @@
     },
     "jdbc": {
       "JDBC-Name": {
-        "dataSourceClassName": "",
-        "restype": "",
+        "dataSourceClassName": "com.mysql.jdbc.Driver",
+        "restype": "javax.sql.DataSource",
         "": "",
         "properties": {
           "user": "user",
-          "password": "password"
+          "password": "password",
+          "url": "jdbc:mysql://localhost:3306/test"
         },
-        "description": "This is a description"
+        "description": "This is a Test Connection"
       }
     },
     "ports": {

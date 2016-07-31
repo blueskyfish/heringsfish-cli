@@ -2,7 +2,8 @@
 Display help for "jdbc"
 
 Description:
-  Manages the jdbc pools and resources. It runs together with a sub action.
+  Manages the jdbc pools and resources. It needs a sub action for execution.
+  If the sub action is missing, then use the default sub action "list".
 
 Sub Actions:
   - create   create a jdbc pool and resource with the given name

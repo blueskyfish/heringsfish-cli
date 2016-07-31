@@ -235,7 +235,6 @@ See example above.
 ## Road Map
 
 * Extends and defines project plugins. Every project should have own plugins.
-* Handle [Wildfly Server](http://wildfly.org/)
 * Handle with DataSources
 * Gulp Plugin
 
@@ -244,10 +243,11 @@ See example above.
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.7.0      | 2016-07-31 | add jdbc action
 | 0.6.3      | 2016-05-18 | fixed: add the dot
 | 0.6.2      | 2016-05-18 | fixed: read the config settings
 | 0.6.1      | 2016-05-18 | fixed: execute a command on windows.
-| 0.6.0      | 2016-05-18 | read the command.asadmin command from the server-config.json. If a platform command is execute, then it can be separated between `win32` and `unix`. See the `server-config.json` example
+| 0.6.0      | 2016-05-18 | read the command.asadmin command from the server-config.json. If a platform depended command is execute, then it can be separated between `win32` and `unix`. See the `server-config.json` example
 | 0.5.3      | 2016-03-04 | show environments, some fixes.
 | 0.5.2      | 2016-02-24 | add the environments without modify the name.
 | 0.4.0      | 2016-02-11 | Update node module "lodash"
