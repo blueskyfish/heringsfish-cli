@@ -14,6 +14,19 @@
     "home": "{project.home}/domains",
     "deploy": {
     },
+    "jdbc": {
+      "JDBC-Name": {
+        "dataSourceClassName": "com.mysql.jdbc.Driver",
+        "restype": "javax.sql.DataSource",
+        "": "",
+        "properties": {
+          "user": "user",
+          "password": "password",
+          "url": "jdbc:mysql://localhost:3306/test"
+        },
+        "description": "This is a Test Connection"
+      }
+    },
     "ports": {
       "base": 30000
     }
