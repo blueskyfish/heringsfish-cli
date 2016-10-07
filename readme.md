@@ -87,7 +87,7 @@ $ hf help build
 ( 5) $ hf config domain.home /path/to/domains
 ( 6) $ hf config domain.name your-project
 ( 7) $ hf config domain.ports.base 30000
-( 8) $ hf config domain.deploy.nameOfWarApp "{project.home}/target/your-project.war
+( 8) $ hf config domain.deploy.nameOfWarApp "{project.home}/target/your-project.war"
 ( 9) $ hf create
 (10) $ hf start
 (11) $ hf jdbc create --name testDB
@@ -221,14 +221,14 @@ Aktion      | Optional additional Arguments  | Description
             | `--nobuild`                    | Disable the maven build process before deploying.
             | `--skip`                       | Skip to execute the test cases.
             | `-c` or `--clean`              | Add the clean goal to the maven build process.
-            | `-p profiles`                  | Add the maven profile(s)
-            | `--profile=profiles`           | Add the maven profile(s)
+            | `-p profiles`                  | Add the maven profile(s). To separated more profiles with `,`.
+            | `--profile=profiles`           | Add the maven profile(s). To separated more profiles with `,`.
 `build`     |                                | build the application with maven
             | `--skip`                       | Skip to execute the test cases.
             | `-c` or `--clean`              | Add the clean goal to the maven build process.
             | `-p profiles`                  | Add the maven profile(s)
             | `--profile=profiles`           | Add the maven profile(s)
-`clean`     |                                | Execute the maven for clean the target directories.
+`clean`     |                                | Execute maven for clean the target directories.
 `list`      |                                | Display either the domains of the application server or the list of deployed application on the server.
             | `--app`                        | Display the deployed application on the application server.
             | `-d` or `--domain`             | Display the domains of the application server.
@@ -305,6 +305,7 @@ See example above.
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.7.2      | 2016-10-07 | fixed default timeout and improve readme.
 | 0.7.1      | 2016-10-07 | fixed the timeout for commands and improve the documentation of the actions.
 | 0.7.0      | 2016-07-31 | add jdbc action
 | 0.6.3      | 2016-05-18 | fixed: add the dot
