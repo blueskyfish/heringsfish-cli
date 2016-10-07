@@ -13,7 +13,6 @@ var actionLoader = require('./lib/action-loader');
 var configure = require('./lib/configure');
 var logger = require('./lib/logger');
 var settings = require('./lib/settings');
-var utilities = require('./lib/utilities');
 
 var pkg = require('./package.json');
 
@@ -43,23 +42,20 @@ actionLoader.find(settings.getAction())
         logger.debug("Finish with %s", JSON.stringify(result));
       }
       if (result && result.hashCode) {
-        logger.info(' [%s]', result.hashCode);
+        logger.info('- Code: %s', result.hashCode);
       }
       if (result && result.message) {
         logger.info(result.message);
       }
       if (result && result.duration) {
-        logger.info('Duration %s ms', result.duration || -1);
+        logger.info('- Duration %s ms', result.duration);
       }
       if (result && result.exitCode) {
-        logger.info('Exist Code %s', result.exitCode || 0);
+        logger.info('- Exist Code %s', result.exitCode);
       }
       logger.info();
     },
     function (reason) {
-      if (reason.stack) {
-        logger.error(reason.stack);
-      }
-      logger.error(JSON.stringify(reason));
+       logger.error(JSON.stringify(reason));
     }
   );

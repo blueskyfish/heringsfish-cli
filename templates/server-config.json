@@ -9,6 +9,9 @@
     "project": "-",
     "setting": "-"
   },
+  "command": {
+    "timeout": 0
+  },
   "domain": {
     "name": "-",
     "home": "{project.home}/domains",

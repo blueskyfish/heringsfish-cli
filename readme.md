@@ -129,6 +129,25 @@ There are 2 ways to edit the configuration:
 * edit the file `server-config.json` directly.<br>
   example: `$ nano server-config.json`
 
+### Table of Configurable Settings
+
+| Settings            | Type         | Description
+|---------------------|--------------|--------------------------------------------------------------------
+| `name`              | String       | The application name
+| `version`           | String       | A version
+| `server.home`       | String       | The path to the Application Server
+| `maven.home`        | String       | The path to the Maven installation
+| `maven.setting`     | String       | The Maven settings.xml file
+| `maven.project`     | String       | The `om.xml`of the Project.
+| `domain.name`       | String       | The domain name in the Application Server.
+| `domain.home`       | String       | The path to the domain directory.
+| `domain.deploy`     | Map          | A map with the deployment files.
+| `domain.ports.base` | Number       | The base port of the application (Admin Console Port is `+ 48`, The application is on `+ 80`).
+| `domain.jdbc`       | Map          | A map with the jdbc names and their settings.
+| `command.timeout`   | Number       | The timeout in milliseconds. If the value is `0`, then it is running infinity.
+| `command.asadmin`   | Object       | The `asAdmin` command.
+| `env`               | Object       | A key value map for the environment variables that is setting for the Application Server.
+
 ### Example of Configure
 
 ```json
@@ -167,6 +186,7 @@ There are 2 ways to edit the configuration:
         }
     },
     "command": {
+        "timeout": 120000,
         "asadmin": {
             "win32": "{server.home}/bin/asadmin.bat",
             "unix": "{server.home}/bin/asadmin"
@@ -195,14 +215,20 @@ Aktion      | Optional additional Arguments  | Description
 `create`    | -                              | Creates the domain on the application server.
 `start`     | -                              | Starts the application server with the domain.
 `restart`   |                                | Stops and starts the application server with the domain.
-            | `-k` or ``--kill`              | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
-`deploy`    |                                | Build the application with maven.
+            | `-k` or `--kill`               | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
+`deploy`    |                                | Build the application with maven and deploy on the application server..
             | `application`                  | the name of the deploying application. If no application is specified, all Applications are deployed.
             | `--nobuild`                    | Disable the maven build process before deploying.
             | `--skip`                       | Skip to execute the test cases.
             | `-c` or `--clean`              | Add the clean goal to the maven build process.
             | `-p profiles`                  | Add the maven profile(s)
             | `--profile=profiles`           | Add the maven profile(s)
+`build`     |                                | build the application with maven
+            | `--skip`                       | Skip to execute the test cases.
+            | `-c` or `--clean`              | Add the clean goal to the maven build process.
+            | `-p profiles`                  | Add the maven profile(s)
+            | `--profile=profiles`           | Add the maven profile(s)
+`clean`     |                                | Execute the maven for clean the target directories.
 `list`      |                                | Display either the domains of the application server or the list of deployed application on the server.
             | `--app`                        | Display the deployed application on the application server.
             | `-d` or `--domain`             | Display the domains of the application server.
@@ -271,14 +297,15 @@ See example above.
 ## Road Map
 
 * Extends and defines project plugins. Every project should have own plugins.
-* Handle with DataSources
-* Gulp Plugin
+* Update the sources to node version 4.5 LTS
+* Improve refactoring of the program and the internal architecture and modularizing.
 
 
 ## History
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.7.1      | 2016-10-07 | fixed the timeout for commands and improve the documentation of the actions.
 | 0.7.0      | 2016-07-31 | add jdbc action
 | 0.6.3      | 2016-05-18 | fixed: add the dot
 | 0.6.2      | 2016-05-18 | fixed: read the config settings
