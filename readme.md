@@ -305,6 +305,7 @@ See example above.
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.7.3      | 2016-11-21 | fixed: normilze path names.
 | 0.7.2      | 2016-10-07 | fixed default timeout and improve readme.
 | 0.7.1      | 2016-10-07 | fixed the timeout for commands and improve the documentation of the actions.
 | 0.7.0      | 2016-07-31 | add jdbc action
