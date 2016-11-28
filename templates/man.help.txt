@@ -25,6 +25,7 @@ List of action:
   undeploy             remove the maven artifacts from the application domain.
   build                start the maven build process
   clean                clean the maven build process
+  test                 executes the maven test goal
 
 Compound Action:
   restart              stops the application server first and then restarts it.

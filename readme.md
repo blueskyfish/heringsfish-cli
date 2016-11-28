@@ -228,6 +228,10 @@ Aktion      | Optional additional Arguments  | Description
             | `-c` or `--clean`              | Add the clean goal to the maven build process.
             | `-p profiles`                  | Add the maven profile(s)
             | `--profile=profiles`           | Add the maven profile(s)
+`test`      |                                | Executes the maven test goal.
+            | `-c` or `--clean`              | Add the clean goal to the maven build process.
+            | `-p profiles`                  | Add the maven profile(s)
+            | `--profile=profiles`           | Add the maven profile(s)
 `clean`     |                                | Execute maven for clean the target directories.
 `list`      |                                | Display either the domains of the application server or the list of deployed application on the server.
             | `--app`                        | Display the deployed application on the application server.
@@ -305,6 +309,7 @@ See example above.
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.8.0      | 2016-11-28 | add the task `test`.
 | 0.7.3      | 2016-11-21 | fixed: normilze path names.
 | 0.7.2      | 2016-10-07 | fixed default timeout and improve readme.
 | 0.7.1      | 2016-10-07 | fixed the timeout for commands and improve the documentation of the actions.
