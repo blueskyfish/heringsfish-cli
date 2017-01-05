@@ -9,12 +9,15 @@
 
 'use strict';
 
-var actionLoader = require('./lib/action-loader');
-var configure = require('./lib/configure');
-var logger = require('./lib/logger');
-var settings = require('./lib/settings');
+require('app-module-path').addPath(__dirname);
+require('app-module-path').addPath(process.cwd());
 
-var pkg = require('./package.json');
+const actionLoader = require('lib/action-loader');
+const configure    = require('lib/configure');
+const logger       = require('lib/logger');
+const settings     = require('lib/settings');
+
+const pkg = require('package.json');
 
 logger.info();
 logger.info('%s (%s)', pkg.title, pkg.version);
