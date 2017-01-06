@@ -12,7 +12,9 @@
 require('app-module-path').addPath(__dirname);
 require('app-module-path').addPath(process.cwd());
 
-const _  = require('lodash');
+const path = require('path');
+
+const _    = require('lodash');
 
 const actionLoader = require('lib/action-loader');
 const config       = require('lib/config');
@@ -20,7 +22,7 @@ const defines      = require('lib/defines');
 const logger       = require('lib/logger');
 const json         = require('lib/core/json');
 
-const pkg = require('package.json');
+const pkg = require(path.join(defines.HF_APP_HOME, 'package.json'));
 
 logger.info();
 logger.info('%s (%s)', pkg.title, pkg.version);
