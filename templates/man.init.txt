@@ -2,6 +2,7 @@
 Display help for "init"
 
 Description:
+  TODO initialize and run the setup.
   create the config settings in the current project folder.
   The file name of the config settings is ".server-config.json". It is a
   simple JSON object.

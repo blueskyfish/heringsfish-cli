@@ -208,10 +208,6 @@ There are 2 ways to edit the configuration:
 Aktion      | Optional additional Arguments  | Description
 ------------|--------------------------------|------------------------------------------------------------
 `init`      | -                              | Create the config settings in the current project folder.
-`config`    |                                | Set a configuration setting.
-            | `key value`                    | the key and its value. It can be more then a key value pair.
-            | `-l` or `--list`               | Show the current configuration.
-            | `key --delete`                 | Delete a configuration setting.
 `create`    | -                              | Creates the domain on the application server.
 `start`     | -                              | Starts the application server with the domain.
 `restart`   |                                | Stops and starts the application server with the domain.

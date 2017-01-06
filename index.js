@@ -12,10 +12,13 @@
 require('app-module-path').addPath(__dirname);
 require('app-module-path').addPath(process.cwd());
 
+const _  = require('lodash');
+
 const actionLoader = require('lib/action-loader');
-const configure    = require('lib/configure');
+const config       = require('lib/config');
+const defines      = require('lib/defines');
 const logger       = require('lib/logger');
-const settings     = require('lib/settings');
+const json         = require('lib/core/json');
 
 const pkg = require('package.json');
 
@@ -24,41 +27,50 @@ logger.info('%s (%s)', pkg.title, pkg.version);
 logger.info();
 
 // in verbose: show the parameters!
-settings.print(function (content) {
-  logger.debug(content);
+config.printParameters(function (content) {
+  const text = content.split('\n');
+  _.forEach(text, function (s) {
+    logger.debug(s);
+  });
 });
 
-logger.info('Project: %s', configure.get('name', '?'));
-logger.info('Version: %s', configure.get('version', '0.0.0'));
-logger.info('Home:    %s', process.cwd());
-logger.info();
+logger.info('Project: %s', config.getConfig('name', '?'));
+logger.info('Version: %s', config.getConfig('version', '0.0.0'));
+logger.info('Home:    %s', defines.PROJECT_HOME);
+logger.info('');
+logger.info('User:    %s', defines.USER_HOME_PATH);
+logger.info('HF Path: %s', defines.HF_APP_HOME);
+logger.info('');
 
-actionLoader.find(settings.getAction())
-  .then(
-    function (actionProvider) {
-      return actionProvider.run();
+actionLoader.find(config.getAction())
+  .then(function (actionProvider) {
+    return actionProvider.run();
+  })
+  .then(function (result) {
+    if (config.isVerbose() && result) {
+      const text = json.stringify(result).split('\n');
+      logger.debug('Finish');
+      _.forEach(text, function (s) {
+        logger.debug('  %s', s);
+      });
     }
-  )
-  .then(
-    function (result) {
-      if (settings.isVerbose()) {
-        logger.debug("Finish with %s", JSON.stringify(result));
-      }
-      if (result && result.hashCode) {
-        logger.info('- Code: %s', result.hashCode);
-      }
-      if (result && result.message) {
-        logger.info(result.message);
-      }
-      if (result && result.duration) {
-        logger.info('- Duration %s ms', result.duration);
-      }
-      if (result && result.exitCode) {
-        logger.info('- Exist Code %s', result.exitCode);
-      }
-      logger.info();
-    },
-    function (reason) {
-       logger.error(JSON.stringify(reason));
+    if (result && result.hashCode) {
+      logger.info('Code: %s', result.hashCode);
     }
-  );
+    if (result && result.message) {
+      logger.info(result.message);
+    }
+    if (result && result.duration) {
+      logger.info('Duration %s ms', result.duration);
+    }
+    if (result && result.exitCode) {
+      logger.info('Exist Code %s', result.exitCode);
+    }
+    logger.info('');
+  }, function (reason) {
+    const text = json.stringify(reason).split('\n');
+    logger.error('Error');
+    _.forEach(text, function (s) {
+      logger.error('%s', s);
+    });
+  });
