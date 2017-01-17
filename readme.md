@@ -4,6 +4,8 @@
 # Heringsfish Command Line Interface (cli)
 
 > Command Line Interface to manages the [Glassfish][glassfish] / [Payara][payara] Application Server and the maven deployment on local machine
+>
+> This is the last version of the version 0.x.x
 
 
 ## Table of Content
@@ -34,8 +36,9 @@ The CLI allows you to a [GlassFish][glassfish] or [Payara][payara] Application S
 
 The following programs or modules are necessary:
 
-* [Node JS][nodejs]: This cli is tested with the version 0.12.x
-* Application Server [Glassfish 4.1][glassfish] or [Payara 4.1][payara]: Just install the server somewhere on your computer.
+* [Node JS][nodejs]: This cli is tested with the version 4.x and 6.x
+* Set the environment variable `JAVA_HOME` must be set.
+* Application Server [Glassfish 4.1][glassfish] or [Payara 4.1][payara]: Just install the server somewhere on your computer or in the project.
 * [Maven][maven]: The command `mvn` should in your `PATH` or setup in the configuration
 * An Java IDE :-)
 
@@ -82,50 +85,34 @@ $ hf help build
 ```sh
 ( 1) $ cd /your/project
 ( 2) $ hf init
-( 3) $ hf config name "Your Project"
-( 4) $ hf config server.home /path/to/application/server
-( 5) $ hf config domain.home /path/to/domains
-( 6) $ hf config domain.name your-project
-( 7) $ hf config domain.ports.base 30000
-( 8) $ hf config domain.deploy.nameOfWarApp "{project.home}/target/your-project.war"
-( 9) $ hf create
-(10) $ hf start
-(11) $ hf jdbc create --name testDB
-(12) $ hf deploy
-(13) $ open "http://localhost:30048/
-(14) $ open "http://localhost:30080/your-project
-(15) $ hf undeploy
-(16) $ hf stop
-(17) $ hf remove
+( 3) $ hf create
+( 4) $ hf start
+( 5) $ hf jdbc create --name testDB
+( 6) $ hf deploy
+( 7) $ open "http://localhost:30048/
+( 8) $ open "http://localhost:30080/your-project
+( 9) $ hf undeploy
+(10) $ hf stop
+(11) $ hf remove
 ```
 
 1. Change into your project
 2. Initialize the configuration for your project.
-3. Set your project name
-4. Set the home of the application
-5. Set the domain home path
-6. Set the domain name (without a whitespace)
-7. Set the base port (all other ports are calculated from this port)
-8. Set the file deploying on the application server
-9. Set create the domain
-10. Start the application server
-11. Create a JDB connection pool and JDBC resource
-12. Start the deployment
-13. Open the Admin Console of the application server
-14. Open your deployed web/rest (etc) application
-15. Undeploy the deployed application
-16. Stop the application server
-17. Remove and delete the domain.
+3. Set create the domain
+4. Start the application server
+5. Create a JDB connection pool and JDBC resource
+6. Start the deployment
+7. Open the Admin Console of the application server
+8. Open your deployed web/rest (etc) application
+9. Undeploy the deployed application
+10. Stop the application server
+11. Remove and delete the domain.
 
 
 ## Configure
 
 The configure settings are in the file `server-config.json`. This file is in the project root directory and has format `JSON`.
 
-There are 2 ways to edit the configuration:
-
-* call the cli with the action `config`<br>
-  example: `$ hf config server.home "{project.home}/tools/glassfish4"`
 * edit the file `server-config.json` directly.<br>
   example: `$ nano server-config.json`
 
@@ -196,8 +183,7 @@ There are 2 ways to edit the configuration:
         "project.home": "{project.home}",
         "user.home": "{user.home}",
         "project.name": "{project.name}",
-        "project.version": "{project.version}",
-        ...
+        "project.version": "{project.version}"
     }
 }
 ```
@@ -208,10 +194,6 @@ There are 2 ways to edit the configuration:
 Aktion      | Optional additional Arguments  | Description
 ------------|--------------------------------|------------------------------------------------------------
 `init`      | -                              | Create the config settings in the current project folder.
-`config`    |                                | Set a configuration setting.
-            | `key value`                    | the key and its value. It can be more then a key value pair.
-            | `-l` or `--list`               | Show the current configuration.
-            | `key --delete`                 | Delete a configuration setting.
 `create`    | -                              | Creates the domain on the application server.
 `start`     | -                              | Starts the application server with the domain.
 `restart`   |                                | Stops and starts the application server with the domain.
@@ -267,7 +249,7 @@ Aktion      | Optional additional Arguments  | Description
 
 ### Replaced Variables
 
-Certain variables can be replaced. The Application Server is included in the project. By means of the variable project.home the directory of the project can be used.
+Certain variables can be replaced. The Application Server can be included in the project. By means of the variable project.home the directory of the project can be used.
 
 For Example:
 ```
@@ -301,14 +283,14 @@ See example above.
 ## Road Map
 
 * Extends and defines project plugins. Every project should have own plugins.
-* Update the sources to node version 4.5 LTS
-* Improve refactoring of the program and the internal architecture and modularizing.
 
 
 ## History
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.9.1      | 2016-01-16 | delete the code of the next version. It is not complete.
+| 0.9.0      | 2017-01-06 | Simplify the app. Delete the action ~~config~~.
 | 0.8.0      | 2016-11-28 | add the task `test`.
 | 0.7.3      | 2016-11-21 | fixed: normilze path names.
 | 0.7.2      | 2016-10-07 | fixed default timeout and improve readme.
@@ -336,7 +318,7 @@ See example above.
 ```
 The MIT License (MIT)
 
-Copyright (c) 2016 BlueSkyFish
+Copyright (c) 2017 BlueSkyFish
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

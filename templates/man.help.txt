@@ -14,7 +14,6 @@ Common arguments for all actions:
 List of action:
   help                 display this help messages.
   init                 create a common config settings in the project folder.
-  config               read and write config settings in the project folder.
   create               created the application domain that is used for deployment.
   remove               removed the application domain.
   start                start the application server.
