@@ -289,6 +289,7 @@ See example above.
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.9.1      | 2016-01-16 | delete the code of the next version. It is not complete.
 | 0.9.0      | 2017-01-06 | Simplify the app. Delete the action ~~config~~.
 | 0.8.0      | 2016-11-28 | add the task `test`.
 | 0.7.3      | 2016-11-21 | fixed: normilze path names.
