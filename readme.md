@@ -3,9 +3,8 @@
 
 # Heringsfish Command Line Interface (cli)
 
-> Command Line Interface to manages the [Glassfish][glassfish] / [Payara][payara] Application Server and the maven deployment on local machine
->
-> This is the last version of the version 0.x.x
+> Command Line Interface to manages the [Glassfish][glassfish] / [Payara][payara] Application Server
+> and the deployment on local or server machine.
 
 
 ## Table of Content
@@ -22,6 +21,7 @@
     * [Replaced Variables](#user-content-replaced-variables)
     * [Environment Variables](#user-content-environment-variables)
 * [Road Map](#user-content-road-map)
+* [Glossary](#user-content-glossary)
 * [History](#user-content-history)
 * [License](#user-content-license)
 * [Third Party](#user-content-third-party)
@@ -29,18 +29,22 @@
 
 ## Overview
 
-The CLI allows you to a [GlassFish][glassfish] or [Payara][payara] Application Server easy to use and a encapsulated development environment for your JEE set 7 project.
+The *Command Line Interface* allows you to a [GlassFish][glassfish] or [Payara][payara] Application Server easy to use and a encapsulated development environment for your JEE 7 project.
 
 
 ## Requirement
 
 The following programs or modules are necessary:
 
-* [Node JS][nodejs]: This cli is tested with the version 4.x and 6.x
-* Set the environment variable `JAVA_HOME` must be set.
+* [Node JS][nodejs]: This cli is tested with the version 6.x or higher
+* Set the environment variable `JAVA_HOME` must be set (Java 8).
 * Application Server [Glassfish 4.1][glassfish] or [Payara 4.1][payara]: Just install the server somewhere on your computer or in the project.
-* [Maven][maven]: The command `mvn` should in your `PATH` or setup in the configuration
+* [Maven][maven]: The command `mvn` should in your `PATH`.
 * An Java IDE :-)
+
+## Documentation
+
+See <https://blueskyfish.github.io/heringsfish-cli/>.
 
 
 ## Installation
@@ -50,21 +54,6 @@ Global install:
 ```sh
 $ npm install -g heringsfish-cli
 ```
-
-Github
-
-```sh
-$ cd /path/to/your/projects
-$ git clone https://github.com/blueskyfish/heringsfish-cli.git
-$ cd heringsfish-cli
-$ npm install
-$ npm test
-$ npm link
-```
-
-**Note**: the command `npm link` creates an short link to the program. Now your are able to type in your
-console window `hf ...`. May you need to call `sudo npm link`.
-
 
 ## Find Help
 
@@ -283,6 +272,11 @@ See example above.
 ## Road Map
 
 * Extends and defines project plugins. Every project should have own plugins.
+
+## Glossary
+
+* **action**<br>
+  An action is a plugin (*javascript module*) and is a command.
 
 
 ## History

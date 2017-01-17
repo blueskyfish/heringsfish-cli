@@ -1,8 +1,8 @@
 {
   "name": "heringsfish-cli",
   "title": "Heringsfish CLI",
-  "version": "0.9.1",
-  "description": "Command Line Interface to manages the Glassfish / Payara Application Server and the maven deployment on local machine",
+  "version": "1.0.0",
+  "description": "Command Line Interface to manages the Glassfish / Payara Application Server and the deployment on local or server machine.",
   "author": "BlueSkyFish <blueskyfish@blueskyfish.de>",
   "license": "MIT",
   "main": "index.js",
@@ -20,7 +20,8 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "./node_modules/.bin/mocha"
+    "test": "./node_modules/.bin/mocha",
+    "website": "./node_modules/.bin/trash ./docs/* && ./node_modules/.bin/generate-md --layout ./website/layout --input ./website/content --output ./docs"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,8 @@
     "q": "1.4.1"
   },
   "devDependencies": {
-    "mocha": "3.2.0"
+    "markdown-styles": "3.1.9",
+    "mocha": "3.2.0",
+    "trash-cli": "1.4.0"
   }
 }
