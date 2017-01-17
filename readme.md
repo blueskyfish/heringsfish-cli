@@ -4,6 +4,8 @@
 # Heringsfish Command Line Interface (cli)
 
 > Command Line Interface to manages the [Glassfish][glassfish] / [Payara][payara] Application Server and the maven deployment on local machine
+>
+> This is the last version of the version 0.x.x
 
 
 ## Table of Content
@@ -287,7 +289,7 @@ See example above.
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
-| 1.0.0      | 2017-01-06 | Reedit and reorganize the project. Delete the action ~~config~~.
+| 0.9.0      | 2017-01-06 | Simplify the app. Delete the action ~~config~~.
 | 0.8.0      | 2016-11-28 | add the task `test`.
 | 0.7.3      | 2016-11-21 | fixed: normilze path names.
 | 0.7.2      | 2016-10-07 | fixed default timeout and improve readme.
