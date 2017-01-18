@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heringsfish - About</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+    }
+  </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#hf-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="about.html">Heringsfish</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="hf-navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html">Home</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://github.com/blueskyfish/heringsfish-cli.git">Github <span class="fa fa-github" aria-hidden="true"></span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container"><p class="img-container"><img src="assets/logo.png" alt="Heringsfish"></p>
+<h1 id="about"><a class="header-link" href="#about"></a>About</h1>
+<p>Command Line Interface to manages the <a href="https://glassfish.java.net/">Glassfish</a> / <a href="http://www.payara.fish/">Payara</a> Application Server
+and the deployment on local or server machine.</p>
+<h2 id="history"><a class="header-link" href="#history"></a>History</h2>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.9.1</td>
+<td>2016-01-16</td>
+<td>delete the code of the next version. It is not complete.</td>
+</tr>
+<tr>
+<td>0.9.0</td>
+<td>2017-01-06</td>
+<td>Simplify the app. Delete the action <del>config</del>.</td>
+</tr>
+<tr>
+<td>0.8.0</td>
+<td>2016-11-28</td>
+<td>add the task <code>test</code>.</td>
+</tr>
+<tr>
+<td>0.7.3</td>
+<td>2016-11-21</td>
+<td>fixed: normilze path names.</td>
+</tr>
+<tr>
+<td>0.7.2</td>
+<td>2016-10-07</td>
+<td>fixed default timeout and improve readme.</td>
+</tr>
+<tr>
+<td>0.7.1</td>
+<td>2016-10-07</td>
+<td>fixed the timeout for commands and improve the documentation of the actions.</td>
+</tr>
+<tr>
+<td>0.7.0</td>
+<td>2016-07-31</td>
+<td>add jdbc action</td>
+</tr>
+<tr>
+<td>0.6.3</td>
+<td>2016-05-18</td>
+<td>fixed: add the dot</td>
+</tr>
+<tr>
+<td>0.6.2</td>
+<td>2016-05-18</td>
+<td>fixed: read the config settings</td>
+</tr>
+<tr>
+<td>0.6.1</td>
+<td>2016-05-18</td>
+<td>fixed: execute a command on windows.</td>
+</tr>
+<tr>
+<td>0.6.0</td>
+<td>2016-05-18</td>
+<td>read the command.asadmin command from the server-config.json. If a platform depended command is execute, then it can be separated between <code>win32</code> and <code>unix</code>. See the <code>server-config.json</code> example</td>
+</tr>
+<tr>
+<td>0.5.3</td>
+<td>2016-03-04</td>
+<td>show environments, some fixes.</td>
+</tr>
+<tr>
+<td>0.5.2</td>
+<td>2016-02-24</td>
+<td>add the environments without modify the name.</td>
+</tr>
+<tr>
+<td>0.4.0</td>
+<td>2016-02-11</td>
+<td>Update node module &quot;lodash&quot;</td>
+</tr>
+<tr>
+<td>0.3.0</td>
+<td>2016-02-11</td>
+<td>add the missing actions &quot;restart&quot; and &quot;redeploy&quot;</td>
+</tr>
+<tr>
+<td>0.2.2</td>
+<td>2016-02-10</td>
+<td>Improve conversion rules for environment name.</td>
+</tr>
+<tr>
+<td>0.2.1</td>
+<td>2016-02-10</td>
+<td>Environment variables for executing the application server.</td>
+</tr>
+<tr>
+<td>0.1.1</td>
+<td>2016-02-09</td>
+<td>show the current directory</td>
+</tr>
+<tr>
+<td>0.1.0</td>
+<td>2016-02-09</td>
+<td>add setting.xml for maven</td>
+</tr>
+<tr>
+<td>0.0.3</td>
+<td>2016-02-01</td>
+<td>fixed the server base port</td>
+</tr>
+<tr>
+<td>0.0.2</td>
+<td></td>
+<td>Improve documentation</td>
+</tr>
+<tr>
+<td>0.0.1</td>
+<td>2016-01-11</td>
+<td>Initial commit (all started here)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="license"><a class="header-link" href="#license"></a>License</h2>
+<pre class="hljs"><code>The MIT License (MIT)
+
+Copyright (c) 2017 BlueSkyFish
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to <span class="hljs-keyword">use</span>, copy, <span class="hljs-keyword">modify</span>, <span class="hljs-keyword">merge</span>, publish, <span class="hljs-keyword">distribute</span>, sublicense, <span class="hljs-keyword">and</span>/<span class="hljs-keyword">or</span> sell
+copies <span class="hljs-keyword">of</span> the Software, <span class="hljs-keyword">and</span> <span class="hljs-keyword">to</span> permit persons <span class="hljs-keyword">to</span> whom the Software <span class="hljs-keyword">is</span>
+furnished <span class="hljs-keyword">to</span> <span class="hljs-keyword">do</span> so, subject <span class="hljs-keyword">to</span> the <span class="hljs-keyword">following</span> conditions:
+
+The above copyright <span class="hljs-keyword">notice</span> <span class="hljs-keyword">and</span> this permission <span class="hljs-keyword">notice</span> shall be included <span class="hljs-keyword">in</span>
+all copies <span class="hljs-keyword">or</span> substantial portions <span class="hljs-keyword">of</span> the Software.
+
+THE SOFTWARE <span class="hljs-keyword">IS</span> PROVIDED <span class="hljs-string">"AS IS"</span>, <span class="hljs-keyword">WITHOUT</span> WARRANTY <span class="hljs-keyword">OF</span> <span class="hljs-keyword">ANY</span> KIND, EXPRESS <span class="hljs-keyword">OR</span>
+IMPLIED, <span class="hljs-keyword">INCLUDING</span> BUT <span class="hljs-keyword">NOT</span> LIMITED <span class="hljs-keyword">TO</span> THE WARRANTIES <span class="hljs-keyword">OF</span> MERCHANTABILITY,
+FITNESS <span class="hljs-keyword">FOR</span> A PARTICULAR PURPOSE <span class="hljs-keyword">AND</span> NONINFRINGEMENT.  <span class="hljs-keyword">IN</span> <span class="hljs-keyword">NO</span> <span class="hljs-keyword">EVENT</span> SHALL THE
+<span class="hljs-keyword">AUTHORS</span> <span class="hljs-keyword">OR</span> COPYRIGHT HOLDERS BE LIABLE <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">ANY</span> CLAIM, DAMAGES <span class="hljs-keyword">OR</span> OTHER
+LIABILITY, WHETHER <span class="hljs-keyword">IN</span> AN <span class="hljs-keyword">ACTION</span> <span class="hljs-keyword">OF</span> CONTRACT, TORT <span class="hljs-keyword">OR</span> OTHERWISE, ARISING <span class="hljs-keyword">FROM</span>,
+<span class="hljs-keyword">OUT</span> <span class="hljs-keyword">OF</span> <span class="hljs-keyword">OR</span> <span class="hljs-keyword">IN</span> <span class="hljs-keyword">CONNECTION</span> <span class="hljs-keyword">WITH</span> THE SOFTWARE <span class="hljs-keyword">OR</span> THE <span class="hljs-keyword">USE</span> <span class="hljs-keyword">OR</span> OTHER DEALINGS <span class="hljs-keyword">IN</span>
+THE SOFTWARE.</code></pre><h2 id="third-party"><a class="header-link" href="#third-party"></a>Third Party</h2>
+<p>All company, brand and product names are trademarks of their respective owners.</p>
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
