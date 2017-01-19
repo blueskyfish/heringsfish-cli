@@ -1,0 +1,35 @@
+/*!
+ * heringsfish-cli - https://github.com/blueskyfish/heringsfish-cli.git
+ *
+ * The MIT License (MIT)
+ * Copyright (c) 2017 BlueSkyFish
+ */
+
+body {
+  padding-top: 60px;
+}
+
+table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  border-spacing: 0;
+  border-collapse: collapse;
+  box-sizing: border-box;
+}
+
+table th {
+  font-weight: bold;
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+table thead tr,
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
