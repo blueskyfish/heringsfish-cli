@@ -37,7 +37,7 @@ and the deployment on local or server machine.
 
 ## License
 
-```
+```text
 The MIT License (MIT)
 
 Copyright (c) 2017 BlueSkyFish
