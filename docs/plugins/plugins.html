@@ -4,7 +4,7 @@
   <base href="/heringsfish-cli/">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{title}}</title>
+  <title>Heringsfish - Plugin Overview</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -46,9 +46,59 @@
   </div>
 </nav>
 
-<div class="container">
-  {{~> content}}
-</div>
+<div class="container"><h1 id="plugin-overview"><a class="header-link" href="#plugin-overview"></a>Plugin Overview</h1>
+<p>A plugin is a javascript module and executes an action. The name of the plugin is the name of the action too.</p>
+<h2 id="builtin-plugins"><a class="header-link" href="#builtin-plugins"></a>Builtin Plugins</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th style="text-align:center">Plugin</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>help</code></td>
+<td style="text-align:center"><strong>help</strong></td>
+<td>Shows the help to the action / plugin</td>
+</tr>
+<tr>
+<td><code>init</code></td>
+<td style="text-align:center"><strong>init</strong></td>
+<td>Initial the <code>Heringsfish</code> server config in the current project.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create-an-own-plugin"><a class="header-link" href="#create-an-own-plugin"></a>Create an own Plugin</h2>
+<p>This section describes how to build your own plugin for <code>heringsfish</code>.</p>
+<ul class="list">
+<li>Defines a javascript node module.</li>
+<li>The module exports only one function that receive one parameter from type <code>Options</code>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre class="hljs"><code><span class="hljs-comment">/*!
+ * Your module
+ */</span>
+
+<span class="hljs-comment">/**
+ * This is the only function of the module exports
+ * 
+ * @param {Options} options contains some functionality of the heringsfish
+ * @return {Promise&lt;*&gt;}
+ */</span>
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">options</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
+
+    <span class="hljs-comment">// reject({</span>
+    <span class="hljs-comment">//   code: 0xffffff,</span>
+    <span class="hljs-comment">//   message: 'Error',</span>
+    <span class="hljs-comment">// });</span>
+    resolve({
+      <span class="hljs-attr">message</span>: <span class="hljs-string">'Success'</span>
+    });
+  });
+}</code></pre></div>
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

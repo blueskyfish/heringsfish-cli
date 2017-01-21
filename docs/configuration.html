@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/heringsfish-cli/">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heringsfish - Configuration</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#hf-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="about.html">Heringsfish</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="hf-navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="menu-item" data-link="index.html"><a href="index.html">Home</a></li>
+        <li class="menu-item" data-link="configuration.html"><a href="configuration.html">Configuration</a></li>
+        <li class="dropdown">
+          <a href="#"class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plugins <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="menu-item" data-link="plugins/plugins.html"><a href="plugins/plugins.html"><span class="fa fa-table" aria-hidden="true"></span> Plugin Overview</a></li>
+            <li class="divider" role="separator"></li>
+            <li class="menu-item" data-link="plugins/plugin-help.html"><a href="plugins/plugin-help.html"><span class="fa fa-leaf" aria-hidden="true"></span> Plugin Help</a></li>
+            <li class="menu-item" data-link="plugins/plugin-init.html"><a href="plugins/plugin-init.html"><span class="fa fa-leaf" aria-hidden="true"></span> Plugin Init</a></li>
+          </ul>
+        </li>
+        <li class="menu-item" data-link="about.html"><a href="about.html">About</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://github.com/blueskyfish/heringsfish-cli.git">Github <span class="fa fa-github" aria-hidden="true"></span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container"><p class="img-container"><img src="assets/logo.png" alt="Logo"></p>
+<h1 id="configuration"><a class="header-link" href="#configuration"></a>Configuration</h1>
+<p>The configure settings are in the file <code>server-config.json</code>. This file is in the project root directory and has format <code>JSON</code>.</p>
+<p>Similarly, there may be a JSON file in your home directory that overwrites the project configuration. The name of the file in your home directory is the project name. All characters are lowercase and the spaces are replaced by &#39;-&#39;.</p>
+<h2 id="example-of-override"><a class="header-link" href="#example-of-override"></a>Example of Override</h2>
+<ul class="list">
+<li>Your Project has the name <code>Example Service</code> and it is under the directory <code>/home/berti/projects/example-service</code>.</li>
+<li>The project config file is <code>server-config.json</code>.</li>
+<li>Your override config is in your home directory and has the name <code>example-service.json</code>.</li>
+</ul>
+<p class="img-container"><img src="assets/merge-project-user-config.png" alt="Merge Project User Config"></p>
+<p>The user configs is always override the project configs.</p>
+<h2 id="table-of-configurable-settings"><a class="header-link" href="#table-of-configurable-settings"></a>Table of Configurable Settings</h2>
+<table>
+<thead>
+<tr>
+<th>Settings</th>
+<th>Type</th>
+<th style="text-align:center">Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td style="text-align:center">yes</td>
+<td>The application name.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>String</td>
+<td style="text-align:center">yes</td>
+<td>A version</td>
+</tr>
+<tr>
+<td><code>server.home</code></td>
+<td>String</td>
+<td style="text-align:center">yes</td>
+<td>The path to the Application Server</td>
+</tr>
+<tr>
+<td><code>maven.home</code></td>
+<td>String</td>
+<td style="text-align:center">yes (1)</td>
+<td>The path to the Maven installation</td>
+</tr>
+<tr>
+<td><code>maven.setting</code></td>
+<td>String</td>
+<td style="text-align:center">yes (1)</td>
+<td>The Maven settings.xml file</td>
+</tr>
+<tr>
+<td><code>maven.project</code></td>
+<td>String</td>
+<td style="text-align:center">yes (1)</td>
+<td>The <code>pom.xml</code>of the Project.</td>
+</tr>
+<tr>
+<td><code>ant.home</code></td>
+<td>String</td>
+<td style="text-align:center">yes (2)</td>
+<td>The path to the Ant installation.</td>
+</tr>
+<tr>
+<td><code>domain.name</code></td>
+<td>String</td>
+<td style="text-align:center">yes</td>
+<td>The domain name in the Application Server.</td>
+</tr>
+<tr>
+<td><code>domain.home</code></td>
+<td>String</td>
+<td style="text-align:center">yes</td>
+<td>The path to the domain directory.</td>
+</tr>
+<tr>
+<td><code>domain.deploy</code></td>
+<td>Map</td>
+<td style="text-align:center">yes</td>
+<td>A map with the deployment files.</td>
+</tr>
+<tr>
+<td><code>domain.ports.base</code></td>
+<td>Number</td>
+<td style="text-align:center">yes</td>
+<td>The base port of the application (Admin Console Port is <code>+ 48</code>, The application is on <code>+ 80</code>).</td>
+</tr>
+<tr>
+<td><code>domain.jdbc</code></td>
+<td>Map</td>
+<td style="text-align:center">yes</td>
+<td>A map with the jdbc names and their settings.</td>
+</tr>
+<tr>
+<td><code>command.timeout</code></td>
+<td>Number</td>
+<td style="text-align:center">yes</td>
+<td>The timeout in milliseconds. If the value is <code>0</code>, then it is running infinity.</td>
+</tr>
+<tr>
+<td><code>command.asadmin</code></td>
+<td>Object</td>
+<td style="text-align:center">yes</td>
+<td>The <code>asAdmin</code> command. There can be different commands for different platforms</td>
+</tr>
+<tr>
+<td><code>command.maven</code></td>
+<td>Object</td>
+<td style="text-align:center">yes</td>
+<td>The <code>mvn</code> command. There can be different commands for different platforms</td>
+</tr>
+<tr>
+<td><code>command.ant</code></td>
+<td>Object</td>
+<td style="text-align:center">yes</td>
+<td>The <code>ant</code> command. There can be different commands for different platforms</td>
+</tr>
+<tr>
+<td><code>settings</code></td>
+<td>Object</td>
+<td style="text-align:center">yes</td>
+<td>All keys / values under this property can be referenced in the configuration.</td>
+</tr>
+<tr>
+<td><code>env</code></td>
+<td>Object</td>
+<td style="text-align:center">yes</td>
+<td>A key value map for the environment variables that is setting for the Application Server.</td>
+</tr>
+</tbody>
+</table>
+<ul class="list">
+<li>(1) Only when the project use Maven for building the java packages</li>
+<li>(2) Only when the project use Ant for building the java packages</li>
+</ul>
+<h3 id="example-of-configure"><a class="header-link" href="#example-of-configure"></a>Example of Configure</h3>
+<pre class="hljs"><code>{
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"test-project"</span>,
+    <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.1.0-SNAPSHOT"</span>,
+    <span class="hljs-attr">"server"</span>: {
+        <span class="hljs-attr">"home"</span>: <span class="hljs-string">"{user.home}/programs/payara-4.1.1.154"</span>
+    },
+    <span class="hljs-attr">"maven"</span>: {
+        <span class="hljs-attr">"home"</span>: <span class="hljs-string">"{user.home}/programs/maven-3.3.4"</span>,
+        <span class="hljs-attr">"setting"</span>: <span class="hljs-string">"{project.home}/setting.xml"</span>,
+        <span class="hljs-attr">"project"</span>: <span class="hljs-string">"{project.home}/projects/pom.xml"</span>
+    },
+    <span class="hljs-attr">"ant"</span>: {
+        <span class="hljs-attr">"home"</span>: <span class="hljs-string">"{user.home}/programs/ant-1.10.0"</span>
+    },
+    <span class="hljs-attr">"domain"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"test-project"</span>,
+        <span class="hljs-attr">"home"</span>: <span class="hljs-string">"{project.home}/domains"</span>,
+        <span class="hljs-attr">"deploy"</span>: {
+            <span class="hljs-attr">"rest-provider"</span>: <span class="hljs-string">"{project.home}/projects/rest-provider/target/rest-provider-0.1.0-SNAPSHOT.war"</span>,
+            <span class="hljs-attr">"business-beans"</span>: <span class="hljs-string">"{project.home}/projects/business-beans/target/business-beans-0.1.0-SNAPSHOT.jar"</span>
+        },
+        <span class="hljs-attr">"ports"</span>: {
+            <span class="hljs-attr">"base"</span>: <span class="hljs-number">50000</span>
+        },
+        <span class="hljs-attr">"jdbc"</span>: {
+            <span class="hljs-attr">"testDB"</span>: {
+                <span class="hljs-attr">"dataSourceClassName"</span>: <span class="hljs-string">"com.mysql.jdbc.jdbc2.optional.MysqlDataSource"</span>,
+                <span class="hljs-attr">"restype"</span>: <span class="hljs-string">"javax.sql.DataSource"</span>,
+                <span class="hljs-attr">"properties"</span>: {
+                    <span class="hljs-attr">"user"</span>: <span class="hljs-string">"{database.user}"</span>,
+                    <span class="hljs-attr">"password"</span>: <span class="hljs-string">"{database.password}"</span>,
+                    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"jdbc:mysql://localhost:{database.port}/test"</span>
+                },
+                <span class="hljs-attr">"description"</span>: <span class="hljs-string">"This is the Test Database"</span>
+            }
+        }
+    },
+    <span class="hljs-attr">"command"</span>: {
+        <span class="hljs-attr">"timeout"</span>: <span class="hljs-number">120000</span>,
+        <span class="hljs-attr">"asadmin"</span>: {
+            <span class="hljs-attr">"win32"</span>: <span class="hljs-string">"{server.home}/bin/asadmin.bat"</span>,
+            <span class="hljs-attr">"unix"</span>: <span class="hljs-string">"{server.home}/bin/asadmin"</span>
+        },
+        <span class="hljs-attr">"maven"</span>: {
+            <span class="hljs-attr">"win32"</span>: <span class="hljs-string">"{maven.home}/bin/mvn.cmd"</span>,
+            <span class="hljs-attr">"unix"</span>: <span class="hljs-string">"{maven.home}/bin/mvn"</span>
+        },
+        <span class="hljs-attr">"ant"</span>: {
+            <span class="hljs-attr">"win32"</span>: <span class="hljs-string">"{ant.home}/bin/ant.bat"</span>,
+            <span class="hljs-attr">"unix"</span>: <span class="hljs-string">"{ant.home}/bin/ant"</span>
+        }
+    },
+    <span class="hljs-attr">"settings"</span>: {
+        <span class="hljs-attr">"database"</span>: {
+            <span class="hljs-attr">"user"</span>: <span class="hljs-string">"db user"</span>,
+            <span class="hljs-attr">"password"</span>: <span class="hljs-string">"secret password"</span>,
+            <span class="hljs-attr">"port"</span>: <span class="hljs-number">3306</span>
+        },
+        <span class="hljs-attr">"email-password"</span>: <span class="hljs-string">"email secrets"</span>
+    },
+    <span class="hljs-attr">"env"</span>: {
+        <span class="hljs-attr">"project.home"</span>: <span class="hljs-string">"{project.home}"</span>,
+        <span class="hljs-attr">"user.home"</span>: <span class="hljs-string">"{user.home}"</span>,
+        <span class="hljs-attr">"project.name"</span>: <span class="hljs-string">"{project.name}"</span>,
+        <span class="hljs-attr">"project.version"</span>: <span class="hljs-string">"{project.version}"</span>
+    }
+}</code></pre></div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/application.js"></script>
+</body>
+</html>

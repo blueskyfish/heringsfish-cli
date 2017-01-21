@@ -4,7 +4,7 @@ Display help for "init"
 Description:
   TODO initialize and run the setup.
   create the config settings in the current project folder.
-  The file name of the config settings is ".server-config.json". It is a
+  The file name of the config settings is "server-config.json". It is a
   simple JSON object.
   The file can also be edited directly with a simple text editor.
 

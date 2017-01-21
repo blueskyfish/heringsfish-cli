@@ -33,3 +33,9 @@ table thead tr,
 table tr:nth-child(2n) {
   background-color: #f8f8f8;
 }
+
+@media screen and (max-width: 767px) {
+  img {
+    max-width: 100%;
+  }
+}

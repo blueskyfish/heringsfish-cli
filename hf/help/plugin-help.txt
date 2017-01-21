@@ -1,0 +1,27 @@
+
+General help of "Heringsfish CLI".
+
+Usage:
+  $ hf help action [additional arguments]
+
+
+Common arguments for all actions:
+  -v  --verbose        display more output.
+  -q  --quiet          display no output. expect warn and error message.
+
+List of action:
+  help                 display this help messages.
+  init                 create a common config settings in the project folder.
+  create               created the application domain that is used for deployment.
+  remove               removed the application domain.
+  start                start the application server.
+  stop                 stop the application server.
+  list                 display either the domains of the application server or
+                       the list of deployed application on the server.
+  deploy               deployed the maven artifacts to the application domain.
+  undeploy             remove the maven artifacts from the application domain.
+  build                start the maven build process
+  clean                clean the maven build process
+  test                 executes the maven test goal
+  restart              stops the application server first and then restarts it.
+  redeploy             removes the deployed maven artifacts and then they deployed again.

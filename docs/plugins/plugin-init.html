@@ -4,7 +4,7 @@
   <base href="/heringsfish-cli/">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{title}}</title>
+  <title>Plugin Init</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -46,8 +46,30 @@
   </div>
 </nav>
 
-<div class="container">
-  {{~> content}}
+<div class="container"><h1 id="plugin-init"><a class="header-link" href="#plugin-init"></a>Plugin Init</h1>
+<blockquote>
+<p>Initial the <code>Heringsfish</code> server config in the current project.</p>
+</blockquote>
+<h2 id="description"><a class="header-link" href="#description"></a>Description</h2>
+<p>Initial the <code>Heringsfish</code> server config in the current project. </p>
+<p>The file name of the server configuration is &quot;server-config.json&quot;. It is a
+simple JSON object.</p>
+<p>The file can also be edited directly with a simple text editor.</p>
+<h2 id="usage:"><a class="header-link" href="#usage:"></a>Usage:</h2>
+<pre class="hljs"><code>$ hf init [<span class="hljs-_">-f</span> | --force]</code></pre><h2 id="additional-arguments:"><a class="header-link" href="#additional-arguments:"></a>Additional Arguments:</h2>
+<ul class="list">
+<li><code>-f | --force</code> (optional) overrides the existing config setting file.</li>
+</ul>
+<h2 id="example:"><a class="header-link" href="#example:"></a>Example:</h2>
+<pre class="hljs"><code>$ hf init
+$ hf init <span class="hljs-_">-f</span>
+$ hf init -vf</code></pre><h2 id="note:"><a class="header-link" href="#note:"></a>Note:</h2>
+<ul class="list">
+<li><code>-v | --verbose</code><br>
+display more information.</li>
+<li><code>-q | --quiet</code><br>
+display only errors or warnings</li>
+</ul>
 </div>
 
 

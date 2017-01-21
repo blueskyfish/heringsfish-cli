@@ -1,0 +1,14 @@
+{
+  "help": {
+    "name": "help",
+    "description": "Shows the help to the sub action / plugin",
+    "path": "hf/plugins/plugin-help.js",
+    "help": "hf/help/plugin-help.txt"
+  },
+  "init": {
+    "name": "init",
+    "description": "Initial the 'Heringsfish' server config in the current project.",
+    "path": "hf/plugins/plugin-init.js",
+    "help": "hf/help/plugin-init.txt"
+  }
+}
