@@ -16,12 +16,14 @@
  * @requires lodash
  */
 
-const path   = require('path');
+const path    = require('path');
+const util    = require('util');
 
-const _      = require('lodash');
+const _       = require('lodash');
 
-const utils  = require('hf/core/utils');
-const runner = require('hf/core/runner');
+const io      = require('hf/core/io');
+const os      = require('hf/core/os');
+const utils   = require('hf/core/utils');
 
 /**
  * @name AsAdminSetting
@@ -49,7 +51,7 @@ const runner = require('hf/core/runner');
  * @return {Promise<AsAdminSetting>}
  */
 module.exports.getAsAdminSetting = function (options, includeAdminPort) {
-  return new Promise(function _getAsAdminSetting<AsAdminSetting> (resolve, reject) {
+  return new Promise((resolve, reject) => {
     const messages   = [];
 
     const asadmin    = _getAsAdminCommand(options);
@@ -112,17 +114,47 @@ module.exports.getAsAdminSetting = function (options, includeAdminPort) {
 module.exports.startServer = function (options) {
   const that = this;
   return that.getAsAdminSetting(options)
-    .then(function (asAdminSetting) {
+    .then((asAdminSetting) => {
       options.logInfo('Starts domain "%s" ...', asAdminSetting.domainName);
       // build parameters
       const params = [
         'start-domain',
         '--domaindir', asAdminSetting.domainHome,
+        // TODO add a config setting (server.debug = true / false)
         '--debug=true',
         asAdminSetting.domainName
       ];
       const env = options.getEnvironment();
-      return runner(options, asAdminSetting.asadmin, params, env);
+      return os.exec(options, asAdminSetting.asadmin, params, env);
+    });
+};
+
+/**
+ * Creates the domain for the Payara / Glassfish application server.
+ *
+ * If the domain is already exist then it cancels of creation of the domain.
+ *
+ * @param {Options} options
+ * @return {Promise<RunResult>}
+ */
+module.exports.createDomain = function (options) {
+  const that = this;
+  return that.getAsAdminSetting(options, true)
+    .then((asAdminSetting) => {
+      return _chooseCreateDomain(options, asAdminSetting);
+    })
+    .then((asAdminSetting) => {
+      // build parameters
+      const params = [
+        'create-domain',
+        '--portbase', asAdminSetting.portBase,
+        '--domaindir', asAdminSetting.domainHome,
+        // TODO add the admin console password ?? (server.admin.password + server.admin.username)
+        '--nopassword',
+        asAdminSetting.domainName
+      ];
+
+      return os.exec(asAdminSetting.asadmin, params);
     });
 };
 
@@ -138,10 +170,39 @@ module.exports.startServer = function (options) {
  * @private
  */
 function _getAsAdminCommand(options) {
-  const serverHome = options.getConfig('server.home', null);
+  const serverHome = options.getConfig('server.home', options.getConfig('settings.server.home', null));
   const command = options.getConfig('command.asadmin', null, true);
   if (!utils.hasStringValue(serverHome) || !command) {
     return null;
   }
   return options.parseValue(command);
+}
+
+/**
+ * Check whether the domain directory is exist and if the argument `-f` or `--force` is present.
+ *
+ * @param {Options} options
+ * @param {AsAdminSetting} asAdminSetting
+ * @return {Promise<AsAdminSetting>}
+ * @private
+ */
+function _chooseCreateDomain(options, asAdminSetting) {
+
+  const domainDir = path.join(asAdminSetting.domainHome, asAdminSetting.domainName);
+
+  options.logInfo('Check the domain "%s"', asAdminSetting.domainName);
+
+  return io.hasFile(domainDir)
+    .then((fileExist) => {
+
+      if (fileExist) {
+        return Promise.reject({
+          code: 0xfff201,
+          message: util.format('Cancel to create domain "%s"', asAdminSetting.domainName)
+        });
+      }
+
+      options.logInfo('Create domain "%s" ...', asAdminSetting.domainName);
+      return asAdminSetting;
+    });
 }

@@ -84,4 +84,28 @@ Object.defineProperty(DEFINES, 'SERVER_CONFIG_FILENAME', {
   }
 });
 
+/**
+ * Do it and override the existing thing
+ */
+Object.defineProperty(DEFINES, 'DO_OVERRIDE', {
+  configurable: true,
+  enumerable: true,
+  value: 1
+});
+
+/**
+ * Do it and create the thing
+ */
+Object.defineProperty(DEFINES, 'DO_CREATION', {
+  configurable: true,
+  enumerable: true,
+  value: 2
+});
+
+Object.defineProperty(DEFINES, 'DO_CANCEL', {
+  configurable: true,
+  enumerable: true,
+  value: 0
+});
+
 module.exports = DEFINES;

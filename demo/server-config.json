@@ -24,8 +24,8 @@
     }
   },
   "domain": {
-    "name": "-",
-    "home": "{project.home}/domains",
+    "name": "demo",
+    "home": "{server.domain.home}/domains",
     "deploy": {},
     "jdbc": {
       "JDBC-Name": {
@@ -33,7 +33,7 @@
         "restype": "javax.sql.DataSource",
         "properties": {
           "user": "{database.user}",
-          "password": "{database:password}",
+          "password": "{database.password}",
           "url": "jdbc:mysql://localhost:{database.port}/test"
         },
         "description": "This is a Test Connection"

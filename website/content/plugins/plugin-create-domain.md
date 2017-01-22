@@ -1,9 +1,9 @@
-title: Heringsfish - Plugin "Create"
+title: Heringsfish - Plugin "Create Domain"
 ---
 
 <span class="fa fa-plug fa-4x"></span>
 
-# Plugin "Create"
+# Plugin "Create Domain"
 
 > This section describes to create the domain on the application server.
 

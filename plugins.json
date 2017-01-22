@@ -11,7 +11,7 @@
     "path": "hf/plugins/plugin-init.js",
     "help": "hf/help/plugin-init.txt"
   },
-  "create": {
+  "create-domain": {
     "name": "create-domain",
     "description": "",
     "path": "hf/plugins/plugin-create-domain.js",

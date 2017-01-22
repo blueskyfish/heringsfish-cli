@@ -10,19 +10,20 @@
 /**
  * @module hf/plugin/create
  * @description
+ * Creates the domain for the Payara / Glassfish application server.
+ * If the domain is already exist then it cancels of creation of the domain.
+ *
+ * @requires module:hf/core/asadmin
  */
+
+const asadmin = require('hf/core/asadmin');
 
 /**
  * Create the domain for the server.
  *
  * @param {Options} options
- * @return {Promise.<Object>}
+ * @return {Promise<RunResult>}
  */
 module.exports = function (options) {
-
-  return Promise.reject({
-    message: 'Create: not implemented yet!'
-  })
+  return asadmin.createDomain(options);
 };
-
-

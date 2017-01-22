@@ -15,7 +15,6 @@
  * @requires path
  * @requires util
  * @requires lodash
- * @requires q
  * @requires module:hf/defines
  * @requires module:hf/core/io
  */
@@ -24,7 +23,6 @@ const path    = require('path');
 const util    = require('util');
 
 const _       = require('lodash');
-const Q       = require('q');
 
 const DEFINES = require('hf/defines');
 const io      = require('hf/core/io');

@@ -8,22 +8,26 @@
 'use strict';
 
 /**
- * @module hf/plugin/help
+ * @module hf/plugin/init
  * @description
+ * Initialize the heringsfish server configuration in the current project home directory
+ *
+ * @requires path
+ * @requires lodash
+ * @requires module:hf/defines
+ * @requires module:hf/core/io
+ * @requires module:hf/core/utils
+ * @requires module:hf/core/os
  */
 
 const path     = require('path');
-const util     = require('util');
 
 const _        = require('lodash');
 
 const DEFINES  = require('hf/defines');
 const io       = require('hf/core/io');
-const helper   = require('hf/core/helper');
+const utils    = require('hf/core/utils');
 const os       = require('hf/core/os');
-
-const OVERRIDE = 1;
-const CREATE   = 2;
 
 /**
  * Try to initial the heringsfish server configuration.
@@ -45,13 +49,13 @@ module.exports = function (options) {
     })
     .then((result) => {
       // write information
-      options.logInfo('Initialize the server configuration for "%s"', helper.getDefaultProjectName());
+      options.logInfo('Initialize the server configuration for "%s"', utils.getDefaultProjectName());
 
       switch (result) {
-        case OVERRIDE:
+        case DEFINES.DO_OVERRIDE:
           options.logInfo('Override the existed server-config.json file');
           return true;
-        case CREATE:
+        case DEFINES.DO_CREATION:
           options.logInfo('Create the server-config.json file');
           return true;
         default:
@@ -109,7 +113,7 @@ module.exports = function (options) {
 function _chooseOverride(options, fileExist) {
   if (fileExist) {
     if (options.isParam('f', 'force')) {
-      return Promise.resolve(OVERRIDE);
+      return Promise.resolve(DEFINES.DO_OVERRIDE);
     }
     return Promise.reject({
       exitCode: 0,
@@ -119,7 +123,7 @@ function _chooseOverride(options, fileExist) {
       ]
     });
   }
-  return Promise.resolve(CREATE);
+  return Promise.resolve(DEFINES.DO_CREATION);
 }
 
 /**
@@ -135,7 +139,7 @@ function _enrichServerConfiguration(options, configs) {
   options.logDebug('Lookup for "asadmin", "mvn" and "ant"');
 
   // set the project name
-  _.set(configs, 'name', helper.getDefaultProjectName());
+  _.set(configs, 'name', utils.getDefaultProjectName());
 
   // lookup for the commands
   const asAdminPromise = os.findCommand(options, 'asadmin');
@@ -147,15 +151,15 @@ function _enrichServerConfiguration(options, configs) {
       _.forEach(list, (result) => {
         if (result.asadmin) {
           options.logInfo('Found "asAdmin": %s', result.asadmin);
-          return _.set(configs, 'settings.server.home', helper.adjustCommandHomePath(result.asadmin));
+          return _.set(configs, 'settings.server.home', utils.adjustCommandHomePath(result.asadmin));
         }
         if (result.mvn) {
           options.logInfo('Found "mvn": %s', result.mvn);
-          return _.set(configs, 'settings.maven.home', helper.adjustCommandHomePath(result.mvn));
+          return _.set(configs, 'settings.maven.home', utils.adjustCommandHomePath(result.mvn));
         }
         if (result.ant) {
           options.logInfo('Found "ant": %s', result.ant);
-          return _.set(configs, 'settings.ant.home', helper.adjustCommandHomePath(result.ant));
+          return _.set(configs, 'settings.ant.home', utils.adjustCommandHomePath(result.ant));
         }
       });
       return configs;

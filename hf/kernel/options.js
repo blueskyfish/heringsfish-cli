@@ -124,6 +124,22 @@ class Options {
   }
 
   /**
+   * Returns the value of the configuration property. If the given property name has no value, then it lookup into
+   * the settings object.
+   *
+   * @param {String} name
+   * @param {*} defValue
+   * @return {*|null|String}
+   */
+  getConfigOrSetting(name, defValue) {
+    if (_.has(this.configs, name)) {
+      return _.get(this.configs, name, defValue);
+    }
+    name = 'settings.' + name;
+    return _.get(this.configs, name, defValue);
+  }
+
+  /**
    * Adjust and expand the value.
    *
    * @param {string} value the value for adjust
@@ -132,7 +148,7 @@ class Options {
   parseValue(value) {
     const that = this;
     if (_.isString(value)) {
-      return value.replace(/\{(.+)}/g, function (text, key) {
+      return value.replace(/\{([a-zA-Z.]+)\}/g, function (text, key) {
         key = key || '';
         switch (key.toLowerCase()) {
           case 'user.home':
@@ -140,9 +156,9 @@ class Options {
           case 'project.home':
             return DEFINES.PROJECT_PATH;
           case 'server.home':
-            return that.parseValue(that.getConfig('server.home', that.getConfig('settings.server.home', '')));
+            return that.parseValue(that.getConfigOrSetting('server.home', ''));
           case 'domain.name':
-            return get_('domain.name', 'domain1');
+            return that.getConfigOrSetting('domain.name', 'domain1');
           case 'domain.home':
             return that.parseValue(that.getConfig('domain.home', DEFINES.PROJECT_PATH));
           case 'project.version':
@@ -151,6 +167,9 @@ class Options {
           case 'project.name':
           case 'name':
             return that.getConfig('name', text);
+          case 'maven.home':
+          case 'ant.home':
+            return that.getConfigOrSetting(key, '-');
           default:
             // lookup in the settings
             const settingKey = 'settings.' + key;

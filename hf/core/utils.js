@@ -8,14 +8,30 @@
 'use strict';
 
 /**
- * @module hf/core/helper
+ * @module hf/core/utils
  * @description
- * Helper methods for the plugin
+ * Small util library
+ *
+ * @requires path
+ * @requires lodash
+ * @requires module:hf/defines
  */
 
 const path    = require('path');
 
+const _ = require('lodash');
+
 const DEFINES = require('hf/defines');
+
+/**
+ * Returns true if the value is a string and doesn't contain '' or '-'.
+ *
+ * @param {*} s
+ * @return {boolean}
+ */
+module.exports.hasStringValue = function (s) {
+  return (_.isString(s) && s !== '' && s !== '-')
+};
 
 /**
  * Returns the default project name. It calculate from the parent directory.

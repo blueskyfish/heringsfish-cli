@@ -126,7 +126,7 @@ module.exports.readConfiguration = function (appHomePath, projectHomePath, userH
     .then((configs) => {
       // try to load the user configuration
       const projectName = _.get(configs, 'name', null);
-      if (!projectName) {
+      if (projectName) {
         // build the user config filename
         const userFilename = path.join(userHomePath, _prepareProjectName(projectName, projectHomePath));
         // read the user configuration
