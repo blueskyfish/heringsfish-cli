@@ -140,7 +140,7 @@ class Options {
           case 'project.home':
             return DEFINES.PROJECT_PATH;
           case 'server.home':
-            return that.parseValue(that.getConfig('server.home', ''));
+            return that.parseValue(that.getConfig('server.home', that.getConfig('settings.server.home', '')));
           case 'domain.name':
             return get_('domain.name', 'domain1');
           case 'domain.home':
@@ -152,7 +152,9 @@ class Options {
           case 'name':
             return that.getConfig('name', text);
           default:
-            return text;
+            // lookup in the settings
+            const settingKey = 'settings.' + key;
+            return that.parseValue(that.getConfig(settingKey, key));
         }
       });
     }

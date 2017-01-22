@@ -4,7 +4,7 @@
   <base href="/heringsfish-cli/">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Plugin Init</title>
+  <title>Heringsfish - Plugin &quot;Init&quot;</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -33,8 +33,8 @@
           <ul class="dropdown-menu">
             <li class="menu-item" data-link="plugins/plugins.html"><a href="plugins/plugins.html"><span class="fa fa-table" aria-hidden="true"></span> Plugin Overview</a></li>
             <li class="divider" role="separator"></li>
-            <li class="menu-item" data-link="plugins/plugin-help.html"><a href="plugins/plugin-help.html"><span class="fa fa-leaf" aria-hidden="true"></span> Plugin Help</a></li>
-            <li class="menu-item" data-link="plugins/plugin-init.html"><a href="plugins/plugin-init.html"><span class="fa fa-leaf" aria-hidden="true"></span> Plugin Init</a></li>
+            <li class="menu-item" data-link="plugins/plugin-help.html"><a href="plugins/plugin-help.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Help</a></li>
+            <li class="menu-item" data-link="plugins/plugin-init.html"><a href="plugins/plugin-init.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Init</a></li>
           </ul>
         </li>
         <li class="menu-item" data-link="about.html"><a href="about.html">About</a></li>
@@ -46,15 +46,31 @@
   </div>
 </nav>
 
-<div class="container"><h1 id="plugin-init"><a class="header-link" href="#plugin-init"></a>Plugin Init</h1>
+<div class="container"><p><span class="fa fa-plug fa-4x"></span></p>
+<h1 id="plugin-init"><a class="header-link" href="#plugin-init"></a>Plugin Init</h1>
 <blockquote>
-<p>Initial the <code>Heringsfish</code> server config in the current project.</p>
+<p>This section describes the plugin <strong>init</strong>.</p>
 </blockquote>
 <h2 id="description"><a class="header-link" href="#description"></a>Description</h2>
 <p>Initial the <code>Heringsfish</code> server config in the current project. </p>
 <p>The file name of the server configuration is &quot;server-config.json&quot;. It is a
-simple JSON object.</p>
-<p>The file can also be edited directly with a simple text editor.</p>
+simple JSON object. The file can be edited directly with a simple text editor.</p>
+<p>If the environment <strong>PATH</strong> contains the applications <em>AsAdmin</em>, <em>Maven</em>
+and <em>Ant</em>, then they are integrated.</p>
+<p>If a command in the platforms is different, then the property command can
+record this for the respective platform.</p>
+<p><strong>Example</strong></p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">"command"</span>: {
+    <span class="hljs-attr">"asadmin"</span>: {
+      <span class="hljs-attr">"win32"</span>: <span class="hljs-string">"{server.home}/bin/asadmin.bat"</span>,
+      <span class="hljs-attr">"unix"</span>: <span class="hljs-string">"{server.home}/bin/asadmin"</span>
+    }
+  }
+}</code></pre><ul class="list">
+<li>The command extension <strong>win32</strong> is for the platform Windows</li>
+<li>The command extension <strong>unix</strong> is for macOS / Linux.</li>
+</ul>
 <h2 id="usage:"><a class="header-link" href="#usage:"></a>Usage:</h2>
 <pre class="hljs"><code>$ hf init [<span class="hljs-_">-f</span> | --force]</code></pre><h2 id="additional-arguments:"><a class="header-link" href="#additional-arguments:"></a>Additional Arguments:</h2>
 <ul class="list">

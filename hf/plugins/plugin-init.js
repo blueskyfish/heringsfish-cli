@@ -15,8 +15,12 @@
 const path     = require('path');
 const util     = require('util');
 
+const _        = require('lodash');
+
 const DEFINES  = require('hf/defines');
 const io       = require('hf/core/io');
+const helper   = require('hf/core/helper');
+const os       = require('hf/core/os');
 
 const OVERRIDE = 1;
 const CREATE   = 2;
@@ -36,33 +40,36 @@ const CREATE   = 2;
 module.exports = function (options) {
   const serverConfigFilename = path.join(DEFINES.PROJECT_PATH, DEFINES.SERVER_CONFIG_FILENAME);
   return io.hasFile(serverConfigFilename)
-    .then(function (fileExist) {
+    .then((fileExist) => {
       return _chooseOverride(options, fileExist);
     })
-    .then(function (result) {
-      if (options.isVerbose()) {
-        switch (result) {
-          case OVERRIDE:
-            options.logDebug('Override the existed server-config.json file');
-            return true;
-          case CREATE:
-            options.logDebug('Create the server-config.json file');
-            return true;
-          default:
-            return Promise.reject({
-              code: 0xff0101,
-              message: 'Unclear instructions! Should never happens'
-            });
-        }
+    .then((result) => {
+      // write information
+      options.logInfo('Initialize the server configuration for "%s"', helper.getDefaultProjectName());
+
+      switch (result) {
+        case OVERRIDE:
+          options.logInfo('Override the existed server-config.json file');
+          return true;
+        case CREATE:
+          options.logInfo('Create the server-config.json file');
+          return true;
+        default:
+          return Promise.reject({
+            code: 0xff0101,
+            message: 'Unclear instructions! Should never happens'
+          });
       }
-      return true;
     })
-    .then(function () {
+    .then(() => {
       const templateFilename = path.join(DEFINES.APPLICATION_PATH, 'hf', 'templates', 'server-config.json');
-      return io.readFile(templateFilename, true);
+      return io.readJson(templateFilename, true);
     })
-    .then(function (content) {
-      return io.writeFile(serverConfigFilename, content);
+    .then((configs) => {
+      return _enrichServerConfiguration(options, configs);
+    })
+    .then(function (configs) {
+      return io.writeFile(serverConfigFilename, configs);
     })
     .then(function (result) {
       options.logInfo('');
@@ -78,10 +85,11 @@ module.exports = function (options) {
       options.logInfo('- set the timeout for the external commands (0 is infinity)');
       options.logInfo('- config the jdbc');
       options.logInfo('- config the project settings object');
-      options.logInfo('- config the user settings object');
+      options.logInfo('- config the user settings file');
       options.logInfo('');
       options.logInfo('More information at');
       options.logInfo('  "https://blueskyfish.github.io/heringsfish-cli/configuration.html"');
+
       return result;
     })
 };
@@ -105,9 +113,51 @@ function _chooseOverride(options, fileExist) {
     }
     return Promise.reject({
       exitCode: 0,
-      message: 'Existed server config file. Use parameter "-f" for override it'
+      message: [
+        'There is already a configuration available.',
+        'If you want to overwrite this, use the -f or --force parameter'
+      ]
     });
   }
   return Promise.resolve(CREATE);
 }
 
+/**
+ * Enrich the configuration with the commands and the project information
+ *
+ * @param {Options} options
+ * @param {Object} configs the template configuration
+ * @return {Promise.<Object>} the configuration
+ * @private
+ */
+function _enrichServerConfiguration(options, configs) {
+
+  options.logDebug('Lookup for "asadmin", "mvn" and "ant"');
+
+  // set the project name
+  _.set(configs, 'name', helper.getDefaultProjectName());
+
+  // lookup for the commands
+  const asAdminPromise = os.findCommand(options, 'asadmin');
+  const mavenPromise   = os.findCommand(options, 'mvn');
+  const antPromise     = os.findCommand(options, 'ant');
+
+  return Promise.all([asAdminPromise, mavenPromise, antPromise])
+    .then((list) => {
+      _.forEach(list, (result) => {
+        if (result.asadmin) {
+          options.logInfo('Found "asAdmin": %s', result.asadmin);
+          return _.set(configs, 'settings.server.home', helper.adjustCommandHomePath(result.asadmin));
+        }
+        if (result.mvn) {
+          options.logInfo('Found "mvn": %s', result.mvn);
+          return _.set(configs, 'settings.maven.home', helper.adjustCommandHomePath(result.mvn));
+        }
+        if (result.ant) {
+          options.logInfo('Found "ant": %s', result.ant);
+          return _.set(configs, 'settings.ant.home', helper.adjustCommandHomePath(result.ant));
+        }
+      });
+      return configs;
+    });
+}

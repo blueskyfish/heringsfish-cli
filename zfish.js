@@ -14,6 +14,7 @@
  */
 (function (appHomePath, projectHomePath, args) {
 
+  const _ = require('lodash');
   const appModulePath = require('app-module-path');
 
   appModulePath.addPath(appHomePath);
@@ -29,7 +30,13 @@
     .then(function (result) {
 
       if (result && result.message) {
-        app.options.logInfo(result.message);
+        if (_.isArray(result.message)) {
+          _.forEach(result.message, (line) => {
+            app.options.logInfo(line);
+          })
+        } else {
+          app.options.logInfo(result.message);
+        }
       }
       if (result && result.duration) {
         app.options.logInfo('Duration: %s ms', result.duration);
@@ -42,7 +49,13 @@
     .catch(function (reason) {
       // show the error message
       if (reason && reason.message) {
-        app.options.logError(reason.message);
+        if (_.isArray(reason.message)) {
+          _.forEach(reason.message, (line) => {
+            app.options.logError(line);
+          })
+        } else {
+          app.options.logError(reason.message);
+        }
       }
       if (reason && reason.code) {
         app.options.logError('Code: 0x%s', reason.code.toString(16));

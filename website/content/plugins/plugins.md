@@ -1,16 +1,18 @@
 title: Heringsfish - Plugin Overview
 ---
 
+<span class="fa fa-plug fa-4x"></span>
+
 # Plugin Overview
 
 A plugin is a javascript module and executes an action. The name of the plugin is the name of the action too.
 
 ## Builtin Plugins
 
-| Action        | Plugin       | Description
-|---------------|:------------:|------------------------------------
-| `help`        | **help**     | Shows the help to the action / plugin
-| `init`        | **init**     | Initial the `Heringsfish` server config in the current project.
+| Plugin                                                               | Action    | Description
+|----------------------------------------------------------------------|-----------|------------------------------------
+| [<span class="fa fa-plug"></span> Help](plugins/plugin-help.html)    | `help`    | Shows the help to the action / plugin
+| [<span class="fa fa-plug"></span> Init](plugins/plugin-init.html)    | `init`    | Initial the `Heringsfish` server config in the current project.
 
 
 

@@ -40,6 +40,7 @@ gulp.task('build', function (done) {
     }
     done(err);
   });
+  connect.reload();
 });
 
 gulp.task('default', ['build', 'serve', 'watch']);

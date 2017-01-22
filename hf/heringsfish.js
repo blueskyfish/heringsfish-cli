@@ -42,6 +42,7 @@ module.exports.init = function (appHomePath, projectHomePath, args) {
 
   const startup  = require('hf/kernel/startup');
   const Options  = require('hf/kernel/options');
+  const helper   = require('hf/core/helper');
 
   // parse the parameters and reads the server configuration
   const params   = startup.parseArguments(args);
@@ -63,7 +64,7 @@ module.exports.init = function (appHomePath, projectHomePath, args) {
         .log('')
         .log('%s (%s)', pkg.title, pkg.version)
         .log('')
-        .log('Project: %s', options.getConfig('name', '?'))
+        .log('Project: %s', options.getConfig('name', helper.getDefaultProjectName()))
         .log('Version: %s', options.getConfig('version', '0.0.0'))
         .log('Home:    %s', projectHomePath)
         .log('')

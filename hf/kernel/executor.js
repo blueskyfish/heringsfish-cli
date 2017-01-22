@@ -88,5 +88,13 @@ module.exports = function (options) {
   }
 
   // executes the plugin
-  return pluginExecutor(options);
+  const startTime = Date.now();
+  return pluginExecutor(options)
+    .then((result) => {
+      result.duration = Date.now() - startTime;
+      return result;
+    }, (reason) => {
+      reason.duration = Date.now() - startTime;
+      return Promise.reject(reason);
+    });
 };

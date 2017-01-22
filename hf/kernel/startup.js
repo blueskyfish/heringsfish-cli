@@ -120,17 +120,18 @@ module.exports.readConfiguration = function (appHomePath, projectHomePath, userH
   const filename = path.join(projectHomePath, DEFINES.SERVER_CONFIG_FILENAME);
 
   return io.readJson(filename)
-    .then(function (configs) {
-
-      configs = configs || {};
-
-      const projectName = _.get(configs, 'project.name', null);
+    .then((configs) => {
+      return configs || {};
+    })
+    .then((configs) => {
+      // try to load the user configuration
+      const projectName = _.get(configs, 'name', null);
       if (!projectName) {
-
+        // build the user config filename
         const userFilename = path.join(userHomePath, _prepareProjectName(projectName, projectHomePath));
-
+        // read the user configuration
         return io.readJson(userFilename)
-          .then(function (userConfigs) {
+          .then((userConfigs) => {
 
             // merge environments
             _.set(configs, 'env',
@@ -138,6 +139,15 @@ module.exports.readConfiguration = function (appHomePath, projectHomePath, userH
                 {},
                 _.get(configs, 'env', {}),
                 _.get(userConfigs, 'env', {})
+              )
+            );
+
+            // merge "settings"...
+            _.set(configs, 'settings',
+              _.merge(
+                {},
+                _.get(configs, 'settings', {}),
+                _.get(userConfigs, 'settings', {})
               )
             );
 
@@ -157,8 +167,14 @@ module.exports.readConfiguration = function (appHomePath, projectHomePath, userH
           // get the user plugins
           const userPlugins = _.get(configs, 'plugins', {});
 
-          const pluginRegistry = _.merge({}, mainPlugins, userPlugins);
-          _.set(configs, 'plugins', pluginRegistry);
+          _.set(configs, 'plugins',
+            _.merge(
+              {},           // new object
+              mainPlugins,  // main or builtin plugins
+              userPlugins   // user plugin
+            )
+          );
+
           return configs;
         });
     })
@@ -171,6 +187,12 @@ module.exports.readConfiguration = function (appHomePath, projectHomePath, userH
     });
 };
 
+/**
+ * read the heringsfish package information.
+ *
+ * @param appHomePath
+ * @return {Object} the package
+ */
 module.exports.readAppPackage = function (appHomePath) {
   const filename = path.join(appHomePath, 'package.json');
   return require(filename);
@@ -181,6 +203,14 @@ module.exports.readAppPackage = function (appHomePath) {
 // Internal Functions
 //
 
+/**
+ * Prepares the user config filename with the project name.
+ *
+ * @param projectName the project name
+ * @param projectHomePath when the project name is not a string, then it use the base name of the project home directory
+ * @return {string}
+ * @private
+ */
 function _prepareProjectName(projectName, projectHomePath) {
   if (!_.isString(projectName)) {
     projectName = path.basename(projectHomePath);

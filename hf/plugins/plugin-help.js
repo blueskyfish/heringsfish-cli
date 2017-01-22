@@ -36,7 +36,7 @@ const io      = require('hf/core/io');
  * @return {Promise<RunResult>}
  */
 module.exports = function (options) {
-  return new Promise(function _executeHelp (resolve, reject) {
+  return new Promise((resolve, reject) => {
     const startTime  = Date.now();
 
     // get the second action
@@ -64,14 +64,14 @@ module.exports = function (options) {
 
     // first: try read the help text from the application plugin
     return io.readContent(path.join(DEFINES.APPLICATION_PATH, pluginHelpPath))
-      .then(function (content) {
+      .then((content) => {
         if (!content) {
           // second: try to read the help text from the project path
           return io.readContent(path.join(DEFINES.PROJECT_PATH, pluginHelpPath));
         }
         return content;
       })
-      .then(function (content) {
+      .then((content) => {
 
         const lines = _.isString(content) ? content.split('\n') : [];
         if (_.size(lines) > 0) {
@@ -91,7 +91,7 @@ module.exports = function (options) {
           duration: Date.now() - startTime
         });
 
-      }, function (reason) {
+      }, (reason) => {
         reject({
           code: 0xff0013,
           message: util.format('Plugin "%s" helping has occurred an error (%s)', helpAction, reason.message || '??'),

@@ -158,7 +158,7 @@ module.exports.readJson = function (filename, strictReading) {
 module.exports.writeFile = function (filename, data) {
   return new Promise(function _writeFile(resolve, reject) {
     if (!_.isString(data)) {
-      data = JSON.stringify(data);
+      data = JSON.stringify(data, null, 2);
     }
     fs.writeFile(filename, data, DEFINES.FILE_ENCODING, (err) => {
       if (err) {

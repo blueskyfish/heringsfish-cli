@@ -1,16 +1,12 @@
 {
   "name": "demo-service",
   "version": "0.1.0",
-  "server": {
-    "home": "-"
-  },
   "maven": {
-    "home": "-",
     "project": "-",
     "setting": "-"
   },
   "ant": {
-    "home": "-"
+    "task": "default"
   },
   "command": {
     "timeout": 0,
@@ -28,10 +24,9 @@
     }
   },
   "domain": {
-    "name": "demo",
+    "name": "-",
     "home": "{project.home}/domains",
-    "deploy": {
-    },
+    "deploy": {},
     "jdbc": {
       "JDBC-Name": {
         "dataSourceClassName": "com.mysql.jdbc.Driver",
@@ -49,6 +44,15 @@
     }
   },
   "settings": {
+    "server": {
+      "home": "-"
+    },
+    "maven": {
+      "home": "-"
+    },
+    "ant": {
+      "home": "-"
+    },
     "database": {
       "user": "myuser",
       "password": "mypassword",
