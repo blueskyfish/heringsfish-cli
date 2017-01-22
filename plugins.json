@@ -16,5 +16,11 @@
     "description": "",
     "path": "hf/plugins/plugin-create-domain.js",
     "help": "hf/help/plugin-create-domain.txt"
+  },
+  "remove-domain": {
+    "name": "remove-domain",
+    "description": "",
+    "path": "hf/plugins/plugin-remove-domain.js",
+    "help": "hf/help/plugin-remove-domain.txt"
   }
 }

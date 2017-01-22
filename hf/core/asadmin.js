@@ -154,7 +154,30 @@ module.exports.createDomain = function (options) {
         asAdminSetting.domainName
       ];
 
-      return os.exec(asAdminSetting.asadmin, params);
+      return os.exec(options, asAdminSetting.asadmin, params);
+    });
+};
+
+/**
+ * Remove and delete the domain from the Payara / Glassfish application server.
+ *
+ * @param {Options} options
+ * @return {Promise<RunResult>}
+ */
+module.exports.removeDomain = function (options) {
+  const that = this;
+  return that.getAsAdminSetting(options)
+    .then((asAdminSetting) => {
+      return _chooseRemoveDomain(options, asAdminSetting);
+    })
+    .then((asAdminSetting) => {
+      const params = [
+        'delete-domain',
+        '--domaindir', asAdminSetting.domainHome,
+        asAdminSetting.domainName
+      ];
+
+      return os.exec(options, asAdminSetting.asadmin, params);
     });
 };
 
@@ -190,7 +213,7 @@ function _chooseCreateDomain(options, asAdminSetting) {
 
   const domainDir = path.join(asAdminSetting.domainHome, asAdminSetting.domainName);
 
-  options.logInfo('Check the domain "%s"', asAdminSetting.domainName);
+  options.logInfo('Check domain "%s"', asAdminSetting.domainName);
 
   return io.hasFile(domainDir)
     .then((fileExist) => {
@@ -198,11 +221,45 @@ function _chooseCreateDomain(options, asAdminSetting) {
       if (fileExist) {
         return Promise.reject({
           code: 0xfff201,
-          message: util.format('Cancel to create domain "%s"', asAdminSetting.domainName)
+          message: [
+            util.format('Cancel to create domain "%s"', asAdminSetting.domainName),
+            'The domain is already existing'
+          ]
         });
       }
 
       options.logInfo('Create domain "%s" ...', asAdminSetting.domainName);
       return asAdminSetting;
     });
+}
+
+/**
+ * Check whether the domain directory is existing.
+ *
+ * @param {Options} options
+ * @param {AsAdminSetting} asAdminSetting
+ * @return {Promise<AsAdminSetting>}
+ * @private
+ */
+function _chooseRemoveDomain(options, asAdminSetting) {
+
+  const domainDir = path.join(asAdminSetting.domainHome, asAdminSetting.domainName);
+
+  options.logInfo('Check domain "%s"', asAdminSetting.domainName);
+
+  return io.hasFile(domainDir)
+    .then((fileExist) => {
+      if (fileExist) {
+        options.logInfo('Delete domain "%s" ...', asAdminSetting.domainName);
+        return asAdminSetting;
+      }
+
+      return Promise.reject({
+        code: 0xfff202,
+        message: [
+          util.format('Cancel to remove domain "%s"', asAdminSetting.domainName),
+          'The domain is unknown. Please create domain before!'
+        ]
+      });
+    })
 }

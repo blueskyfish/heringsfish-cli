@@ -1,18 +1,16 @@
-title: Heringsfish - Plugin "Create Domain"
+title: Heringsfish - Plugin "Remove Domain"
 ---
 
 <span class="fa fa-plug fa-4x"></span>
 
-# Plugin "Create Domain"
+# Plugin "Remove Domain"
 
-> This section describes to create the domain on the application server.
+> This section describes the remove and delete of the domain.
+
 
 ## Description
 
-Creates the domain on the application server. This is the step before it can
-be an application on the server deploy.
-
-> <span class="fa fa-info-circle" aria-hidden="true"></span> If the domain already exist, then the execution is canceled.
+Remove and delete the domain on the application server.
 
 
 ## Requirement in the config file
@@ -23,23 +21,26 @@ be an application on the server deploy.
 | `domain.name`             | The name of the domain
 | `domain.home`             | The path to the domain directory.
 
+
 ## Usage
 
 ```bash
-$ hf create-domain
+$ hf remove-domain
 ```
 
 ## Additional Arguments
 
 *No additional arguments*
 
+
 ## Example
 
 ```bash
-$ hf create
-$ hf create -v
-$ hf create -q
+$ hf remove
+$ hf remove -v
+$ hf remove --quiet
 ```
+
 
 ## Note:
 

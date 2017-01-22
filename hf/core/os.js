@@ -55,7 +55,7 @@ const FIND_CMD_WAITING = 30000;  // 30 seconds
  * @return {Promise<RunResult>}
  */
 module.exports.exec = function (options, cmd, params, env) {
-  return new Promise(function _execute (resolve, reject) {
+  return new Promise((resolve, reject) => {
     const startTime = Date.now();
 
     let cmdOptions = {
@@ -70,12 +70,12 @@ module.exports.exec = function (options, cmd, params, env) {
 
     if (DEFINES.IS_WIN) {
       options.logInfo('run on windows');
-      args.unshift('/c', cmd);
+      params.unshift('/c', cmd);
       cmd = 'cmd.exe';
     }
     const waitingTimeout = options.getConfig('command.timeout', DEFAULT_WAITING);
 
-    const command = spawn(cmd, args, cmdOptions);
+    const command = spawn(cmd, params, cmdOptions);
 
     // receive data on standard out ....
     command.stdout.on('data', function (data) {

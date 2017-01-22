@@ -4,7 +4,7 @@
   <base href="/heringsfish-cli/">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Heringsfish - Plugin Overview</title>
+  <title>Heringsfish - Plugin &quot;Remove Domain&quot;</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -50,69 +50,49 @@
 
 <div class="container">
   <p><span class="fa fa-building" aria-hidden="true"></span> <i>under construction yet!</i></p><p><span class="fa fa-plug fa-4x"></span></p>
-<h1 id="plugin-overview"><a class="header-link" href="#plugin-overview"></a>Plugin Overview</h1>
-<p>A plugin is a javascript module and executes an action. The name of the plugin is the name of the action too.</p>
-<h2 id="builtin-plugins"><a class="header-link" href="#builtin-plugins"></a>Builtin Plugins</h2>
+<h1 id="plugin-"remove-domain""><a class="header-link" href="#plugin-"remove-domain""></a>Plugin &quot;Remove Domain&quot;</h1>
+<blockquote>
+<p>This section describes the remove and delete of the domain.</p>
+</blockquote>
+<h2 id="description"><a class="header-link" href="#description"></a>Description</h2>
+<p>Remove and delete the domain on the application server.</p>
+<h2 id="requirement-in-the-config-file"><a class="header-link" href="#requirement-in-the-config-file"></a>Requirement in the config file</h2>
 <table>
 <thead>
 <tr>
-<th>Plugin</th>
-<th style="text-align:center">Action</th>
+<th>Property</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="plugins/plugin-help.html"><span class="fa fa-plug"></span> Help</a></td>
-<td style="text-align:center"><code>help</code></td>
-<td>Shows the help to the action / plugin</td>
+<td><code>server.home</code></td>
+<td>The path to the application server</td>
 </tr>
 <tr>
-<td><a href="plugins/plugin-init.html"><span class="fa fa-plug"></span> Init</a></td>
-<td style="text-align:center"><code>init</code></td>
-<td>Initial the <code>Heringsfish</code> server config in the current project.</td>
+<td><code>domain.name</code></td>
+<td>The name of the domain</td>
 </tr>
 <tr>
-<td><a href="plugins/plugin-create-domain.html"><span class="fa fa-plug"></span> Create Domain</a></td>
-<td style="text-align:center"><code>create-domain</code></td>
-<td>Creates the domain on the application server.</td>
-</tr>
-<tr>
-<td><a href="plugins/plugin-remove-domain.html"><span class="fa fa-plug"></span> Remove Domain</a></td>
-<td style="text-align:center"><code>remove-domain</code></td>
-<td>Remove and delete the domain on the application server.</td>
+<td><code>domain.home</code></td>
+<td>The path to the domain directory.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="create-an-own-plugin"><a class="header-link" href="#create-an-own-plugin"></a>Create an own Plugin</h2>
-<p>This section describes how to build your own plugin for <code>heringsfish</code>.</p>
+<h2 id="usage"><a class="header-link" href="#usage"></a>Usage</h2>
+<pre class="hljs"><code>$ hf remove-domain</code></pre><h2 id="additional-arguments"><a class="header-link" href="#additional-arguments"></a>Additional Arguments</h2>
+<p><em>No additional arguments</em></p>
+<h2 id="example"><a class="header-link" href="#example"></a>Example</h2>
+<pre class="hljs"><code>$ hf remove
+$ hf remove -v
+$ hf remove --quiet</code></pre><h2 id="note:"><a class="header-link" href="#note:"></a>Note:</h2>
 <ul class="list">
-<li>Defines a javascript node module.</li>
-<li>The module exports only one function that receive one parameter from type <code>Options</code>.</li>
+<li><code>-v | --verbose</code><br>
+display more information.</li>
+<li><code>-q | --quiet</code><br>
+display only errors or warnings</li>
 </ul>
-<p><strong>Example</strong></p>
-<pre class="hljs"><code><span class="hljs-comment">/*!
- * Your module
- */</span>
-
-<span class="hljs-comment">/**
- * This is the only function of the module exports
- * 
- * @param {Options} options contains some functionality of the heringsfish
- * @return {Promise&lt;*&gt;}
- */</span>
-<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">options</span>) </span>{
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
-
-    <span class="hljs-comment">// reject({</span>
-    <span class="hljs-comment">//   code: 0xffffff,</span>
-    <span class="hljs-comment">//   message: 'Error',</span>
-    <span class="hljs-comment">// });</span>
-    resolve({
-      <span class="hljs-attr">message</span>: <span class="hljs-string">'Success'</span>
-    });
-  });
-}</code></pre></div>
+</div>
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

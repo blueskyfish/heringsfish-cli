@@ -9,11 +9,12 @@ A plugin is a javascript module and executes an action. The name of the plugin i
 
 ## Builtin Plugins
 
-| Plugin                                                                 | Action    | Description
-|------------------------------------------------------------------------|-----------|------------------------------------
-| [<span class="fa fa-plug"></span> Help](plugins/plugin-help.html)      | `help`    | Shows the help to the action / plugin
-| [<span class="fa fa-plug"></span> Init](plugins/plugin-init.html)      | `init`    | Initial the `Heringsfish` server config in the current project.
-| [<span class="fa fa-plug"></span> Create](plugins/plugin-create.html)  | `create` | Creates the domain on the application server.
+| Plugin                                                                 | Action      | Description
+|------------------------------------------------------------------------|:-----------:|------------------------------------
+| [<span class="fa fa-plug"></span> Help](plugins/plugin-help.html)      | `help`      | Shows the help to the action / plugin
+| [<span class="fa fa-plug"></span> Init](plugins/plugin-init.html)      | `init`      | Initial the `Heringsfish` server config in the current project.
+| [<span class="fa fa-plug"></span> Create Domain](plugins/plugin-create-domain.html) | `create-domain` | Creates the domain on the application server.
+| [<span class="fa fa-plug"></span> Remove Domain](plugins/plugin-remove-domain.html) | `remove-domain` | Remove and delete the domain on the application server.
 
 
 ## Create an own Plugin
