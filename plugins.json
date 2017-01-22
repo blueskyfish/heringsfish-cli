@@ -10,5 +10,11 @@
     "description": "Initial the 'Heringsfish' server config in the current project.",
     "path": "hf/plugins/plugin-init.js",
     "help": "hf/help/plugin-init.txt"
+  },
+  "create": {
+    "name": "create-domain",
+    "description": "",
+    "path": "hf/plugins/plugin-create-domain.js",
+    "help": "hf/help/plugin-create-domain.txt"
   }
 }

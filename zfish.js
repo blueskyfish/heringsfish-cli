@@ -27,7 +27,7 @@
     .then(function (options) {
       return executor(options);
     })
-    .then(function (result) {
+    .then((result) => {
 
       if (result && result.message) {
         if (_.isArray(result.message)) {
@@ -46,7 +46,7 @@
       process.exit(0);
 
     })
-    .catch(function (reason) {
+    .catch((reason) => {
       // show the error message
       if (reason && reason.message) {
         if (_.isArray(reason.message)) {
@@ -62,6 +62,9 @@
       }
       if (reason && reason.stack) {
         app.options.logError('Stack: %s', reason.stack);
+      }
+      if (reason && reason.duration) {
+        app.options.logError('Duration: %s ms', reason.duration);
       }
 
       // exit code -> reason.existCode
