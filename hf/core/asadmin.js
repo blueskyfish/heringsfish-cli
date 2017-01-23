@@ -177,7 +177,7 @@ module.exports.getAsAdminSetting = function (options, includeAdminPort) {
     const domainHome = options.parseValue(options.getConfig('domain.home', null));
     const domainName = options.getConfig('domain.name', null);
 
-    options.logDebug('asadmin: ', asadmin);
+    // options.logDebug('asadmin: ', asadmin);
     if (!asadmin || !utils.hasStringValue(asadmin)) {
       messages.push('The setting "command.asadmin" is required!');
     }

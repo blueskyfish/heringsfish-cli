@@ -11,6 +11,8 @@
  * @module hf/plugin/start-server
  * @description
  * Starts the application server with the domain
+ *
+ * @requires module:hf/core/asadmin
  */
 
 const asadmin = require('hf/core/asadmin');

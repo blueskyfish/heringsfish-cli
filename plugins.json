@@ -34,5 +34,11 @@
     "description": "Stops from the application server with the domain",
     "path": "hf/plugins/plugin-stop-server.js",
     "help": "hf/help/plugin-stop-server.txt"
+  },
+  "restart-server": {
+    "name": "restart-server",
+    "description": "Stops and starts from the application server with the domain",
+    "path": "hf/plugins/plugin-restart-server.js",
+    "help": "hf/help/plugin-restart-server.txt"
   }
 }

@@ -4,7 +4,7 @@
   <base href="/heringsfish-cli/">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Heringsfish - Plugin &quot;Create Domain&quot;</title>
+  <title>Heringsfish - Plugin &quot;Restart Server&quot;</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -55,16 +55,14 @@
 
 <div class="container">
   <p><span class="fa fa-building" aria-hidden="true"></span> <i>under construction yet!</i></p><p><span class="fa fa-plug fa-4x"></span></p>
-<h1 id="plugin-"create-domain""><a class="header-link" href="#plugin-"create-domain""></a>Plugin &quot;Create Domain&quot;</h1>
+<h1 id="plugin-"restart-server""><a class="header-link" href="#plugin-"restart-server""></a>Plugin &quot;Restart Server&quot;</h1>
 <blockquote>
-<p>This section describes to create the domain on the application server.</p>
+<p>This section describes the stopping and starting of the application server
+with the domain.</p>
 </blockquote>
 <h2 id="description"><a class="header-link" href="#description"></a>Description</h2>
-<p>Creates the domain on the application server. This is the step before it can
-be an application on the server deploy.</p>
-<blockquote>
-<p><span class="fa fa-info-circle" aria-hidden="true"></span> If the domain already exist, then the execution is canceled.</p>
-</blockquote>
+<p>Stops and starts the application server with the domain. Stops the server
+directly with the additional parameter <code>-k</code> or <code>--kill</code>.</p>
 <h2 id="requirement-in-the-config-file"><a class="header-link" href="#requirement-in-the-config-file"></a>Requirement in the config file</h2>
 <table>
 <thead>
@@ -89,12 +87,22 @@ be an application on the server deploy.</p>
 </tbody>
 </table>
 <h2 id="usage"><a class="header-link" href="#usage"></a>Usage</h2>
-<pre class="hljs"><code>$ hf create-domain</code></pre><h2 id="additional-arguments"><a class="header-link" href="#additional-arguments"></a>Additional Arguments</h2>
-<p><em>No additional arguments</em></p>
+<pre class="hljs"><code>$ hf restart-server</code></pre><h2 id="additional-arguments"><a class="header-link" href="#additional-arguments"></a>Additional Arguments</h2>
+<ul class="list">
+<li><code>-k | --kill</code><br>
+(<strong>optional</strong>) Specifies whether the domain is killed by using functionality
+ of the operating system to terminate the domain process.</li>
+</ul>
+<h2 id="see-also"><a class="header-link" href="#see-also"></a>See also</h2>
+<ul class="list">
+<li><a href="plugins/plugin-stop-server.html">Stop Server</a></li>
+<li><a href="plugins/plugin-start-server.html">Start Server</a></li>
+</ul>
 <h2 id="example"><a class="header-link" href="#example"></a>Example</h2>
-<pre class="hljs"><code>$ hf create
-$ hf create -v
-$ hf create -q</code></pre><h2 id="note:"><a class="header-link" href="#note:"></a>Note:</h2>
+<pre class="hljs"><code>$ hf restart-server
+$ hf restart-server --kill
+$ hf restart-server -vk
+$ hf restart-server --quiet</code></pre><h2 id="note:"><a class="header-link" href="#note:"></a>Note:</h2>
 <ul class="list">
 <li><code>-v | --verbose</code><br>
 display more information.</li>

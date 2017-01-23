@@ -19,6 +19,7 @@ An overview of the builtin plugins.
 | [<span class="fa fa-plug"></span> Remove Domain](plugins/plugin-remove-domain.html) | `remove-domain` | Remove and delete the domain on the application server.
 | [<span class="fa fa-plug"></span> Start Server](plugins/plugin-start-server.html)   | `start-server`  | Starts the application server with the domain.
 | [<span class="fa fa-plug"></span> Stop Server](plugins/plugin-stop-server.html)     | `stop-server`   | Stops the application server with the domain.
+| [<span class="fa fa-plug"></span> Restart Server](plugins/plugin-restart-server.html) | `restart-server` | Stops and starts the application server with the domain.
 
 
 ## Create an own Plugin

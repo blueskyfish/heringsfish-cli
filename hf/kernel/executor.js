@@ -87,6 +87,13 @@ module.exports = function (options) {
     });
   }
 
+  const pluginName = pluginRegistry[action].name || action;
+  const pluginDescription = pluginRegistry[action].description || action;
+
+  options.logInfo('');
+  options.logInfo('Execute action "%s" @ "%s"', pluginName, pluginDescription);
+  options.logInfo('');
+
   // executes the plugin
   const startTime = Date.now();
   return pluginExecutor(options)

@@ -27,6 +27,12 @@ $ hf start-server
 *No additional arguments*
 
 
+## See also
+
+* [Restart Server](plugins/plugin-restart-server.html)
+* [Stop Server](plugins/plugin-stop-server.html)
+
+
 ## Example
 
 ```bash

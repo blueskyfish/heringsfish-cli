@@ -1,0 +1,28 @@
+
+Display help for "restart-server"
+
+Description:
+  Stops and starts the application server with the domain.
+
+Requirement in the configure file:
+  server.home          The path to the application server
+  domain.name          The name of the domain
+  domain.home          The path to the domain directory.
+
+Usage:
+  $ hf restart-server
+
+Additional Arguments:
+  -k | --kill          (optional) Specifies whether the domain is killed by
+                       using functionality of the operating system to
+                       terminate the domain process.
+
+Example:
+  $ hf restart-server
+  $ hf restart-server --kill
+  $ hf restart-server -v
+  $ hf restart-server -q
+
+Note:
+  -v | --verbose       display more information.
+  -q | --quiet         display only errors or warnings

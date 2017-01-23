@@ -8,9 +8,9 @@
 'use strict';
 
 /**
- * @module hf/plugin/stop-server
+ * @module hf/plugin/restart-server
  * @description
- * Stops the application server with the domain
+ * Stops and restarts the application server with the domain
  *
  * @requires module:hf/core/asadmin
  */
@@ -18,11 +18,14 @@
 const asadmin = require('hf/core/asadmin');
 
 /**
- * Stops the application server with the domain
+ * Stops and restarts the application server with the domain
  *
  * @param {Options} options
  * @return {Promise<RunResult>}
  */
 module.exports = function (options) {
-  return asadmin.stopServer(options);
+  return asadmin.stopServer(options)
+    .then((runResult) => {
+      return asadmin.startServer(options);
+    });
 };

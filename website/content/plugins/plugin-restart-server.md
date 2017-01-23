@@ -1,16 +1,17 @@
-title: Heringsfish - Plugin "Stop Server"
+title: Heringsfish - Plugin "Restart Server"
 ---
 
 <span class="fa fa-plug fa-4x"></span>
 
-# Plugin "Stop Server"
+# Plugin "Restart Server"
 
-> This section describes the stopping of the application server with the domain.
+> This section describes the stopping and starting of the application server
+> with the domain.
 
 ## Description
 
-Stops the application server with the domain. Stops the server directly with
-the additional parameter `-k` or `--kill`.
+Stops and starts the application server with the domain. Stops the server
+directly with the additional parameter `-k` or `--kill`.
 
 ## Requirement in the config file
 
@@ -24,14 +25,8 @@ the additional parameter `-k` or `--kill`.
 ## Usage
 
 ```bash
-$ hf stop-server
+$ hf restart-server
 ```
-
-
-## See also
-
-* [Restart Server](plugins/plugin-restart-server.html)
-* [Start Server](plugins/plugin-start-server.html)
 
 
 ## Additional Arguments
@@ -40,14 +35,18 @@ $ hf stop-server
   (**optional**) Specifies whether the domain is killed by using functionality
    of the operating system to terminate the domain process.
 
+## See also
+
+* [Stop Server](plugins/plugin-stop-server.html)
+* [Start Server](plugins/plugin-start-server.html)
 
 ## Example
 
 ```bash
-$ hf stop-server
-$ hf stop-server --kill
-$ hf stop-server -vk
-$ hf stop-server --quiet
+$ hf restart-server
+$ hf restart-server --kill
+$ hf restart-server -vk
+$ hf restart-server --quiet
 ```
 
 
