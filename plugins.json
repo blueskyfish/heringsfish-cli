@@ -7,20 +7,32 @@
   },
   "init": {
     "name": "init",
-    "description": "Initial the 'Heringsfish' server config in the current project.",
+    "description": "Initial the 'Heringsfish' server config in the current project",
     "path": "hf/plugins/plugin-init.js",
     "help": "hf/help/plugin-init.txt"
   },
   "create-domain": {
     "name": "create-domain",
-    "description": "",
+    "description": "Creates the domain on the application server",
     "path": "hf/plugins/plugin-create-domain.js",
     "help": "hf/help/plugin-create-domain.txt"
   },
   "remove-domain": {
     "name": "remove-domain",
-    "description": "",
+    "description": "Remove and delete the domain on the application server",
     "path": "hf/plugins/plugin-remove-domain.js",
     "help": "hf/help/plugin-remove-domain.txt"
+  },
+  "start-server": {
+    "name": "start-server",
+    "description": "Starts of the application server with the domain",
+    "path": "hf/plugins/plugin-start-server.js",
+    "help": "hf/help/plugin-start-server.txt"
+  },
+  "stop-server": {
+    "name": "stop-server",
+    "description": "Stops from the application server with the domain",
+    "path": "hf/plugins/plugin-stop-server.js",
+    "help": "hf/help/plugin-stop-server.txt"
   }
 }

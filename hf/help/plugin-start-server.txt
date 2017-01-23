@@ -1,8 +1,8 @@
 
-Display help for "remove-domain"
+Display help for "start-server"
 
 Description:
-  Remove and delete the domain on the application server.
+  Starts the application server with the domain.
 
 Requirement in the configure file:
   server.home          The path to the application server
@@ -10,15 +10,15 @@ Requirement in the configure file:
   domain.home          The path to the domain directory.
 
 Usage:
-  $ hf remove
+  $ hf start-server
 
 Additional Arguments:
   -
 
 Example:
-  $ hf remove
-  $ hf remove -v
-  $ hf remove --quiet
+  $ hf start-server
+  $ hf start-server -v
+  $ hf start-server -q
 
 Note:
   -v | --verbose       display more information.

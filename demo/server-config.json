@@ -40,7 +40,7 @@
       }
     },
     "ports": {
-      "base": 50000
+      "base": 48000
     }
   },
   "settings": {

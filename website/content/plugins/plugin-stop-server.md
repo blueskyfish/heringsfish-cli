@@ -1,17 +1,16 @@
-title: Heringsfish - Plugin "Remove Domain"
+title: Heringsfish - Plugin "Stop Server"
 ---
 
 <span class="fa fa-plug fa-4x"></span>
 
-# Plugin "Remove Domain"
+# Plugin "Stop Server"
 
-> This section describes the remove and delete of the domain.
-
+> This section describes the stoping of the application server with the domain.
 
 ## Description
 
-Remove and delete the domain on the application server.
-
+Stops the application server with the domain. Stops the server directly with
+the additional parameter `-k` or `--kill`.
 
 ## Requirement in the config file
 
@@ -25,20 +24,24 @@ Remove and delete the domain on the application server.
 ## Usage
 
 ```bash
-$ hf remove-domain
+$ hf stop-server
 ```
+
 
 ## Additional Arguments
 
-*No additional arguments*
+* `-k | --kill`<br>
+  (**optional**) Specifies whether the domain is killed by using functionality
+   of the operating system to terminate the domain process.
 
 
 ## Example
 
 ```bash
-$ hf remove-domain
-$ hf remove-domain -v
-$ hf remove-domain --quiet
+$ hf stop-server
+$ hf stop-server --kill
+$ hf stop-server -vk
+$ hf stop-server --quiet
 ```
 
 

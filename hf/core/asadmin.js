@@ -35,6 +35,125 @@ const utils   = require('hf/core/utils');
  * @property {number} [adminPort] the port number of the admin console.
  */
 
+/**
+ * @class AsAdminParams
+ * @description
+ * It is a builder interface for the parameters of the execution with the asadmin cli.
+ */
+class AsAdminParams {
+
+  /**
+   * Initialize with the command.
+   *
+   * @param {String} command the command for the application server.
+   */
+  constructor(command) {
+    /**
+     * Domain
+     *
+     * @type {null|String}
+     */
+    this.domain = null;
+
+    /**
+     * Domain directory
+     * @type {null|String}
+     */
+    this.domainHome = null;
+
+    /**
+     * Parameter list
+     *
+     * @type {Array<String>}
+     */
+    this.params = [command];
+  }
+
+  /**
+   * Add the parameter when it is a string.
+   *
+   * @param {String} param
+   * @return {AsAdminParams}
+   */
+  add(param) {
+    if (_.isString(param)) {
+      this.params.push(param);
+    }
+    return this;
+  }
+
+  /**
+   * Add the port base.
+   * @param basePort
+   * @return {AsAdminParams}
+   */
+  addPortBase(basePort) {
+    return this.add('--portbase').add(_.toString(basePort));
+  }
+
+  /**
+   * Add the parameter when the condition is true and it is a string
+   * @param {Boolean} condition
+   * @param {String} param
+   * @return {AsAdminParams}
+   */
+  addIf(condition, param) {
+    if(condition === true && _.isString(param)) {
+      this.params.push(param);
+    }
+    return this;
+  }
+
+  /**
+   * Add the domain name.
+   *
+   * @param {String} domain
+   * @return {AsAdminParams}
+   */
+  addDomain(domain) {
+    if (_.isString(domain)) {
+      this.domain = domain;
+    }
+    return this;
+  }
+
+  /**
+   * Add the path to the domain directory.
+   *
+   * @param {String} domainHome
+   * @return {AsAdminParams}
+   */
+  addDomainHome(domainHome) {
+    if (_.isString(domainHome)) {
+      this.domainHome = domainHome;
+    }
+    return this;
+  }
+
+  /**
+   *
+   * @return {Array<String>}
+   */
+  build() {
+    const args = [];
+    _.forEach(this.params, (param) => {
+      args.push(param);
+    });
+    args.push('--domaindir', this.domainHome);
+    args.push(this.domain);
+    return args;
+  }
+}
+
+/**
+ * Build a new AsAdminParams instance
+ * @param {String} command the command for the application server
+ * @return {AsAdminParams}
+ */
+module.exports.newParams = function (command) {
+  return new AsAdminParams(command);
+};
+
 
 /**
  * Returns the setting values for ASADMIN. In case of success the promise then part call a
@@ -103,29 +222,48 @@ module.exports.getAsAdminSetting = function (options, includeAdminPort) {
 /**
  * Starts the Payara / Glassfish application server.
  *
- * **Errors**
- *
- * See at the runner module.
- *
- *
  * @param {Options} options
  * @return {Promise<RunResult>}
+ * @see module:hf/core/os#exec
  */
 module.exports.startServer = function (options) {
   const that = this;
   return that.getAsAdminSetting(options)
     .then((asAdminSetting) => {
+
       options.logInfo('Starts domain "%s" ...', asAdminSetting.domainName);
+
       // build parameters
-      const params = [
-        'start-domain',
-        '--domaindir', asAdminSetting.domainHome,
-        // TODO add a config setting (server.debug = true / false)
-        '--debug=true',
-        asAdminSetting.domainName
-      ];
+      const params = that.newParams('start-domain')
+        .addDomainHome(asAdminSetting.domainHome)
+        .addDomain(asAdminSetting.domainName)
+        .addIf(true, '--debug=true')
+        .build();
       const env = options.getEnvironment();
       return os.exec(options, asAdminSetting.asadmin, params, env);
+    });
+};
+
+/**
+ * Stops the Payara / Glassfish application server.
+ *
+ * @param {Options} options
+ * @return {Promise<RunResult>}
+ */
+module.exports.stopServer = function (options) {
+  const that = this;
+  return that.getAsAdminSetting(options)
+    .then((asAdminSetting) => {
+
+      options.logInfo('Stops domain "%s" ...', asAdminSetting.domainName);
+
+      const params = that.newParams('stop-domain')
+        .addDomainHome(asAdminSetting.domainHome)
+        .addDomain(asAdminSetting.domainName)
+        .addIf(options.isParam('k', 'kill'), '--kill')
+        .build();
+
+      return os.exec(options, asAdminSetting.asadmin, params);
     });
 };
 
@@ -145,14 +283,12 @@ module.exports.createDomain = function (options) {
     })
     .then((asAdminSetting) => {
       // build parameters
-      const params = [
-        'create-domain',
-        '--portbase', asAdminSetting.portBase,
-        '--domaindir', asAdminSetting.domainHome,
-        // TODO add the admin console password ?? (server.admin.password + server.admin.username)
-        '--nopassword',
-        asAdminSetting.domainName
-      ];
+      const params = that.newParams('create-domain')
+        .addDomainHome(asAdminSetting.domainHome)
+        .addDomain(asAdminSetting.domainName)
+        .addPortBase(asAdminSetting.portBase)
+        .add('--nopassword') // FIXME: add the admin user and password ??
+        .build();
 
       return os.exec(options, asAdminSetting.asadmin, params);
     });
@@ -171,11 +307,10 @@ module.exports.removeDomain = function (options) {
       return _chooseRemoveDomain(options, asAdminSetting);
     })
     .then((asAdminSetting) => {
-      const params = [
-        'delete-domain',
-        '--domaindir', asAdminSetting.domainHome,
-        asAdminSetting.domainName
-      ];
+      const params = that.newParams('delete-domain')
+        .addDomainHome(asAdminSetting.domainHome)
+        .addDomain(asAdminSetting.domainName)
+        .build();
 
       return os.exec(options, asAdminSetting.asadmin, params);
     });

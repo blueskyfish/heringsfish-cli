@@ -1,16 +1,11 @@
-title: Heringsfish - Plugin "Remove Domain"
+title: Heringsfish - Plugin "Start Server"
 ---
 
 <span class="fa fa-plug fa-4x"></span>
 
-# Plugin "Remove Domain"
+# Plugin "Start Server"
 
-> This section describes the remove and delete of the domain.
-
-
-## Description
-
-Remove and delete the domain on the application server.
+> This section describes the starting of the application server with the domain.
 
 
 ## Requirement in the config file
@@ -25,9 +20,8 @@ Remove and delete the domain on the application server.
 ## Usage
 
 ```bash
-$ hf remove-domain
+$ hf start-server
 ```
-
 ## Additional Arguments
 
 *No additional arguments*
@@ -36,9 +30,9 @@ $ hf remove-domain
 ## Example
 
 ```bash
-$ hf remove-domain
-$ hf remove-domain -v
-$ hf remove-domain --quiet
+$ hf start-server
+$ hf start-server -v
+$ hf start-server --quiet
 ```
 
 

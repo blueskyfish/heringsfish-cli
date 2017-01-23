@@ -1,5 +1,5 @@
 
-Display help for "create"
+Display help for "create-domain"
 
 Description:
   Creates the domain on the application server. This is the step before it can
