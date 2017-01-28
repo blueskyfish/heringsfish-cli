@@ -8,19 +8,21 @@
 'use strict';
 
 /**
- * @module hf/plugin/remove-domain
+ * @module hf/plugin/build-project
  * @description
- * Remove and delete the domain on the application server.
+ * Starts the building of the project with maven
+ *
+ * @requires module:hf/core/maven
  */
 
-const asadmin = require('hf/core/asadmin');
+const maven = require('hf/core/maven');
 
 /**
- * Remove and delete the domain on the application server.
+ * Starts the building of the project with maven
  *
  * @param {Options} options
  * @return {Promise<RunResult>}
  */
 module.exports = function (options) {
-  return asadmin.removeDomain(options);
+  return maven.buildProject(options);
 };

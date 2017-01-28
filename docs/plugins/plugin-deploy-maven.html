@@ -4,7 +4,7 @@
   <base href="/heringsfish-cli/">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Heringsfish Command Line Interface</title>
+  <title>Heringsfish - Plugin &quot;Deploy Maven&quot;</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -62,26 +62,76 @@
 </nav>
 
 <div class="container">
-  <p><span class="fa fa-building" aria-hidden="true"></span> <i>under construction yet!</i></p><p class="img-container"><img src="assets/logo.png" alt="Logo"></p>
-<h1 id="heringsfish-command-line-interface-(cli)"><a class="header-link" href="#heringsfish-command-line-interface-(cli)"></a>Heringsfish Command Line Interface (cli)</h1>
+  <p><span class="fa fa-building" aria-hidden="true"></span> <i>under construction yet!</i></p><p><span class="fa fa-plug fa-4x"></span></p>
+<h1 id="plugin-"deploy-maven""><a class="header-link" href="#plugin-"deploy-maven""></a>Plugin &quot;Deploy Maven&quot;</h1>
 <blockquote>
-<p>Command Line Interface to manages the <a href="https://glassfish.java.net/">Glassfish</a> / <a href="http://www.payara.fish/">Payara</a> Application Server
-and the deployment on local or server machine.</p>
+<p>This section describes the plugin <strong>Deploy Maven</strong>.</p>
 </blockquote>
-<h2 id="overview"><a class="header-link" href="#overview"></a>Overview</h2>
-<p>The <em>Command Line Interface</em> allows you to a <a href="https://glassfish.java.net/">GlassFish</a> or <a href="http://www.payara.fish/">Payara</a> Application Server easy to use and a encapsulated development environment for your JEE 7 project.</p>
+<h2 id="description"><a class="header-link" href="#description"></a>Description</h2>
+<p>  Build the application with maven.</p>
 <h2 id="requirement"><a class="header-link" href="#requirement"></a>Requirement</h2>
-<p>The following programs or modules are necessary:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>maven.home</code></td>
+<td>The maven home directory</td>
+</tr>
+<tr>
+<td><code>maven.project</code></td>
+<td>The maven project pom.xml</td>
+</tr>
+<tr>
+<td><code>server.home</code></td>
+<td>The path to the application server</td>
+</tr>
+<tr>
+<td><code>domain.name</code></td>
+<td>The name of the domain</td>
+</tr>
+<tr>
+<td><code>domain.home</code></td>
+<td>The path to the domain directory.</td>
+</tr>
+<tr>
+<td><code>domain.deploy</code></td>
+<td>A object with the application name and the filename of the deploying application.<br>It is necessary that at least one application is registered.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage"><a class="header-link" href="#usage"></a>Usage</h2>
+<pre class="hljs"><code>$ hf deploy-maven [application] | [--nobuild | [--skip | --notest] | \
+    [-c | --clean] | [-p profiles | --profile=profiles]]</code></pre><h2 id="additional-arguments"><a class="header-link" href="#additional-arguments"></a>Additional Arguments</h2>
 <ul class="list">
-<li><a href="https://nodejs.org/">Node JS</a>: This cli is tested with the version 6.x or higher</li>
-<li>Set the environment variable <code>JAVA_HOME</code> must be set (Java 8).</li>
-<li>Application Server <a href="https://glassfish.java.net/">Glassfish 4.1</a> or <a href="http://www.payara.fish/">Payara 4.1</a>: Just install the server somewhere on your computer or in the project.</li>
-<li><a href="https://maven.apache.org/">Maven</a>: The command <code>mvn</code> should in your <code>PATH</code>.</li>
-<li>An Java IDE :-)</li>
+<li><code>[application]</code><br>
+(optional) the name of the deploying application. If no application is specified, all Applications are deployed.</li>
+<li><code>--nobuild</code><br>
+Disable the maven build process before deploying.</li>
+<li><code>--skip</code> or <code>--notest</code><br>
+Skip to execute the test cases.</li>
+<li><code>-c</code> or <code>--clean</code><br>
+Add the clean goal to the maven build process.</li>
+<li><code>-p profiles</code> or <code>--profiles=profiles</code><br>
+Add the maven profile(s). If multiple profiles are to be used, they must be separated with a comma.</li>
 </ul>
-<h2 id="installation"><a class="header-link" href="#installation"></a>Installation</h2>
-<p>Install global:</p>
-<pre class="hljs"><code>$ npm install -g heringsfish-cli</code></pre></div>
+<h2 id="example"><a class="header-link" href="#example"></a>Example</h2>
+<pre class="hljs"><code>$ hf build-maven
+$ hf build-maven -c
+$ hf build-maven -c -p integration,bigData
+$ hf build-maven -c -profiles=integration,bigData
+$ hf build-maven -qc</code></pre><h2 id="note:"><a class="header-link" href="#note:"></a>Note:</h2>
+<ul class="list">
+<li><code>-v | --verbose</code><br>
+display more information.</li>
+<li><code>-q | --quiet</code><br>
+display only errors or warnings</li>
+</ul>
+</div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom navbar-footer">
   <footer class="container" >

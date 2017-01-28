@@ -42,6 +42,14 @@
             <li class="menu-item" data-link="plugins/plugin-start-server.html"><a href="plugins/plugin-start-server.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Start Server</a></li>
             <li class="menu-item" data-link="plugins/plugin-stop-server.html"><a href="plugins/plugin-stop-server.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Stop Server</a></li>
             <li class="menu-item" data-link="plugins/plugin-restart-server.html"><a href="plugins/plugin-restart-server.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Restart Server</a></li>
+            <li class="divider" role="separator"></li>
+            <li class="menu-item" data-link="plugins/plugin-build-maven.html"><a href="plugins/plugin-build-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Build Maven</a></li>
+            <li class="menu-item" data-link="plugins/plugin-test-maven.html"><a href="plugins/plugin-test-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Test Maven</a></li>
+            <li class="menu-item" data-link="plugins/plugin-clean-maven.html"><a href="plugins/plugin-clean-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Clean Maven</a></li>
+            <li class="menu-item" data-link="plugins/plugin-deploy-mmavenaven.html"><a href="plugins/plugin-deploy-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Deploy Maven</a></li>
+            <li class="divider" role="separator"></li>
+            <li class="menu-item" data-link="plugins/plugin-start-database.html"><a href="plugins/plugin-start-database.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Start Database</a></li>
+            <li class="menu-item" data-link="plugins/plugin-stop-database.html"><a href="plugins/plugin-stop-database.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Stop Database</a></li>
           </ul>
         </li>
         <li class="menu-item" data-link="about.html"><a href="about.html">About</a></li>
@@ -79,6 +87,11 @@
 <td>Initial the <code>Heringsfish</code> server config in the current project.</td>
 </tr>
 <tr>
+<td><strong>Application Server</strong></td>
+<td style="text-align:center"></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
 <td><a href="plugins/plugin-create-domain.html"><span class="fa fa-plug"></span> Create Domain</a></td>
 <td style="text-align:center"><code>create-domain</code></td>
 <td>Creates the domain on the application server.</td>
@@ -102,6 +115,46 @@
 <td><a href="plugins/plugin-restart-server.html"><span class="fa fa-plug"></span> Restart Server</a></td>
 <td style="text-align:center"><code>restart-server</code></td>
 <td>Stops and starts the application server with the domain.</td>
+</tr>
+<tr>
+<td><strong>Maven</strong></td>
+<td style="text-align:center"></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="plugins/plugin-build-maven.html"><span class="fa fa-plug"></span> Build Maven</a></td>
+<td style="text-align:center"><code>build-maven</code></td>
+<td>Build the application with maven.</td>
+</tr>
+<tr>
+<td><a href="plugins/plugin-clean-maven.html"><span class="fa fa-plug"></span> Clean Maven</a></td>
+<td style="text-align:center"><code>clean-maven</code></td>
+<td>Executes the maven goal <strong>clean</strong>.</td>
+</tr>
+<tr>
+<td><a href="plugins/plugin-test-maven.html"><span class="fa fa-plug"></span> Test Maven</a></td>
+<td style="text-align:center"><code>test-maven</code></td>
+<td>Executes the maven goal <strong>test</strong>.</td>
+</tr>
+<tr>
+<td><a href="plugins/plugin-deploy-maven.html"><span class="fa fa-plug"></span> Deploy Maven</a></td>
+<td style="text-align:center"><code>deploy-maven</code></td>
+<td>Build the application with maven nd deploy on the application server.</td>
+</tr>
+<tr>
+<td><strong>Derby Database</strong></td>
+<td style="text-align:center"></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="plugins/plugin-start-database.html"><span class="fa fa-plug"></span> Start Database</a></td>
+<td style="text-align:center"><code>start-database</code></td>
+<td>Starts the builtin Derby database on the application server.</td>
+</tr>
+<tr>
+<td><a href="plugins/plugin-stop-database.html"><span class="fa fa-plug"></span> Stop Database</a></td>
+<td style="text-align:center"><code>start-database</code></td>
+<td>Stops the builtin Derby database on the application server.</td>
 </tr>
 </tbody>
 </table>
@@ -134,6 +187,18 @@
     });
   });
 }</code></pre></div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom navbar-footer">
+  <footer class="container" >
+    <ul class="nav navbar-nav">
+      <li class="menu-item" data-link="about.html"><a href="about.html">About</a></li>
+      <li class="menu-item" data-link="plugins/plugins.html"><a href="plugins/plugins.html">Plugin Overview</a></li>
+      <li class="menu-item" data-link="configuration.html"><a href="configuration.html">Configuration</a></li>
+      <li class="divider" role="separator"></li>
+      <li><a href="https://github.com/blueskyfish/heringsfish-cli.git"><span class="fa fa-github" aria-hidden="true"></span> Github</a></li>
+    </ul>
+  </footer>
+</nav>
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

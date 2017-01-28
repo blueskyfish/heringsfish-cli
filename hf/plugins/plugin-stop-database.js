@@ -8,10 +8,9 @@
 'use strict';
 
 /**
- * @module hf/plugin/create-domain
+ * @module hf/plugin/stop-database
  * @description
- * Creates the domain for the Payara / Glassfish application server.
- * If the domain is already exist then it cancels of creation of the domain.
+ * Stops the builtin database "derby"
  *
  * @requires module:hf/core/asadmin
  */
@@ -19,11 +18,11 @@
 const asadmin = require('hf/core/asadmin');
 
 /**
- * Create the domain for the server.
+ * Stops the application server with the domain
  *
  * @param {Options} options
  * @return {Promise<RunResult>}
  */
 module.exports = function (options) {
-  return asadmin.createDomain(options);
+  return asadmin.stopDatabase(options);
 };

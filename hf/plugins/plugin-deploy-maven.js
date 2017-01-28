@@ -8,19 +8,21 @@
 'use strict';
 
 /**
- * @module hf/plugin/remove-domain
+ * @module hf/plugin/deploy-maven
  * @description
- * Remove and delete the domain on the application server.
+ * Builds and deploy the maven project(s) on the application server.
+ *
  */
 
-const asadmin = require('hf/core/asadmin');
 
 /**
- * Remove and delete the domain on the application server.
+ * Builds and deploy the maven project(s) on the application server.
  *
  * @param {Options} options
  * @return {Promise<RunResult>}
  */
 module.exports = function (options) {
-  return asadmin.removeDomain(options);
+  return Promise.reject({
+    message: 'Build-Maven: not implemented yet!'
+  });
 };

@@ -40,5 +40,35 @@
     "description": "Stops and starts from the application server with the domain",
     "path": "hf/plugins/plugin-restart-server.js",
     "help": "hf/help/plugin-restart-server.txt"
+  },
+  "start-database": {
+    "name": "start-database",
+    "description": "Starts the builtin Derby database on the application server",
+    "path": "hf/plugins/plugin-start-database.js",
+    "help": "hf/help/plugin-start-database.txt"
+  },
+  "stop-database": {
+    "name": "stop-database",
+    "description": "Stops the builtin Derby database on the application server",
+    "path": "hf/plugins/plugin-stop-database.js",
+    "help": "hf/help/plugin-stop-database.txt"
+  },
+  "build-maven": {
+    "name": "build-project",
+    "description": "Build the application with maven",
+    "path": "hf/plugins/plugin-build-maven.js",
+    "help": "hf/help/plugin-build-maven.txt"
+  },
+  "test-maven": {
+    "name": "test-project",
+    "description": "Executes the maven test goal",
+    "path": "hf/plugins/plugin-test-maven.js",
+    "help": "hf/help/plugin-test-maven.txt"
+  },
+  "clean-maven": {
+    "name": "clean-project",
+    "description": "Executes the maven clean goal",
+    "path": "hf/plugins/plugin-clean-maven.js",
+    "help": "hf/help/plugin-clean-maven.txt"
   }
 }

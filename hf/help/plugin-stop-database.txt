@@ -1,0 +1,25 @@
+
+Display help for plugin "stop-database"
+
+Description:
+  Stops the builtin Derby database on the application server.
+  The builtin Derby database is not automatic stops when the server is
+  shutdown.
+  This action is only for the Derby database.
+
+Usage:
+  $ hf stop-database [--host=domain \ [--port=port]]]
+
+Additional Arguments:
+  --host=domain        the domain name of the external database server.
+                       Default is "localhost"
+  --port=port          the port number of the external database server.
+                       Default port is 1527.
+
+Example:
+  $ hf stop-domain -v
+  $ hf stop-domain --host=localhost --port=1527
+
+Note:
+  -v | --verbose       display more information.
+  -q | --quiet         display only errors or warnings

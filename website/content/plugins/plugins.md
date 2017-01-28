@@ -15,11 +15,20 @@ An overview of the builtin plugins.
 |------------------------------------------------------------------------|:-----------:|------------------------------------
 | [<span class="fa fa-plug"></span> Help](plugins/plugin-help.html)      | `help`      | Shows the help to the action / plugin
 | [<span class="fa fa-plug"></span> Init](plugins/plugin-init.html)      | `init`      | Initial the `Heringsfish` server config in the current project.
+| **Application Server** | | &nbsp;
 | [<span class="fa fa-plug"></span> Create Domain](plugins/plugin-create-domain.html) | `create-domain` | Creates the domain on the application server.
 | [<span class="fa fa-plug"></span> Remove Domain](plugins/plugin-remove-domain.html) | `remove-domain` | Remove and delete the domain on the application server.
 | [<span class="fa fa-plug"></span> Start Server](plugins/plugin-start-server.html)   | `start-server`  | Starts the application server with the domain.
 | [<span class="fa fa-plug"></span> Stop Server](plugins/plugin-stop-server.html)     | `stop-server`   | Stops the application server with the domain.
 | [<span class="fa fa-plug"></span> Restart Server](plugins/plugin-restart-server.html) | `restart-server` | Stops and starts the application server with the domain.
+| **Maven** | | &nbsp;
+| [<span class="fa fa-plug"></span> Build Maven](plugins/plugin-build-maven.html)       | `build-maven`    | Build the application with maven.
+| [<span class="fa fa-plug"></span> Clean Maven](plugins/plugin-clean-maven.html)       | `clean-maven`    | Executes the maven goal **clean**.
+| [<span class="fa fa-plug"></span> Test Maven](plugins/plugin-test-maven.html)         | `test-maven`     | Executes the maven goal **test**.
+| [<span class="fa fa-plug"></span> Deploy Maven](plugins/plugin-deploy-maven.html)     | `deploy-maven`   | Build the application with maven nd deploy on the application server.
+| **Derby Database** | | &nbsp;
+| [<span class="fa fa-plug"></span> Start Database](plugins/plugin-start-database.html) | `start-database` | Starts the builtin Derby database on the application server.
+| [<span class="fa fa-plug"></span> Stop Database](plugins/plugin-stop-database.html)   | `start-database` | Stops the builtin Derby database on the application server.
 
 
 ## Create an own Plugin

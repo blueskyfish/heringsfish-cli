@@ -1,0 +1,27 @@
+
+Display help for plugin "start-database"
+
+Description:
+  Starts the builtin Derby database on the application server.
+  The builtin Derby database is not automatic starts when the server is
+  starting.
+  This action is only for the Derby database.
+
+Usage:
+  $ hf start-database [--home=path/to/database/home [--host=domain \
+    [--port=port]]]
+
+Additional Arguments:
+  --home=database/home the database home directory for embedded database server
+  --host=domain        the domain name of the external database server.
+                       Default is "localhost"
+  --port=port          the port number of the external database server.
+                       Default port is 1527.
+
+Example:
+  $ hf start-domain -v --home={user.home}/var/database
+  $ hf start-domain --host=localhost --port=1527
+
+Note:
+  -v | --verbose       display more information.
+  -q | --quiet         display only errors or warnings

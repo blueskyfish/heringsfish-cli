@@ -29,7 +29,10 @@ gulp.task('serve', function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch('./website/content/**/*.md', ['build']);
+  gulp.watch([
+    './website/content/**/*.md',
+    './website/layout/**/*.*'
+  ], ['build']);
 });
 
 gulp.task('build', function (done) {

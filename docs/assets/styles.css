@@ -7,6 +7,7 @@
 
 body {
   padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 table {
@@ -33,7 +34,21 @@ table tr:nth-child(2n) {
   background-color: #f8f8f8;
 }
 
+.navbar-footer .navbar-nav > .active> a {
+  background-color: #eeeeee;
+  background-image: none;
+}
+
 @media screen and (max-width: 767px) {
+
+  body {
+    padding-bottom: 0;
+  }
+
+  nav.navbar-footer {
+    display: none;
+  }
+
   img {
     max-width: 100%;
   }

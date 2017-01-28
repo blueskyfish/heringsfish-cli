@@ -1,0 +1,29 @@
+
+Display help for "test-maven"
+
+Description:
+  Executes the maven test goal.
+
+Requirement in the configure file:
+  maven.home           The maven home directory.
+  maven.project        The maven project pom.xml
+
+
+Usage:
+  $ hf test-maven [-c | --clean] | [-p profiles | --profile=profiles]
+
+Additional Arguments:
+  -c | --clean         Add the clean goal to the maven build process.
+  -p profiles
+  --profile=profiles   Add the maven profile(s). If multiple profiles are to
+                       be used, they must be separated with a comma.
+
+Example:
+  $ hf test-maven
+  $ hf test-maven -c
+  $ hf test-maven -c -p integration,bigData
+  $ hf test-maven -qc
+
+Note:
+  -v | --verbose       display more information.
+  -q | --quiet         display only errors or warnings

@@ -139,8 +139,12 @@ class AsAdminParams {
     _.forEach(this.params, (param) => {
       args.push(param);
     });
-    args.push('--domaindir', this.domainHome);
-    args.push(this.domain);
+    if (this.domainHome) {
+      args.push('--domaindir', this.domainHome);
+    }
+    if (this.domain) {
+      args.push(this.domain);
+    }
     return args;
   }
 }
@@ -316,6 +320,64 @@ module.exports.removeDomain = function (options) {
     });
 };
 
+/**
+ * Starts the builtin database "derby"
+ *
+ * @param {Options} options
+ * @return {Promise<RunResult>}
+ */
+module.exports.startDatabase = function (options) {
+  const that = this;
+  return that.getAsAdminSetting(options)
+    .then((asAdminSetting) => {
+      const dbHome     = options.getParam('home', null);
+      const dbHost     = options.getParam('host', 'localhost');
+      const dbPort     = options.getParam('port', '');
+
+      const dbHomePath = options.parseValue(dbHome);
+
+      const params = that.newParams('start-database')
+        .addIf(utils.hasStringValue(dbHome), '--dbhome')
+        .addIf(utils.hasStringValue(dbHome), dbHomePath)
+        .addIf(utils.hasStringValue(dbHost), '--dbhost')
+        .addIf(utils.hasStringValue(dbHost), dbHost)
+        .addIf(!!dbPort, '--dbport')
+        .addIf(!!dbPort, '' + dbPort)
+        .build();
+
+      options.logInfo('Starts derby database ...');
+      options.logDebug('Parameters: %s', params.join(' '));
+
+      return os.exec(options, asAdminSetting.asadmin, params);
+    });
+};
+
+/**
+ * Stops the database server
+ *
+ * @param {Options} options
+ * @return {Promise<RunResult>}
+ */
+module.exports.stopDatabase = function (options) {
+  const that = this;
+  return that.getAsAdminSetting(options)
+    .then((asAdminSetting) => {
+      const dbHost     = options.getParam('host', null);
+      const dbPort     = options.getParam('port', null);
+
+      const params = that.newParams('stop-database')
+        .addIf(utils.hasStringValue(dbHost), '--dbhost')
+        .addIf(utils.hasStringValue(dbHost), dbHost)
+        .addIf(!!dbPort, '--dbport')
+        .addIf(!!dbPort, '' + dbPort)
+        .build();
+
+      options.logInfo('Stops the database server ....');
+      options.logDebug('Parameters: %s', params.join(' '));
+
+      return os.exec(options, asAdminSetting.asadmin, params);
+    });
+};
 
 //
 // internal functions

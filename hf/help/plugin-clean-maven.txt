@@ -1,0 +1,24 @@
+
+Display help for "clean-maven"
+
+Description:
+  Executes the maven goal "clean" in order to clean the deployment directories.
+
+Requirement in the configure file:
+  maven.home           The maven home directory.
+  maven.project        The maven project pom.xml
+
+Usage:
+  $ hf clean-maven [[-v | --verbose] | [-q | --quit]]
+
+Additional Arguments:
+  -
+
+Example:
+  $ hf clean
+  $ hf clean --verbose
+  $ hf clean -q
+
+Note:
+  -v | --verbose       display more information.
+  -q | --quiet         display only errors or warnings

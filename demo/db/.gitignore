@@ -1,0 +1,8 @@
+#
+# Derby Database Home Path
+#
+
+*
+
+!.gitignore
+!readme.md
