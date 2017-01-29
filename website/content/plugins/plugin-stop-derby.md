@@ -1,11 +1,11 @@
-title: Heringsfish - Plugin "Stop Database"
+title: Heringsfish - Plugin "Stop Derby Database"
 ---
 
 <span class="fa fa-plug fa-4x"></span>
 
-# Plugin "Start Database"
+# Plugin "Stop Derby Database"
 
-> This section describes the help for the plugin **Stop Database**.<br>
+> This section describes the help for the plugin **Stop Derby Database**.<br>
 > **Note**: This is only for the builtin Derby database server!
 
 
@@ -22,20 +22,21 @@ This action is only for the Derby database.
 ## Usage
 
 ```bash
-$ hf stop-database [--host=domain [--port=port]]]
+$ hf stop-derby [--host=domain [--port=port]]]
 ```
 
 ## Additional Arguments
 
 * `--host=domain`<br>
-  the domain name of the external database server. Default is `localhost`.
+  the domain name of the binding the derby database server. Default is `localhost` or `0.0.0.0`.
 * `--port=port`<br>
-  the port number of the external database server. Default port is `1527.
+  the port number of the binding the derby database server. Default port is `1527.
 
 ## Example
 
 ```bash
-$ hf stop-domain --host=localhost --port=1527
+$ hf stop-derby
+$ hf stop-derby --host=localhost --port=1527
 ```
 
 ## Note:

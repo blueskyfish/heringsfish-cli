@@ -41,14 +41,14 @@
     "path": "hf/plugins/plugin-restart-server.js",
     "help": "hf/help/plugin-restart-server.txt"
   },
-  "start-database": {
-    "name": "start-database",
+  "start-derby": {
+    "name": "start-derby-database",
     "description": "Starts the builtin Derby database on the application server",
     "path": "hf/plugins/plugin-start-database.js",
     "help": "hf/help/plugin-start-database.txt"
   },
-  "stop-database": {
-    "name": "stop-database",
+  "stop-derby": {
+    "name": "stop-derby-database",
     "description": "Stops the builtin Derby database on the application server",
     "path": "hf/plugins/plugin-stop-database.js",
     "help": "hf/help/plugin-stop-database.txt"

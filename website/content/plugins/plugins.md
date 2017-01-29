@@ -27,8 +27,8 @@ An overview of the builtin plugins.
 | [<span class="fa fa-plug"></span> Test Maven](plugins/plugin-test-maven.html)         | `test-maven`     | Executes the maven goal **test**.
 | [<span class="fa fa-plug"></span> Deploy Maven](plugins/plugin-deploy-maven.html)     | `deploy-maven`   | Build the application with maven nd deploy on the application server.
 | **Derby Database** | | &nbsp;
-| [<span class="fa fa-plug"></span> Start Database](plugins/plugin-start-database.html) | `start-database` | Starts the builtin Derby database on the application server.
-| [<span class="fa fa-plug"></span> Stop Database](plugins/plugin-stop-database.html)   | `start-database` | Stops the builtin Derby database on the application server.
+| [<span class="fa fa-plug"></span> Start Derby Database](plugins/plugin-start-derby.html) | `start-derby` | Starts the builtin Derby database on the application server.
+| [<span class="fa fa-plug"></span> Stop Derby Database](plugins/plugin-stop-derby.html)   | `start-derby` | Stops the builtin Derby database on the application server.
 
 
 ## Create an own Plugin

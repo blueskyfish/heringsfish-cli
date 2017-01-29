@@ -1,11 +1,11 @@
-title: Heringsfish - Plugin "Start Database"
+title: Heringsfish - Plugin "Start Derby Database"
 ---
 
 <span class="fa fa-plug fa-4x"></span>
 
-# Plugin "Start Database"
+# Plugin "Start Derby Database"
 
-> This section describes the help for the plugin **Start Database**.<br>
+> This section describes the help for the plugin **Start Derby Database**.<br>
 > **Note**: This is only for the builtin Derby database server!
 
 
@@ -22,13 +22,14 @@ This action is only for the Derby database.
 ## Usage
 
 ```bash
-$ hf start-database [--home=path/to/database/home [--host=domain [--port=port]]]
+$ hf start-derby [--home=path/to/database/home [--host=domain [--port=port]]]
 ```
 
 ## Additional Arguments
 
 * `--home=database/home`<br>
-  the database home directory for embedded database server.
+  the database home directory for embedded database server.<br>
+  **Note** It is allow to set property keys in the path name (e.g `--home={project.home}/database`)
 * `--host=domain`<br>
   the domain name of the external database server. Default is `localhost`.
 * `--port=port`<br>
