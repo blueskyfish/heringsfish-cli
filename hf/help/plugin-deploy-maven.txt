@@ -2,7 +2,7 @@
 Display help for "build-maven"
 
 Description:
-  Build the application with maven.
+  Builds the project with Maven and deploy the application(s) on the server.
 
 Requirement in the configure file:
   maven.home           The maven home directory.
