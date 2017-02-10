@@ -4,7 +4,7 @@
   <base href="/heringsfish-cli/">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{title}}</title>
+  <title>Heringsfish - Create Plugin Programmatically</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -71,9 +71,63 @@
 </nav>
 
 <div class="container">
-  <p><span class="fa fa-building" aria-hidden="true"></span> <i>under construction yet!</i></p>
-  {{~> content}}
-</div>
+  <p><span class="fa fa-building" aria-hidden="true"></span> <i>under construction yet!</i></p><h1 id="create-plugin-programmatically"><a class="header-link" href="#create-plugin-programmatically"></a>Create Plugin Programmatically</h1>
+<p>This section describes how to build your own plugin for <code>heringsfish</code>.</p>
+<ul class="list">
+<li>Defines a javascript node module.</li>
+<li>The module exports only one function that receive one parameter from type <code>Options</code>.</li>
+<li>Configure in the <code>server-config.json</code>.</li>
+</ul>
+<h2 id="javascript-module"><a class="header-link" href="#javascript-module"></a>JavaScript Module</h2>
+<p>The javascript module shows a skeleton of the plugin. The module returns only one
+function with one parameter from type <a href="api/class-options.html">Options</a> and returns
+an Promise instance.</p>
+<p>If an error occurs while working, the reject function must be called, otherwise
+it should resolve the function.</p>
+<pre class="hljs"><code><span class="hljs-comment">/*!
+ * Your module
+ */</span>
+
+<span class="hljs-comment">/**
+ * This is the only function that is exported.
+ * 
+ * @param {Options} options contains some functionality of the heringsfish
+ * @return {Promise&lt;*&gt;}
+ */</span>
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">options</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
+    <span class="hljs-keyword">const</span> settings = options.getCurrentPlugin().getSettings();
+
+    <span class="hljs-keyword">const</span> message = settings.message;
+    <span class="hljs-keyword">if</span> (!message) {
+      <span class="hljs-keyword">return</span> reject({
+        <span class="hljs-attr">code</span>: <span class="hljs-number">0xffffff</span>,
+        <span class="hljs-attr">message</span>: <span class="hljs-string">'Missing setting.message'</span>,
+      });  
+    }
+
+    options.logInfo(<span class="hljs-string">'&gt;&gt;&gt; %s'</span>, settings.message || <span class="hljs-string">'??'</span>);
+    resolve({
+      <span class="hljs-attr">message</span>: <span class="hljs-string">'Success'</span>
+    });
+  });
+}</code></pre><h2 id="configure-in-`server-config.json`"><a class="header-link" href="#configure-in-`server-config.json`"></a>Configure in <code>server-config.json</code></h2>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">"plugins"</span>: {
+    <span class="hljs-attr">"my-plugin"</span>: {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"my-first-plugin"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"this is my first plugin"</span>,
+      <span class="hljs-attr">"path"</span>: <span class="hljs-string">"tools/plugins/my-first-plugin.js"</span>,
+      <span class="hljs-attr">"help"</span>: <span class="hljs-string">"tools/help/my-first-plugin.txt"</span>,
+      <span class="hljs-attr">"settings"</span>: {
+        <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Hello from my Plugin"</span>
+      }
+    }
+  }
+}</code></pre><h2 id="call-your-plugin"><a class="header-link" href="#call-your-plugin"></a>Call Your Plugin</h2>
+<p><strong>Execution</strong></p>
+<pre class="hljs"><code>$ hf my-pugin -v</code></pre><p><strong>Help</strong></p>
+<pre class="hljs"><code>$ hf <span class="hljs-built_in">help</span> my-plugin</code></pre></div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom navbar-footer">
   <footer class="container" >

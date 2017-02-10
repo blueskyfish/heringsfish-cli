@@ -4,7 +4,7 @@
   <base href="/heringsfish-cli/">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{title}}</title>
+  <title>Heringsfish - Plugin &quot;Pipeline&quot;</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -71,9 +71,140 @@
 </nav>
 
 <div class="container">
-  <p><span class="fa fa-building" aria-hidden="true"></span> <i>under construction yet!</i></p>
-  {{~> content}}
-</div>
+  <p><span class="fa fa-building" aria-hidden="true"></span> <i>under construction yet!</i></p><p><span class="fa fa-plug fa-4x"></span></p>
+<h1 id="plugin-"pipeline""><a class="header-link" href="#plugin-"pipeline""></a>Plugin &quot;Pipeline&quot;</h1>
+<h2 id="description"><a class="header-link" href="#description"></a>Description</h2>
+<p>The plugin <code>pipeline</code> is executing one plugin (<em>action</em>) after the other. The plugin
+can be used to define your own tasks.</p>
+<h2 id="additional-parameters"><a class="header-link" href="#additional-parameters"></a>Additional Parameters</h2>
+<ul class="list">
+<li><code>--try</code> or <code>--test</code><br>
+Do not execute the pipeline action. Shows only the pipeline action and their parameters.</li>
+</ul>
+<h2 id="plugin-settings"><a class="header-link" href="#plugin-settings"></a>Plugin Settings</h2>
+<p>Every plugin could have a settings object in the plugin configuration. In
+the plugin <code>pipeline</code> is the settings from the <code>PipelineSetting</code>.</p>
+<p><strong>Pipeline Setting</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>deplay</code></td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">no</td>
+<td>The pause between the pipeline action in milli seconds. Default is 0.</td>
+</tr>
+<tr>
+<td><code>pipeline</code></td>
+<td style="text-align:center">Array&lt;PipelineAction&gt;</td>
+<td style="text-align:center">yes</td>
+<td>The array with the pipeline actions.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pipeline Action</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>action</code></td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">yes</td>
+<td>An existing plugin (action) of the plugin registry.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">no</td>
+<td>A short description of the action.</td>
+</tr>
+<tr>
+<td><code>params</code></td>
+<td style="text-align:center">Array&lt;String&gt;</td>
+<td style="text-align:center">yes</td>
+<td>The array of parameters for the action.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example"><a class="header-link" href="#example"></a>Example</h2>
+<blockquote>
+<p>The example shows two pipeline actions and their action list (<code>serve</code> and <code>shutdown</code>).</p>
+</blockquote>
+<p><code>server-config.json</code></p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"demo-service"</span>,
+
+  <span class="hljs-attr">"plugins"</span>: {
+    <span class="hljs-attr">"serve"</span>: {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"serve"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"A pipeline action for start the server and deploy"</span>,
+      <span class="hljs-attr">"path"</span>: <span class="hljs-string">"hf/plugins/plugin-pipeline.js"</span>,
+      <span class="hljs-attr">"help"</span>: <span class="hljs-string">"tools/plugins/help/plugin-help.txt"</span>,
+      <span class="hljs-attr">"settings"</span>: {
+        <span class="hljs-attr">"delay"</span>: <span class="hljs-number">300</span>,
+        <span class="hljs-attr">"pipeline"</span>: [
+          {
+            <span class="hljs-attr">"action"</span>: <span class="hljs-string">"start-server"</span>,
+            <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Starts the application server"</span>,
+            <span class="hljs-attr">"params"</span>: [
+              <span class="hljs-string">"-v"</span>
+            ]
+          },
+          {
+            <span class="hljs-attr">"action"</span>: <span class="hljs-string">"start-derby"</span>,
+            <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Starts the derby database on port 1527"</span>,
+            <span class="hljs-attr">"params"</span>: [
+              <span class="hljs-string">"-v"</span>, <span class="hljs-string">"--home"</span>, <span class="hljs-string">"{project.home}/db"</span>, <span class="hljs-string">"--host"</span>, <span class="hljs-string">"localhost"</span>, <span class="hljs-string">"--port"</span>, <span class="hljs-string">"1527"</span>
+            ]
+          },
+          {
+            <span class="hljs-attr">"action"</span>: <span class="hljs-string">"deploy-maven"</span>,
+            <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Starts to build the appplication with maven and deploy on application server"</span>,
+            <span class="hljs-attr">"params"</span>: [
+              <span class="hljs-string">"--quite"</span>, <span class="hljs-string">"--clean"</span>, <span class="hljs-string">"--notest"</span>, <span class="hljs-string">"-profiles=developer"</span>
+            ]
+          }
+        ]
+      }
+    },
+    <span class="hljs-attr">"shutdown"</span>: {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"stop-all"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Stops and shutdown all server"</span>,
+      <span class="hljs-attr">"path"</span>: <span class="hljs-string">"hf/plugins/plugin-pipeline.js"</span>,
+      <span class="hljs-attr">"help"</span>: <span class="hljs-string">"tools/plugins/help/plugin-stop-all.txt"</span>,
+      <span class="hljs-attr">"pipeline"</span>: [
+        {
+          <span class="hljs-attr">"action"</span>: <span class="hljs-string">"stop-derby"</span>,
+          <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Shutdown the derby database"</span>,
+          <span class="hljs-attr">"params"</span>: [
+            <span class="hljs-string">"-v"</span>, <span class="hljs-string">"--host"</span>, <span class="hljs-string">"localhost"</span>, <span class="hljs-string">"--port"</span>, <span class="hljs-string">"1527"</span>
+          ]
+        },
+        {
+          <span class="hljs-attr">"action"</span>: <span class="hljs-string">"stop-server"</span>,
+          <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Shutdown application server"</span>,
+          <span class="hljs-attr">"params"</span>: [
+            <span class="hljs-string">"-v"</span>, <span class="hljs-string">"--kill"</span>
+          ]
+        }
+      ]
+    }
+  }
+}</code></pre></div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom navbar-footer">
   <footer class="container" >

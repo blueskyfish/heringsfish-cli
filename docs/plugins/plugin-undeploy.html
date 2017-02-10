@@ -4,7 +4,7 @@
   <base href="/heringsfish-cli/">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Heringsfish - Plugin &quot;Start Database&quot;</title>
+  <title>Heringsfish - Plugin &quot;Undeploy&quot;</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -27,9 +27,17 @@
     <div class="collapse navbar-collapse" id="hf-navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="menu-item" data-link="index.html"><a href="index.html">Home</a></li>
-        <li class="menu-item" data-link="configuration.html"><a href="configuration.html">Configuration</a></li>
         <li class="dropdown">
-          <a href="#"class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plugins <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuration <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="menu-item" data-link="config/server-config.html"><a href="config/server-config.html">Server Configuration</a></li>
+            <li class="divider" role="separator"></li>
+            <li class="menu-item" data-link="config/plugin-config.html"><a href="config/plugin-config.html">Plugin Configuration</a></li>
+            <li class="menu-item" data-link="config/plugin-create.html"><a href="config/plugin-create.html">Plugin Create Programmatically</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plugins <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li class="menu-item" data-link="plugins/plugins.html"><a href="plugins/plugins.html"><span class="fa fa-table" aria-hidden="true"></span> Plugin Overview</a></li>
             <li class="divider" role="separator"></li>
@@ -42,14 +50,15 @@
             <li class="menu-item" data-link="plugins/plugin-start-server.html"><a href="plugins/plugin-start-server.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Start Server</a></li>
             <li class="menu-item" data-link="plugins/plugin-stop-server.html"><a href="plugins/plugin-stop-server.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Stop Server</a></li>
             <li class="menu-item" data-link="plugins/plugin-restart-server.html"><a href="plugins/plugin-restart-server.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Restart Server</a></li>
+            <li class="menu-item" data-link="plugins/plugin-undeploy.html"><a href="plugins/plugin-undeploy.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Undeploy Application</a></li>
             <li class="divider" role="separator"></li>
             <li class="menu-item" data-link="plugins/plugin-build-maven.html"><a href="plugins/plugin-build-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Build Maven</a></li>
             <li class="menu-item" data-link="plugins/plugin-test-maven.html"><a href="plugins/plugin-test-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Test Maven</a></li>
             <li class="menu-item" data-link="plugins/plugin-clean-maven.html"><a href="plugins/plugin-clean-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Clean Maven</a></li>
-            <li class="menu-item" data-link="plugins/plugin-deploy-mmavenaven.html"><a href="plugins/plugin-deploy-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Deploy Maven</a></li>
+            <li class="menu-item" data-link="plugins/plugin-deploy-maven.html"><a href="plugins/plugin-deploy-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Deploy Maven</a></li>
             <li class="divider" role="separator"></li>
-            <li class="menu-item" data-link="plugins/plugin-start-database.html"><a href="plugins/plugin-start-database.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Start Database</a></li>
-            <li class="menu-item" data-link="plugins/plugin-stop-database.html"><a href="plugins/plugin-stop-database.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Stop Database</a></li>
+            <li class="menu-item" data-link="plugins/plugin-start-derby.html"><a href="plugins/plugin-start-derby.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Start Derby Database</a></li>
+            <li class="menu-item" data-link="plugins/plugin-stop-derby.html"><a href="plugins/plugin-stop-derby.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Stop Derby Database</a></li>
           </ul>
         </li>
         <li class="menu-item" data-link="about.html"><a href="about.html">About</a></li>
@@ -63,30 +72,45 @@
 
 <div class="container">
   <p><span class="fa fa-building" aria-hidden="true"></span> <i>under construction yet!</i></p><p><span class="fa fa-plug fa-4x"></span></p>
-<h1 id="plugin-"start-database""><a class="header-link" href="#plugin-"start-database""></a>Plugin &quot;Start Database&quot;</h1>
+<h1 id="plugin-"undeploy""><a class="header-link" href="#plugin-"undeploy""></a>Plugin &quot;Undeploy&quot;</h1>
 <blockquote>
-<p>This section describes the help for the plugin <strong>Start Database</strong>.<br>
-<strong>Note</strong>: This is only for the builtin Derby database server!</p>
+<p>This section describes the help for plugin <code>undeploy</code>.</p>
 </blockquote>
-<h2 id="description"><a class="header-link" href="#description"></a>Description</h2>
-<p>Starts the builtin Derby database on the application server.</p>
-<p>The builtin Derby database is not automatic starts when the server is
-starting.</p>
-<p>This action is only for the Derby database.</p>
+<h2 id="description:"><a class="header-link" href="#description:"></a>Description:</h2>
+<p>Undeploy and remove application(s) from the application server.</p>
+<h2 id="requirement"><a class="header-link" href="#requirement"></a>Requirement</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>server.home</code></td>
+<td>The path to the application server</td>
+</tr>
+<tr>
+<td><code>domain.name</code></td>
+<td>The name of the domain</td>
+</tr>
+<tr>
+<td><code>domain.home</code></td>
+<td>The path to the domain directory.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="usage"><a class="header-link" href="#usage"></a>Usage</h2>
-<pre class="hljs"><code>$ hf start-database [--home=path/to/database/home [--host=domain [--port=port]]]</code></pre><h2 id="additional-arguments"><a class="header-link" href="#additional-arguments"></a>Additional Arguments</h2>
+<pre class="hljs"><code>$ hf undeploy [application]</code></pre><h2 id="additional-arguments:"><a class="header-link" href="#additional-arguments:"></a>Additional Arguments:</h2>
 <ul class="list">
-<li><code>--home=database/home</code><br>
-the database home directory for embedded database server.</li>
-<li><code>--host=domain</code><br>
-the domain name of the external database server. Default is <code>localhost</code>.</li>
-<li><code>--port=port</code><br>
-the port number of the external database server. Default port is `1527.</li>
+<li><code>application</code><br>
+ (optional) the name of the deploying application. If no application is specified, all Applications are undeployed.</li>
 </ul>
 <h2 id="example"><a class="header-link" href="#example"></a>Example</h2>
-<pre class="hljs"><code>$ hf start-domain -v --home={user.home}/var/database
-$ hf start-domain -v --home={project.home}/database
-$ hf start-domain --host=localhost --port=1527</code></pre><h2 id="note:"><a class="header-link" href="#note:"></a>Note:</h2>
+<pre class="hljs"><code>$ hf undeploy
+$ hf undeploy <span class="hljs-string">"test-application"</span> -v
+$ hf undeploy --quiet</code></pre><h2 id="note:"><a class="header-link" href="#note:"></a>Note:</h2>
 <ul class="list">
 <li><code>-v | --verbose</code><br>
 display more information.</li>
@@ -100,7 +124,6 @@ display only errors or warnings</li>
     <ul class="nav navbar-nav">
       <li class="menu-item" data-link="about.html"><a href="about.html">About</a></li>
       <li class="menu-item" data-link="plugins/plugins.html"><a href="plugins/plugins.html">Plugin Overview</a></li>
-      <li class="menu-item" data-link="configuration.html"><a href="configuration.html">Configuration</a></li>
       <li class="divider" role="separator"></li>
       <li><a href="https://github.com/blueskyfish/heringsfish-cli.git"><span class="fa fa-github" aria-hidden="true"></span> Github</a></li>
     </ul>

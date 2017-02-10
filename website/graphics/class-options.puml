@@ -1,0 +1,25 @@
+@startuml
+
+class Options {
+- Parameters params
+- Object configs
+- Registry registry
++ String getParam(String|Number name, String devValue)
++ Boolean isParam(String shortName, String longName)
++ String getParamByNames(String shortName, String longName, String defValue)
++ String getAction()
++ Mixed getConfig(String name, Mixed defValue [, Boolean checkPlatform)
++ Mixed getConfigOrSetting(String name, Mixed defValue)
++ String parseValue(String value)
++ Map<String, String> getEnvironment()
++ Boolean isVerbose()
++ Boolean isQuite()
++ void logDebug(String message, Object...args)
++ void logInfo(String message, Object...args)
++ void logWarn(String message, Object...args)
++ void logError(String message, Object...args)
++ void log(String message, Object...args)
++ Registry getRegistry()
+}
+
+@enduml

@@ -27,9 +27,17 @@
     <div class="collapse navbar-collapse" id="hf-navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="menu-item" data-link="index.html"><a href="index.html">Home</a></li>
-        <li class="menu-item" data-link="configuration.html"><a href="configuration.html">Configuration</a></li>
         <li class="dropdown">
-          <a href="#"class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plugins <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuration <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="menu-item" data-link="config/server-config.html"><a href="config/server-config.html">Server Configuration</a></li>
+            <li class="divider" role="separator"></li>
+            <li class="menu-item" data-link="config/plugin-config.html"><a href="config/plugin-config.html">Plugin Configuration</a></li>
+            <li class="menu-item" data-link="config/plugin-create.html"><a href="config/plugin-create.html">Plugin Create Programmatically</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plugins <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li class="menu-item" data-link="plugins/plugins.html"><a href="plugins/plugins.html"><span class="fa fa-table" aria-hidden="true"></span> Plugin Overview</a></li>
             <li class="divider" role="separator"></li>
@@ -42,11 +50,12 @@
             <li class="menu-item" data-link="plugins/plugin-start-server.html"><a href="plugins/plugin-start-server.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Start Server</a></li>
             <li class="menu-item" data-link="plugins/plugin-stop-server.html"><a href="plugins/plugin-stop-server.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Stop Server</a></li>
             <li class="menu-item" data-link="plugins/plugin-restart-server.html"><a href="plugins/plugin-restart-server.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Restart Server</a></li>
+            <li class="menu-item" data-link="plugins/plugin-undeploy.html"><a href="plugins/plugin-undeploy.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Undeploy Application</a></li>
             <li class="divider" role="separator"></li>
             <li class="menu-item" data-link="plugins/plugin-build-maven.html"><a href="plugins/plugin-build-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Build Maven</a></li>
             <li class="menu-item" data-link="plugins/plugin-test-maven.html"><a href="plugins/plugin-test-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Test Maven</a></li>
             <li class="menu-item" data-link="plugins/plugin-clean-maven.html"><a href="plugins/plugin-clean-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Clean Maven</a></li>
-            <li class="menu-item" data-link="plugins/plugin-deploy-mmavenaven.html"><a href="plugins/plugin-deploy-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Deploy Maven</a></li>
+            <li class="menu-item" data-link="plugins/plugin-deploy-maven.html"><a href="plugins/plugin-deploy-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Deploy Maven</a></li>
             <li class="divider" role="separator"></li>
             <li class="menu-item" data-link="plugins/plugin-start-derby.html"><a href="plugins/plugin-start-derby.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Start Derby Database</a></li>
             <li class="menu-item" data-link="plugins/plugin-stop-derby.html"><a href="plugins/plugin-stop-derby.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Stop Derby Database</a></li>
@@ -65,6 +74,11 @@
   <p><span class="fa fa-building" aria-hidden="true"></span> <i>under construction yet!</i></p><p><span class="fa fa-plug fa-4x"></span></p>
 <h1 id="plugin-overview"><a class="header-link" href="#plugin-overview"></a>Plugin Overview</h1>
 <p>A plugin is a javascript module and executes an action. The name of the plugin is the name of the action too.</p>
+<h2 id="create-own-plugin"><a class="header-link" href="#create-own-plugin"></a>Create Own Plugin</h2>
+<ul class="list">
+<li><a href="config/plugin-create.html">Create Plugin Programmatically</a></li>
+<li>Create Plugin with Pipeline Plugin.</li>
+</ul>
 <h2 id="builtin-plugins"><a class="header-link" href="#builtin-plugins"></a>Builtin Plugins</h2>
 <p>An overview of the builtin plugins.</p>
 <table>
@@ -117,6 +131,11 @@
 <td>Stops and starts the application server with the domain.</td>
 </tr>
 <tr>
+<td><a href="plugins/plugin-undeploy.html"><span class="fa fa-plug"></span> Undeploy Application</a></td>
+<td style="text-align:center"><code>undeploy</code></td>
+<td>Undeploy and remove application(s) from the application server.</td>
+</tr>
+<tr>
 <td><strong>Maven</strong></td>
 <td style="text-align:center"></td>
 <td>&nbsp;</td>
@@ -139,7 +158,7 @@
 <tr>
 <td><a href="plugins/plugin-deploy-maven.html"><span class="fa fa-plug"></span> Deploy Maven</a></td>
 <td style="text-align:center"><code>deploy-maven</code></td>
-<td>Build the application with maven nd deploy on the application server.</td>
+<td>Build the package with Maven and publish on the application server.</td>
 </tr>
 <tr>
 <td><strong>Derby Database</strong></td>
@@ -158,42 +177,13 @@
 </tr>
 </tbody>
 </table>
-<h2 id="create-an-own-plugin"><a class="header-link" href="#create-an-own-plugin"></a>Create an own Plugin</h2>
-<p>This section describes how to build your own plugin for <code>heringsfish</code>.</p>
-<ul class="list">
-<li>Defines a javascript node module.</li>
-<li>The module exports only one function that receive one parameter from type <code>Options</code>.</li>
-</ul>
-<p><strong>Example</strong></p>
-<pre class="hljs"><code><span class="hljs-comment">/*!
- * Your module
- */</span>
-
-<span class="hljs-comment">/**
- * This is the only function of the module exports
- * 
- * @param {Options} options contains some functionality of the heringsfish
- * @return {Promise&lt;*&gt;}
- */</span>
-<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">options</span>) </span>{
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
-
-    <span class="hljs-comment">// reject({</span>
-    <span class="hljs-comment">//   code: 0xffffff,</span>
-    <span class="hljs-comment">//   message: 'Error',</span>
-    <span class="hljs-comment">// });</span>
-    resolve({
-      <span class="hljs-attr">message</span>: <span class="hljs-string">'Success'</span>
-    });
-  });
-}</code></pre></div>
+</div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom navbar-footer">
   <footer class="container" >
     <ul class="nav navbar-nav">
       <li class="menu-item" data-link="about.html"><a href="about.html">About</a></li>
       <li class="menu-item" data-link="plugins/plugins.html"><a href="plugins/plugins.html">Plugin Overview</a></li>
-      <li class="menu-item" data-link="configuration.html"><a href="configuration.html">Configuration</a></li>
       <li class="divider" role="separator"></li>
       <li><a href="https://github.com/blueskyfish/heringsfish-cli.git"><span class="fa fa-github" aria-hidden="true"></span> Github</a></li>
     </ul>

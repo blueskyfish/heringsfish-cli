@@ -1,8 +1,6 @@
 title: Heringsfish - Configuration
 ---
 
-![Logo](assets/logo.png)
-
 # Configuration
 
 The configure settings are in the file `server-config.json`. This file is in the project root directory and has format `JSON`.
@@ -15,7 +13,7 @@ Similarly, there may be a JSON file in your home directory that overwrites the p
 * The project config file is `server-config.json`.
 * Your override config is in your home directory and has the name `example-service.json`.
 
-![Merge Project User Config](assets/merge-project-user-config.png)
+![Merge Project User Config](../assets/merge-project-user-config.png)
 
 
 The user configs is always override the project configs.

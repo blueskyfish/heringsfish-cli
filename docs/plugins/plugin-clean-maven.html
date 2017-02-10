@@ -27,9 +27,17 @@
     <div class="collapse navbar-collapse" id="hf-navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="menu-item" data-link="index.html"><a href="index.html">Home</a></li>
-        <li class="menu-item" data-link="configuration.html"><a href="configuration.html">Configuration</a></li>
         <li class="dropdown">
-          <a href="#"class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plugins <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuration <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="menu-item" data-link="config/server-config.html"><a href="config/server-config.html">Server Configuration</a></li>
+            <li class="divider" role="separator"></li>
+            <li class="menu-item" data-link="config/plugin-config.html"><a href="config/plugin-config.html">Plugin Configuration</a></li>
+            <li class="menu-item" data-link="config/plugin-create.html"><a href="config/plugin-create.html">Plugin Create Programmatically</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plugins <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li class="menu-item" data-link="plugins/plugins.html"><a href="plugins/plugins.html"><span class="fa fa-table" aria-hidden="true"></span> Plugin Overview</a></li>
             <li class="divider" role="separator"></li>
@@ -42,11 +50,12 @@
             <li class="menu-item" data-link="plugins/plugin-start-server.html"><a href="plugins/plugin-start-server.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Start Server</a></li>
             <li class="menu-item" data-link="plugins/plugin-stop-server.html"><a href="plugins/plugin-stop-server.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Stop Server</a></li>
             <li class="menu-item" data-link="plugins/plugin-restart-server.html"><a href="plugins/plugin-restart-server.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Restart Server</a></li>
+            <li class="menu-item" data-link="plugins/plugin-undeploy.html"><a href="plugins/plugin-undeploy.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Undeploy Application</a></li>
             <li class="divider" role="separator"></li>
             <li class="menu-item" data-link="plugins/plugin-build-maven.html"><a href="plugins/plugin-build-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Build Maven</a></li>
             <li class="menu-item" data-link="plugins/plugin-test-maven.html"><a href="plugins/plugin-test-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Test Maven</a></li>
             <li class="menu-item" data-link="plugins/plugin-clean-maven.html"><a href="plugins/plugin-clean-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Clean Maven</a></li>
-            <li class="menu-item" data-link="plugins/plugin-deploy-mmavenaven.html"><a href="plugins/plugin-deploy-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Deploy Maven</a></li>
+            <li class="menu-item" data-link="plugins/plugin-deploy-maven.html"><a href="plugins/plugin-deploy-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Deploy Maven</a></li>
             <li class="divider" role="separator"></li>
             <li class="menu-item" data-link="plugins/plugin-start-derby.html"><a href="plugins/plugin-start-derby.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Start Derby Database</a></li>
             <li class="menu-item" data-link="plugins/plugin-stop-derby.html"><a href="plugins/plugin-stop-derby.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Stop Derby Database</a></li>
@@ -108,7 +117,6 @@ display only errors or warnings</li>
     <ul class="nav navbar-nav">
       <li class="menu-item" data-link="about.html"><a href="about.html">About</a></li>
       <li class="menu-item" data-link="plugins/plugins.html"><a href="plugins/plugins.html">Plugin Overview</a></li>
-      <li class="menu-item" data-link="configuration.html"><a href="configuration.html">Configuration</a></li>
       <li class="divider" role="separator"></li>
       <li><a href="https://github.com/blueskyfish/heringsfish-cli.git"><span class="fa fa-github" aria-hidden="true"></span> Github</a></li>
     </ul>

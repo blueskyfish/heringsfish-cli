@@ -7,6 +7,11 @@ title: Heringsfish - Plugin Overview
 
 A plugin is a javascript module and executes an action. The name of the plugin is the name of the action too.
 
+## Create Own Plugin
+
+* [Create Plugin Programmatically](config/plugin-create.html)
+* Create Plugin with Pipeline Plugin.
+
 ## Builtin Plugins
 
 An overview of the builtin plugins.
@@ -21,46 +26,13 @@ An overview of the builtin plugins.
 | [<span class="fa fa-plug"></span> Start Server](plugins/plugin-start-server.html)   | `start-server`  | Starts the application server with the domain.
 | [<span class="fa fa-plug"></span> Stop Server](plugins/plugin-stop-server.html)     | `stop-server`   | Stops the application server with the domain.
 | [<span class="fa fa-plug"></span> Restart Server](plugins/plugin-restart-server.html) | `restart-server` | Stops and starts the application server with the domain.
+| [<span class="fa fa-plug"></span> Undeploy Application](plugins/plugin-undeploy.html) | `undeploy`       | Undeploy and remove application(s) from the application server.
 | **Maven** | | &nbsp;
 | [<span class="fa fa-plug"></span> Build Maven](plugins/plugin-build-maven.html)       | `build-maven`    | Build the application with maven.
 | [<span class="fa fa-plug"></span> Clean Maven](plugins/plugin-clean-maven.html)       | `clean-maven`    | Executes the maven goal **clean**.
 | [<span class="fa fa-plug"></span> Test Maven](plugins/plugin-test-maven.html)         | `test-maven`     | Executes the maven goal **test**.
-| [<span class="fa fa-plug"></span> Deploy Maven](plugins/plugin-deploy-maven.html)     | `deploy-maven`   | Build the application with maven nd deploy on the application server.
+| [<span class="fa fa-plug"></span> Deploy Maven](plugins/plugin-deploy-maven.html)     | `deploy-maven`   | Build the package with Maven and publish on the application server.
 | **Derby Database** | | &nbsp;
 | [<span class="fa fa-plug"></span> Start Derby Database](plugins/plugin-start-derby.html) | `start-derby` | Starts the builtin Derby database on the application server.
 | [<span class="fa fa-plug"></span> Stop Derby Database](plugins/plugin-stop-derby.html)   | `start-derby` | Stops the builtin Derby database on the application server.
 
-
-## Create an own Plugin
-
-This section describes how to build your own plugin for `heringsfish`.
-
-* Defines a javascript node module.
-* The module exports only one function that receive one parameter from type `Options`.
-
-**Example**
-
-```js
-/*!
- * Your module
- */
-
-/**
- * This is the only function of the module exports
- * 
- * @param {Options} options contains some functionality of the heringsfish
- * @return {Promise<*>}
- */
-module.exports = function (options) {
-  return new Promise(function(resolve, reject) {
-
-    // reject({
-    //   code: 0xffffff,
-    //   message: 'Error',
-    // });
-    resolve({
-      message: 'Success'
-    });
-  });
-}
-```

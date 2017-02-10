@@ -9,7 +9,8 @@ title: Heringsfish - Plugin "Deploy Maven"
 > This section describes the plugin **Deploy Maven**.
 
 ## Description
-  Build the application with maven.
+
+Builds the project with Maven and deploy the application(s) on the server.
 
 ## Requirement
 
@@ -49,7 +50,7 @@ $ hf deploy-maven [application] | [--nobuild | [--skip | --notest] | \
 $ hf build-maven
 $ hf build-maven -c
 $ hf build-maven -c -p integration,bigData
-$ hf build-maven -c -profiles=integration,bigData
+$ hf build-maven -c --profiles=integration,bigData
 $ hf build-maven -qc
 ```
 

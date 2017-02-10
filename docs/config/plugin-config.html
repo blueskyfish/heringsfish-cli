@@ -4,7 +4,7 @@
   <base href="/heringsfish-cli/">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{title}}</title>
+  <title>Heringsfish - Plugin Configuration</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -71,9 +71,89 @@
 </nav>
 
 <div class="container">
-  <p><span class="fa fa-building" aria-hidden="true"></span> <i>under construction yet!</i></p>
-  {{~> content}}
-</div>
+  <p><span class="fa fa-building" aria-hidden="true"></span> <i>under construction yet!</i></p><h1 id="plugin-configuration"><a class="header-link" href="#plugin-configuration"></a>Plugin Configuration</h1>
+<blockquote>
+<p>This sections describes the settings and / or configuration of plugins.</p>
+</blockquote>
+<h2 id="overview"><a class="header-link" href="#overview"></a>Overview</h2>
+<p>A plugin must be configured before using it. The configuration of plugin is contained
+the file <code>server-config.json</code> under the section <code>plugins</code>.</p>
+<p>The section <code>plugins</code> is a map (dictionary) with an unique key (the action name) and
+an object with some property elements.</p>
+<p><strong>Example in <code>server-config.json</code></strong></p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">"plugins"</span>: {
+    <span class="hljs-attr">"help"</span>: {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"help"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"a short description"</span>,
+      <span class="hljs-attr">"path"</span>: <span class="hljs-string">"hf/plugins/plugin-help.js"</span>,
+      <span class="hljs-attr">"help"</span>: <span class="hljs-string">"hf/help/plugin-help.txt"</span>,
+      <span class="hljs-attr">"settings"</span>: { }
+    }
+  }
+}</code></pre><h2 id="plugin-config"><a class="header-link" href="#plugin-config"></a>Plugin Config</h2>
+<p>The type <code>PluginConfig</code> is described a plugin configuration.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th style="text-align:center">Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td style="text-align:center">yes</td>
+<td>The plugin name</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>String</td>
+<td style="text-align:center">no</td>
+<td>The optional short description of the plugin</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>String</td>
+<td style="text-align:center">yes</td>
+<td>The path to the javascript module that is the plugin.</td>
+</tr>
+<tr>
+<td><code>help</code></td>
+<td>String</td>
+<td style="text-align:center">no</td>
+<td>The path to a the help text file.</td>
+</tr>
+<tr>
+<td><code>settings</code></td>
+<td>Object</td>
+<td style="text-align:center">no</td>
+<td>Internal configuration.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="builtin-plugins"><a class="header-link" href="#builtin-plugins"></a>Builtin Plugins</h2>
+<p>Many plugins are built in. This plugins are able to override in the <code>server-config.json</code> in your project.</p>
+<p>A list of all builtin plugins are described on the <a href="plugins/plugins.html">Plugin Overview</a></p>
+<h2 id="how-override-builtin-plugin"><a class="header-link" href="#how-override-builtin-plugin"></a>How override Builtin Plugin</h2>
+<p>The file <code>server-config.json</code> contains the section <code>plugins</code>. Add a plugin with the same action name as the
+builtin plugins and an different type of <code>PluginConfig</code>.</p>
+<p><strong>Example</strong></p>
+<p>You want to override the builtin plugin <code>init</code>:</p>
+<pre class="hljs"><code>{
+
+  <span class="hljs-attr">"plugins"</span>: {
+    <span class="hljs-attr">"init"</span>: {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"my-init"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"My initialize function"</span>,
+      <span class="hljs-attr">"path"</span>: <span class="hljs-string">"path/to/your/my-init-plugin.js"</span>,
+      <span class="hljs-attr">"help"</span>: <span class="hljs-string">"path/to/your/help/my-init-plugin.txt"</span>
+    }
+  }
+}</code></pre></div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom navbar-footer">
   <footer class="container" >
