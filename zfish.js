@@ -20,56 +20,17 @@
   appModulePath.addPath(appHomePath);
   appModulePath.addPath(projectHomePath);
 
-  const app      = require('hf/heringsfish');
-  const executor = require('hf/kernel/executor');
+  const app = require('hf/heringsfish');
 
   app.init(appHomePath, projectHomePath, args)
     .then(function (options) {
-      return executor(options);
+      return app.execute(options);
     })
     .then((result) => {
-
-      if (result && result.message) {
-        if (_.isArray(result.message)) {
-          _.forEach(result.message, (line) => {
-            app.options.logInfo(line);
-          })
-        } else {
-          app.options.logInfo(result.message);
-        }
-      }
-      if (result && result.duration) {
-        app.options.logInfo('Duration: %s ms', result.duration);
-      }
-
-      // exit code 0 !
-      process.exit(0);
-
+      app.success(result);
     })
     .catch((reason) => {
-      // show the error message
-      if (reason && reason.message) {
-        if (_.isArray(reason.message)) {
-          _.forEach(reason.message, (line) => {
-            app.options.logError(line);
-          })
-        } else {
-          app.options.logError(reason.message);
-        }
-      }
-      if (reason && reason.code) {
-        app.options.logError('Code: 0x%s', reason.code.toString(16));
-      }
-      if (reason && reason.stack) {
-        app.options.logError('Stack: %s', reason.stack);
-      }
-      if (reason && reason.duration) {
-        app.options.logError('Duration: %s ms', reason.duration);
-      }
-
-      // exit code -> reason.existCode
-      const exitCode = reason.exitCode || 1;
-      process.exit(exitCode);
+      app.failure(reason);
     });
 
 } (__dirname, process.cwd(), process.argv.slice(2)));
