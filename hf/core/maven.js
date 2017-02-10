@@ -18,7 +18,6 @@ const path    = require('path');
 
 const _       = require('lodash');
 
-const DEFINES = require('hf/defines');
 const os      = require('hf/core/os');
 const utils   = require('hf/core/utils');
 
