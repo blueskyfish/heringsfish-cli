@@ -1,11 +1,15 @@
 
 ![Logo](logo.png)
 
-# Heringsfish Command Line Interface (cli)
+# Heringsfish Command Line Interface (Beta)
 
-> Command Line Interface to manages the [Glassfish][glassfish] / [Payara][payara] Application Server
+> Command Line Interface (cli) to manages the [Glassfish][glassfish] / [Payara][payara] Application Server
 > and the deployment on local or server machine.
 
+**Attention**
+
+Heringsfish is currently being rebuilt. The published version at NPM is the current one.
+See at <https://www.npmjs.com/package/heringsfish-cli>.
 
 ## Table of Content
 
@@ -29,7 +33,8 @@
 
 ## Overview
 
-The *Command Line Interface* allows you to a [GlassFish][glassfish] or [Payara][payara] Application Server easy to use and a encapsulated development environment for your JEE 7 project.
+The *Command Line Interface* allows you to a [GlassFish][glassfish] or [Payara][payara] Application Server
+easy to use and a encapsulated development environment for your JEE 7 project.
 
 
 ## Requirement
@@ -38,7 +43,8 @@ The following programs or modules are necessary:
 
 * [Node JS][nodejs]: This cli is tested with the version 6.x or higher
 * Set the environment variable `JAVA_HOME` must be set (Java 8).
-* Application Server [Glassfish 4.1][glassfish] or [Payara 4.1][payara]: Just install the server somewhere on your computer or in the project.
+* Application Server [Glassfish 4.1][glassfish] or [Payara 4.1][payara]: Just install the server somewhere
+  on your computer or in the project.
 * [Maven][maven]: The command `mvn` should in your `PATH`.
 * An Java IDE :-)
 
