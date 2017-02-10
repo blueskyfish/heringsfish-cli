@@ -76,23 +76,24 @@ module.exports = function (options) {
       return io.writeFile(serverConfigFilename, configs);
     })
     .then(function (result) {
-      options.logInfo('');
-      options.logInfo('The server config is written to "%s"', serverConfigFilename);
-      options.logInfo('Please adjust the configuration to your needs');
-      options.logInfo('');
-      options.logInfo('Here a list of possible adjustments:');
-      options.logInfo('- set the project name');
-      options.logInfo('- set the project version');
-      options.logInfo('- config the server home path');
-      options.logInfo('- set the Maven home path when you use Maven');
-      options.logInfo('- set the Ant home path when you use Ant');
-      options.logInfo('- set the timeout for the external commands (0 is infinity)');
-      options.logInfo('- config the jdbc');
-      options.logInfo('- config the project settings object');
-      options.logInfo('- config the user settings file');
-      options.logInfo('');
-      options.logInfo('More information at');
-      options.logInfo('  "https://blueskyfish.github.io/heringsfish-cli/config/server-config.html"');
+
+      options.logInfo('')
+        .logInfo('The server config is written to "%s"', serverConfigFilename)
+        .logInfo('Please adjust the configuration to your needs')
+        .logInfo('')
+        .logInfo('Here a list of possible adjustments:')
+        .logInfo('- set the project name')
+        .logInfo('- set the project version')
+        .logInfo('- config the server home path')
+        .logInfo('- set the Maven home path when you use Maven')
+        .logInfo('- set the Ant home path when you use Ant')
+        .logInfo('- set the timeout for the external commands (0 is infinity)')
+        .logInfo('- config the jdbc')
+        .logInfo('- config the project settings object')
+        .logInfo('- config the user settings file')
+        .logInfo('')
+        .logInfo('More information at')
+        .logInfo('  "https://blueskyfish.github.io/heringsfish-cli/config/server-config.html"');
 
       return result;
     })
@@ -119,7 +120,7 @@ function _chooseOverride(options, fileExist) {
       exitCode: 0,
       message: [
         'There is already a configuration available.',
-        'If you want to overwrite this, use the -f or --force parameter'
+        'If you want to overwrite this, use the parameter "-f" or "--force"'
       ]
     });
   }
@@ -149,6 +150,9 @@ function _enrichServerConfiguration(options, configs) {
   return Promise.all([asAdminPromise, mavenPromise, antPromise])
     .then((list) => {
       _.forEach(list, (result) => {
+        // Assumption:
+        // The application is assumed to be in a bin directory.
+        // This removes the file name and the bin directory to get the home directory
         if (result.asadmin) {
           options.logInfo('Found "asAdmin": %s', result.asadmin);
           return _.set(configs, 'settings.server.home', utils.adjustCommandHomePath(result.asadmin));

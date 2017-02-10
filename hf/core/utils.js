@@ -58,10 +58,15 @@ module.exports.adjustPropertyName = function (name) {
 /**
  * Returns the home path of the command.
  *
+ * **Assumption**
+ *
+ * * The application is assumed to be in a bin directory.
+ * * This removes the file name and the bin directory to get the home directory
+ *
  * ```js
  * const cmdPath = '/opt/apache/maven/latest/bin/mvn';
  * const homePath = helper.adjustCommandHomePath(cmdPath);
- * console.log(homePath); // '/opt/apache/maven/latest'
+ * console.log(homePath); // '/opt/apache/maven/latest' (remove "bin/mvn")
  * ```
  *
  * @param {String} cmdPath the complete path to the command with include command
