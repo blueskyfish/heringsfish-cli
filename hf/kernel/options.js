@@ -37,9 +37,10 @@ class Options {
    *
    * @param {Parameters} params
    * @param {Object} configs
+   * @param {Registry} registry
    * @constructor
    */
-  constructor(params, configs) {
+  constructor(params, configs, registry) {
     /**
      * @type {Parameters}
      */
@@ -49,6 +50,12 @@ class Options {
      * @type {Object}
      */
     this.configs = configs;
+
+    /**
+     * The plugin Registry
+     * @type {Registry}
+     */
+    this.registry = registry;
   }
 
   /**
@@ -261,9 +268,39 @@ class Options {
     return this;
   }
 
+  /**
+   * Returns the plugin registry
+   *
+   * @return {Registry}
+   */
+  getRegistry() {
+    return this.registry;
+  }
+
 }
 
-module.exports = Options;
+/**
+ * @param {Parameters} params
+ * @param {Object} configs
+ * @param {Registry} registry
+ * @return {Options}
+ */
+module.exports.newOptions = function (params, configs, registry) {
+  if (_.has(configs, 'plugins')) {
+    _.omit(configs, 'plugins');
+  }
+  return new Options(params, configs, registry)
+};
+
+/**
+ *
+ * @param {Parameters} params
+ * @param {Options} options
+ * @return {Options}
+ */
+module.exports.copyOptions = function (params, options) {
+  return new Options(params, options.configs, options.registry);
+};
 
 //
 // Internal Implementation

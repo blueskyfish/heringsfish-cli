@@ -92,7 +92,7 @@ module.exports = function (options) {
       options.logInfo('- config the user settings file');
       options.logInfo('');
       options.logInfo('More information at');
-      options.logInfo('  "https://blueskyfish.github.io/heringsfish-cli/configuration.html"');
+      options.logInfo('  "https://blueskyfish.github.io/heringsfish-cli/config/server-config.html"');
 
       return result;
     })

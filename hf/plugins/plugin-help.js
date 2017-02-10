@@ -34,69 +34,62 @@ const io      = require('hf/core/io');
  * @return {Promise<RunResult>}
  */
 module.exports = function (options) {
-  return new Promise((resolve, reject) => {
-    const startTime  = Date.now();
 
-    // get the second action
-    const helpAction = _prepareActionHelp(options.getParam(0, null));
+  const registry   = options.getRegistry();
+  const helpAction = _prepareActionHelp(options.getParam(0, null));
 
-    const pluginRegistry = options.getConfig('plugins', {});
+  if (!registry.hasPlugin(helpAction)) {
+    return Promise.reject({
+      code: 0xff0011,
+      message: util.format('Plugin "%s" is missing', helpAction)
+    });
+  }
 
-    options.logDebug('Help search for plugin "%s"', helpAction);
+  const plugin = registry.getPlugin(helpAction);
+  if (typeof plugin !== 'object') {
+    return Promise.reject({
+      code: 0xff0002,
+      message: util.format('Plugin "%s" is missing', options.getAction())
+    });
+  }
 
-    if (!pluginRegistry[helpAction]) {
-      return reject({
-        code: 0xff0011,
-        message: util.format('Plugin "%s" is missing', helpAction)
+  const pluginHelpPath = plugin.getHelpPath();
+
+  return io.readContent(path.join(DEFINES.APPLICATION_PATH, pluginHelpPath))
+    .then((content) => {
+      if (!content) {
+        // second: try to read the help text from the project path
+        return io.readContent(path.join(DEFINES.PROJECT_PATH, pluginHelpPath));
+      }
+      return content;
+    })
+    .then((content) => {
+
+      const lines = _.isString(content) ? content.split('\n') : [];
+      if (_.size(lines) > 0) {
+        options.logInfo('-------------------------------------------------------------------------------')
+      }
+      _.forEach(lines, (line) => {
+        options.logInfo(line);
       });
-    }
+      if (_.size(lines) > 0) {
+        options.logInfo('-------------------------------------------------------------------------------')
+      }
+      options.logInfo('');
 
-    const pluginHelpPath = pluginRegistry[helpAction].help || null;
-
-    if (!pluginHelpPath) {
-      return reject({
-        code: 0xff0012,
-        message: util.format('Plugin "%s" has no help text', helpAction)
+      return Promise.resolve({
+        exitCode: 0,
+        message: util.format('Plugin "%s" shows "%s" help', options.getAction(), helpAction)
       });
-    }
 
-    // first: try read the help text from the application plugin
-    return io.readContent(path.join(DEFINES.APPLICATION_PATH, pluginHelpPath))
-      .then((content) => {
-        if (!content) {
-          // second: try to read the help text from the project path
-          return io.readContent(path.join(DEFINES.PROJECT_PATH, pluginHelpPath));
-        }
-        return content;
-      })
-      .then((content) => {
-
-        const lines = _.isString(content) ? content.split('\n') : [];
-        if (_.size(lines) > 0) {
-          options.logInfo('-------------------------------------------------------------------------------')
-        }
-        _.forEach(lines, function (line) {
-          options.logInfo(line);
-        });
-        if (_.size(lines) > 0) {
-          options.logInfo('-------------------------------------------------------------------------------')
-        }
-        options.logInfo('');
-
-        resolve({
-          exitCode: 0,
-          message: util.format('Plugin "%s" shows help text', helpAction),
-          duration: Date.now() - startTime
-        });
-
-      }, (reason) => {
-        reject({
-          code: 0xff0013,
-          message: util.format('Plugin "%s" helping has occurred an error (%s)', helpAction, reason.message || '??'),
-          stack: reason.stack || null
-        });
+    })
+    .catch((reason) => {
+      return Promise.reject({
+        code: 0xff0013,
+        message: util.format('Plugin "%s" helping has occurred an error (%s)', helpAction, reason.message || '...'),
+        stack: reason.stack || null
       });
-  });
+    });
 };
 
 function _prepareActionHelp(helpAction) {

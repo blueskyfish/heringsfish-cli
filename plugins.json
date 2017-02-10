@@ -70,5 +70,17 @@
     "description": "Executes the maven clean goal",
     "path": "hf/plugins/plugin-clean-maven.js",
     "help": "hf/help/plugin-clean-maven.txt"
+  },
+  "deploy-maven": {
+    "name": "deploy-maven",
+    "description": "Build the package with Maven and publish on the server",
+    "path": "hf/plugins/plugin-deploy-maven.js",
+    "help": "hf/help/plugin-deploy-maven.txt"
+  },
+  "undeploy": {
+    "name": "undeploy-app",
+    "description": "Undeploy and remove application(s) from the application server",
+    "path": "hf/plugins/plugin-undeploy.js",
+    "help": "hf/help/plugin-undeploy.txt"
   }
 }

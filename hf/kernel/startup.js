@@ -20,14 +20,13 @@
  * @requires module:hf/core/io
  */
 
-const fs       = require('fs');
-const path     = require('path');
+const fs      = require('fs');
+const path    = require('path');
 
-const _        = require('lodash');
-const minimist = require('minimist');
+const _       = require('lodash');
 
-const DEFINES  = require('hf/defines');
-const io       = require('hf/core/io');
+const DEFINES = require('hf/defines');
+const io      = require('hf/core/io');
 
 /**
  * @name Parameters
@@ -38,74 +37,6 @@ const io       = require('hf/core/io');
  * @property {object}        options
  * @property {Array<string>} list
  */
-
-/**
- *
- * @param {Array<String>} args
- * @return {Parameters}
- */
-module.exports.parseArguments = function (args) {
-  const temp = minimist(args);
-
-  /** @type {Parameters} */
-  let params = {
-    verbose: false,
-    quiet: false,
-    action: 'help',
-    options: {},
-    list: []
-  };
-
-  if (temp.v || temp.verbose) {
-    params.verbose = true;
-  }
-  if (temp.q || temp.quiet) {
-    params.quiet = true;
-  }
-  if (temp.a || temp.action || temp._[0]) {
-    params.action = temp.a || temp.action || temp._[0];
-  }
-  params.options = {};
-  _.forEach(temp, function (value, name) {
-    switch (name) {
-      case 'a':
-      case 'action':
-      case 'v':
-      case 'verbose':
-      case 'q':
-      case 'quiet':
-        break;
-      case '_':
-        _.forEach(value, function (name) {
-          params.options[name] = true;
-        });
-        params.list = value;
-        break;
-      default:
-        params.options[name] = value;
-        break;
-    }
-  });
-  // adjust the parameters
-  if (params.options[params.action]) {
-    delete params.options[params.action];
-  }
-  let index = params.list.indexOf(params.action);
-  if (index >= 0) {
-    params.list.splice(index, 1);
-  }
-  // when the action is "help" don't set quiet to true.
-  if (params.action === 'help') {
-    params.quiet = false;
-  }
-
-  if (params.quiet) {
-    // when quite, shut up verbose
-    params.verbose = false;
-  }
-
-  return params;
-};
 
 /**
  * Reads the server configuration and the user environments. Also it reads the main plugin registry.
@@ -119,7 +50,7 @@ module.exports.readConfiguration = function (appHomePath, projectHomePath, userH
 
   const filename = path.join(projectHomePath, DEFINES.SERVER_CONFIG_FILENAME);
 
-  return io.readJson(filename)
+  return io.readJson(filename, true)
     .then((configs) => {
       return configs || {};
     })
