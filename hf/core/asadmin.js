@@ -379,6 +379,71 @@ module.exports.stopDatabase = function (options) {
     });
 };
 
+/**
+ * Try to deploy the given application.
+ *
+ * @param {Options} options
+ * @param {AsAdminSetting} asAdminSetting the asadmin settings with the ports
+ * @param {String} appName
+ * @param {String} filename
+ */
+module.exports.deployApplication = function (options, asAdminSetting, appName, filename) {
+  const that = this;
+  options.logInfo('try to deploy "%s" (%s) on domain "%s" ...',
+    appName, filename, asAdminSetting.domainName
+  );
+
+  return io.hasFile(filename)
+    .then((fileExist) => {
+      if (!fileExist) {
+        return Promise.reject({
+          code: 0xfff122,
+          message: util.format('Could not deploy on "%s". Archive "%s" is not exist', appName, filename)
+        });
+      }
+      // ${ASADMIN} deploy --port ${DOMAIN_ADMIN_PORT} --force=true --name=${APP_COMP_NAME} ${APP_FILE}
+      const params = that.newParams('deploy')
+        .add('--port').add(asAdminSetting.adminPort)
+        .add('force=true')
+        .add('-name=' + appName)
+        .add(filename)
+        .build();
+
+      return os.exec(asAdminSetting.asadmin, params)
+        .then((runResult) => {
+          // extends with the appName and filename!
+          runResult.appName = appName;
+          runResult.filename = filename;
+
+          return runResult;
+        });
+    });
+};
+
+/**
+ * Undeploy and remove an application from the server.
+ *
+ * @param {Options} options
+ * @param {AsAdminSetting} asAdminSetting the asadmin settings with port(s)
+ * @param {string} appName the application name
+ */
+module.exports.undeployApplication = function (options, asAdminSetting, appName) {
+  const that = this;
+  options.logInfo('try to undeploy "%s" on domain "%s" ...', appName, asAdminSetting.domainName);
+  // ${ASADMIN} undeploy --port ${DOMAIN_ADMIN_PORT} --cascade=true ${APP_COMP_NAME}
+  const params = that.newParams('undeploy')
+    .add('--port').add(asAdminSetting.adminPort)
+    .add('--cascade=true')
+    .add(appName)
+    .build();
+
+  return os.exec(asAdminSetting.asadmin, params)
+    .then(function (runResult) {
+      runResult.appName = appName;
+      return runResult;
+    });
+};
+
 //
 // internal functions
 //
