@@ -19,7 +19,6 @@ gulp.task('serve', function () {
     root: [rootPath],
     port: 8001,
     name: 'HF docs',
-    livereload: true,
     middleware: function (connect, opt) {
       return [
         connect().use('/heringsfish-cli', connect.static(rootPath))
@@ -30,7 +29,7 @@ gulp.task('serve', function () {
 
 gulp.task('watch', function () {
   gulp.watch([
-    './website/content/**/*.md',
+    './website/content/**/*.*',
     './website/layout/**/*.*'
   ], ['build']);
 });
@@ -43,7 +42,6 @@ gulp.task('build', function (done) {
     }
     done(err);
   });
-  connect.reload();
 });
 
 gulp.task('default', ['build', 'serve', 'watch']);
