@@ -170,8 +170,11 @@ module.exports.failure = function (reason) {
   const that = this;
 
   if (!that.options) {
-    throw new Error(result);
+    console.error(JSON.stringify(reason));
+    process.exit(reason.exitCode || 1);
+    return;
   }
+
   const options = that.options;
 
   // show the error message
@@ -195,7 +198,5 @@ module.exports.failure = function (reason) {
   }
 
   // exit code -> reason.existCode
-  const exitCode = reason.exitCode || 1;
-  process.exit(exitCode);
-
+  process.exit(reason.exitCode || 1);
 };
