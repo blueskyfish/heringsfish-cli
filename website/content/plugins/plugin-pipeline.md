@@ -27,7 +27,7 @@ the plugin `pipeline` is the settings from the `PipelineSetting`.
 | Property             | Type          | Required | Description
 |----------------------|:-------------:|:--------:|-----------------------------------
 | `deplay`             | Number        | no       | The pause between the pipeline action in milli seconds. Default is 0.
-| `pipeline`           | Array&lt;PipelineAction&gt; | yes | The array with the pipeline actions.
+| `pipeline`           | Array&lt;PipelineAction&gt; | yes | The array with the pipeline actions (action list).
 
 **Pipeline Action**
 

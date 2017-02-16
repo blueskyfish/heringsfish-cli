@@ -1,0 +1,18 @@
+
+Display the help for the "Demo" project.
+
+Description:
+  This is the overview of the common action for heringsfish.
+
+Action:
+  serve        Starts the application server, the builtin derby database and
+               build the application with Maven and deploy the application on
+               the server.
+  start        Starts the application and the builtin derby database.
+  build:prod   Builds the application with Maven for the production
+  deploy       Builds the application with Maven and deploy it on the server.
+  shutdown     Stops the application server and the builtin derby database.
+
+Note:
+  It is also possible to execute the other actions with heringsfish.
+

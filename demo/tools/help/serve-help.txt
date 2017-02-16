@@ -1,0 +1,10 @@
+
+Display the help for the action "serve"
+
+Description:
+  The serve action starts the application server and deploy the
+  application.
+
+Usage:
+  $ hf serve [[-v | --verbose ] | [-q | --quite]]
+

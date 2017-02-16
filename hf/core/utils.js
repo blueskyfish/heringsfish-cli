@@ -25,6 +25,17 @@ const minimist = require('minimist');
 const DEFINES  = require('hf/defines');
 
 /**
+ * @name Parameters
+ * @description Contains the arguments for the {@type Options}.
+ * @property {string}        action the action name is the plugin name. Default is `help`.
+ * @property {boolean}       verbose the flag causes more messages to be output
+ * @property {boolean}       quiet the flag causes less messages to be output
+ * @property {object}        options a object with key / value pairs
+ * @property {Array<string>} list the additional parameters
+ */
+
+
+/**
  * Returns true if the value is a string and doesn't contain '' or '-'.
  *
  * @param {*} s
@@ -77,6 +88,7 @@ module.exports.adjustCommandHomePath = function (cmdPath) {
 };
 
 /**
+ * Parses the array of string and creates the parameter.
  *
  * @param {Array<String>} args
  * @return {Parameters}

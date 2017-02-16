@@ -46,9 +46,10 @@ class Registry {
   }
 
   /**
+   * Try the get the plugin from the given action name
    *
-   * @param pluginName
-   * @return {Plugin}
+   * @param {String} pluginName
+   * @return {Plugin|null} It returns the plugin object or null if the plugin is not existing.
    */
   getPlugin(pluginName) {
     return this.plugins[pluginName];

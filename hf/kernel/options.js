@@ -277,9 +277,20 @@ class Options {
     return this.registry;
   }
 
+  /**
+   * Creates an exact copy of the origin Options instance except with new parameters.
+   *
+   * @param {Parameters} params the new parameters
+   * @return {Options}
+   */
+  createCopy(params) {
+    return new Options(params, this.configs, this.registry);
+  }
 }
 
 /**
+ * Creates a new Options instance with the given parameters, the configurations and the plugin registry.
+ *
  * @param {Parameters} params
  * @param {Object} configs
  * @param {Registry} registry
@@ -292,15 +303,6 @@ module.exports.newOptions = function (params, configs, registry) {
   return new Options(params, configs, registry)
 };
 
-/**
- *
- * @param {Parameters} params
- * @param {Options} options
- * @return {Options}
- */
-module.exports.copyOptions = function (params, options) {
-  return new Options(params, options.configs, options.registry);
-};
 
 //
 // Internal Implementation

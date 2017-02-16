@@ -13,12 +13,15 @@
  * Builds the project with Maven and deploy the application(s) on the server.
  *
  * @requires util
+ * @requires lodash
  * @requires module:hf/core/builder
  * @requires module:hf/core/maven
  * @requires module:hf/core/asadmin
  */
 
 const util    = require('util');
+
+const _       = require('lodash');
 
 const maven   = require('hf/core/maven');
 const asadmin = require('hf/core/asadmin');

@@ -59,6 +59,38 @@
       "port": 3306
     }
   },
+  "plugins": {
+    "serve": {
+      "name": "serve-pipeline",
+      "description": "Starts the server and deploy the application",
+      "path": "hf/plugins/plugin-pipeline.js",
+      "help": "tools/help/serve-help.txt",
+      "settings": {
+        "pipeline": [
+          {
+            "action": "start-server",
+            "description": "Starts the Payara Glassfish Server",
+            "params": [
+              "-v"
+            ]
+          },
+          {
+            "action": "deploy-maven",
+            "description": "Creates a clean package",
+            "params": [
+              "-v", "--clean"
+            ]
+          }
+        ]
+      }
+    },
+    "help": {
+      "name": "help",
+      "description": "The action overview of the project",
+      "path": "hf/plugins/plugin-help.js",
+      "help": "tools/help/plugin-help.txt"
+    }
+  },
   "env": {
     "project.home": "{project.home}",
     "user.home": "{user.home}",
