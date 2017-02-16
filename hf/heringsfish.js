@@ -53,7 +53,7 @@ module.exports.init = function (appHomePath, projectHomePath, args) {
   const pkg      = startup.readAppPackage(appHomePath);
 
   return startup.readConfiguration(appHomePath, projectHomePath, DEFINES.USER_HOME_PATH)
-    .then(function (configs) {
+    .then((configs) => {
 
       const registry = registryModule.newRegistry(_.get(configs, 'plugins', {}));
       const options  = optionModule.newOptions(params, configs, registry);
