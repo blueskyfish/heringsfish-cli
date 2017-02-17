@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/heringsfish-cli/">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heringsfish - Setup Project</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#hf-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="about.html">Heringsfish</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="hf-navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="menu-item" data-link="index.html"><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configuration <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="menu-item" data-link="config/server-config.html"><a href="config/server-config.html">Server Configuration</a></li>
+            <li class="divider" role="separator"></li>
+            <li class="menu-item" data-link="config/plugin-config.html"><a href="config/plugin-config.html">Plugin Configuration</a></li>
+            <li class="menu-item" data-link="config/plugin-create.html"><a href="config/plugin-create.html">Plugin Create Programmatically</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plugins <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="menu-item" data-link="plugins/plugins.html"><a href="plugins/plugins.html"><span class="fa fa-table" aria-hidden="true"></span> Plugin Overview</a></li>
+            <li class="divider" role="separator"></li>
+            <li class="menu-item" data-link="plugins/plugin-help.html"><a href="plugins/plugin-help.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Help</a></li>
+            <li class="menu-item" data-link="plugins/plugin-init.html"><a href="plugins/plugin-init.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Init</a></li>
+            <li class="divider" role="separator"></li>
+            <li class="menu-item" data-link="plugins/plugin-create-domain.html"><a href="plugins/plugin-create-domain.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Create Domain</a></li>
+            <li class="menu-item" data-link="plugins/plugin-remove-domain.html"><a href="plugins/plugin-remove-domain.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Remove Domain</a></li>
+            <li class="divider" role="separator"></li>
+            <li class="menu-item" data-link="plugins/plugin-start-server.html"><a href="plugins/plugin-start-server.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Start Server</a></li>
+            <li class="menu-item" data-link="plugins/plugin-stop-server.html"><a href="plugins/plugin-stop-server.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Stop Server</a></li>
+            <li class="menu-item" data-link="plugins/plugin-restart-server.html"><a href="plugins/plugin-restart-server.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Restart Server</a></li>
+            <li class="menu-item" data-link="plugins/plugin-undeploy.html"><a href="plugins/plugin-undeploy.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Undeploy Application</a></li>
+            <li class="divider" role="separator"></li>
+            <li class="menu-item" data-link="plugins/plugin-build-maven.html"><a href="plugins/plugin-build-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Build Maven</a></li>
+            <li class="menu-item" data-link="plugins/plugin-test-maven.html"><a href="plugins/plugin-test-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Test Maven</a></li>
+            <li class="menu-item" data-link="plugins/plugin-clean-maven.html"><a href="plugins/plugin-clean-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Clean Maven</a></li>
+            <li class="menu-item" data-link="plugins/plugin-deploy-maven.html"><a href="plugins/plugin-deploy-maven.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Deploy Maven</a></li>
+            <li class="divider" role="separator"></li>
+            <li class="menu-item" data-link="plugins/plugin-start-derby.html"><a href="plugins/plugin-start-derby.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Start Derby Database</a></li>
+            <li class="menu-item" data-link="plugins/plugin-stop-derby.html"><a href="plugins/plugin-stop-derby.html"><span class="fa fa-plug" aria-hidden="true"></span> Plugin Stop Derby Database</a></li>
+          </ul>
+        </li>
+        <li class="menu-item" data-link="about.html"><a href="about.html">About</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://github.com/blueskyfish/heringsfish-cli.git">Github <span class="fa fa-github" aria-hidden="true"></span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <p><span class="fa fa-building" aria-hidden="true"></span> <i>under construction yet!</i></p><h1 id="setup-a-project"><a class="header-link" href="#setup-a-project"></a>Setup a Project</h1>
+<p>The first 3 steps are very simple.</p>
+<ol class="list">
+<li>Install <code>Heringsfish</code> (<code>$ npm install -g heringsfish-cli</code>) <em>Maybe you need sudo for the command</em></li>
+<li>Change into your application project</li>
+<li>Initialize the heringsfish (<code>$ hf init</code>)</li>
+</ol>
+<p>Now you have the file <code>server-config.json</code> in your project. It is a simple json file.</p>
+<p><strong>Example</strong></p>
+<pre class="hljs"><code>{
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"project-name"</span>
+    <span class="hljs-string">"version"</span>: <span class="hljs-string">"0.0.1"</span>,
+    <span class="hljs-attr">"maven"</span>: {
+        <span class="hljs-attr">"project"</span>: <span class="hljs-string">"-"</span>,
+        <span class="hljs-attr">"setting"</span>: <span class="hljs-string">"-"</span>
+    },
+    <span class="hljs-attr">"// and more"</span>: <span class="hljs-string">"..."</span>
+}</code></pre><p><em>The complete listing of <a href="config/default-config.html">default config is found here</a></em></p>
+<h2 id="example-configuration"><a class="header-link" href="#example-configuration"></a>Example Configuration</h2>
+<p>the configuration is separated in 2 parts.</p>
+<ul class="list">
+<li>The project configuration: <code>server-config.json</code>.</li>
+<li>the user (developer) configuration: <code>test-project.json</code> (the name of the project is <code>test-project</code>).</li>
+</ul>
+<h3 id="project-config:-"server-config.json""><a class="header-link" href="#project-config:-"server-config.json""></a>Project Config: &quot;server-config.json&quot;</h3>
+<pre class="hljs"><code>{
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"test-project"</span>,
+    <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.1.0-SNAPSHOT"</span>,
+    <span class="hljs-attr">"server"</span>: {
+        <span class="hljs-attr">"home"</span>: <span class="hljs-string">"-"</span>
+    },
+    <span class="hljs-attr">"maven"</span>: {
+        <span class="hljs-attr">"home"</span>: <span class="hljs-string">"-"</span>,
+        <span class="hljs-attr">"setting"</span>: <span class="hljs-string">"{project.home}/setting.xml"</span>,
+        <span class="hljs-attr">"project"</span>: <span class="hljs-string">"{project.home}/pom.xml"</span>
+    },
+    <span class="hljs-attr">"domain"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"test-project"</span>,
+        <span class="hljs-attr">"home"</span>: <span class="hljs-string">"{project.home}/domains"</span>,
+        <span class="hljs-attr">"deploy"</span>: {
+            <span class="hljs-attr">"rest-provider"</span>: <span class="hljs-string">"{project.home}/projects/rest-provider/target/rest-provider-0.1.0-SNAPSHOT.war"</span>,
+            <span class="hljs-attr">"business-beans"</span>: <span class="hljs-string">"{project.home}/projects/business-beans/target/business-beans-0.1.0-SNAPSHOT.jar"</span>
+        },
+        <span class="hljs-attr">"ports"</span>: {
+            <span class="hljs-attr">"base"</span>: <span class="hljs-number">50000</span>
+        },
+        <span class="hljs-attr">"jdbc"</span>: {
+            <span class="hljs-attr">"testDB"</span>: {
+                <span class="hljs-attr">"dataSourceClassName"</span>: <span class="hljs-string">"com.mysql.jdbc.jdbc2.optional.MysqlDataSource"</span>,
+                <span class="hljs-attr">"restype"</span>: <span class="hljs-string">"javax.sql.DataSource"</span>,
+                <span class="hljs-attr">"properties"</span>: {
+                    <span class="hljs-attr">"user"</span>: <span class="hljs-string">"{database.user}"</span>,
+                    <span class="hljs-attr">"password"</span>: <span class="hljs-string">"{database.password}"</span>,
+                    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"jdbc:mysql://localhost:{database.port}/test"</span>
+                },
+                <span class="hljs-attr">"description"</span>: <span class="hljs-string">"This is the Test Database"</span>
+            }
+        }
+    },
+    <span class="hljs-attr">"command"</span>: {
+        <span class="hljs-attr">"timeout"</span>: <span class="hljs-number">120000</span>,
+        <span class="hljs-attr">"asadmin"</span>: {
+            <span class="hljs-attr">"win32"</span>: <span class="hljs-string">"{server.home}/bin/asadmin.bat"</span>,
+            <span class="hljs-attr">"unix"</span>: <span class="hljs-string">"{server.home}/bin/asadmin"</span>
+        },
+        <span class="hljs-attr">"maven"</span>: {
+            <span class="hljs-attr">"win32"</span>: <span class="hljs-string">"{maven.home}/bin/mvn.cmd"</span>,
+            <span class="hljs-attr">"unix"</span>: <span class="hljs-string">"{maven.home}/bin/mvn"</span>
+        },
+        <span class="hljs-attr">"ant"</span>: {
+            <span class="hljs-attr">"win32"</span>: <span class="hljs-string">"{ant.home}/bin/ant.bat"</span>,
+            <span class="hljs-attr">"unix"</span>: <span class="hljs-string">"{ant.home}/bin/ant"</span>
+        }
+    },
+    <span class="hljs-attr">"settings"</span>: {
+       <span class="hljs-attr">"database"</span>: {
+            <span class="hljs-attr">"user"</span>: <span class="hljs-string">"//set in user config"</span>,
+            <span class="hljs-attr">"password"</span>: <span class="hljs-string">"//set in user config"</span>,
+            <span class="hljs-attr">"port"</span>: <span class="hljs-number">3306</span>
+        },
+        <span class="hljs-attr">"email-password"</span>: <span class="hljs-string">"email secrets"</span>        
+    },
+    <span class="hljs-attr">"env"</span>: {
+        <span class="hljs-attr">"project.home"</span>: <span class="hljs-string">"{project.home}"</span>,
+        <span class="hljs-attr">"user.home"</span>: <span class="hljs-string">"{user.home}"</span>,
+        <span class="hljs-attr">"project.name"</span>: <span class="hljs-string">"{project.name}"</span>,
+        <span class="hljs-attr">"project.version"</span>: <span class="hljs-string">"{project.version}"</span>
+    }
+}</code></pre><h3 id="user-config:-"test-project.json""><a class="header-link" href="#user-config:-"test-project.json""></a>User Config: &quot;test-project.json&quot;</h3>
+<pre class="hljs"><code>{
+    <span class="hljs-attr">"settings"</span>: {
+        <span class="hljs-attr">"database"</span>: {
+            <span class="hljs-attr">"user"</span>: <span class="hljs-string">"db user"</span>,
+            <span class="hljs-attr">"password"</span>: <span class="hljs-string">"secret password"</span>
+        },
+        <span class="hljs-attr">"server"</span>: {
+            <span class="hljs-attr">"home"</span>: <span class="hljs-string">"{user.home}/developer/tools/payara-server-163"</span>
+        },
+        <span class="hljs-attr">"maven"</span>: {
+            <span class="hljs-attr">"home"</span>: <span class="hljs-string">"{user.home}/developer/tools/apache/maven-3.2.1"</span>
+        },
+        <span class="hljs-attr">"ant"</span>: {
+            <span class="hljs-attr">"home"</span>: <span class="hljs-string">"{user.home}/developer/tools/apache/ant-1.18"</span>
+        }
+    },
+    <span class="hljs-attr">"env"</span>: {
+        <span class="hljs-attr">"project.test.external.access.api_key"</span>: <span class="hljs-string">"!23_@@RE-342"</span>
+    }
+}</code></pre></div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom navbar-footer">
+  <footer class="container" >
+    <ul class="nav navbar-nav">
+      <li class="menu-item" data-link="about.html"><a href="about.html">About</a></li>
+      <li class="menu-item" data-link="plugins/plugins.html"><a href="plugins/plugins.html">Plugin Overview</a></li>
+      <li class="divider" role="separator"></li>
+      <li><a href="https://github.com/blueskyfish/heringsfish-cli.git"><span class="fa fa-github" aria-hidden="true"></span> Github</a></li>
+    </ul>
+  </footer>
+</nav>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/application.js"></script>
+</body>
+</html>

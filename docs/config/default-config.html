@@ -4,7 +4,7 @@
   <base href="/heringsfish-cli/">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Heringsfish Command Line Interface</title>
+  <title>Heringsfish - Default Configuration</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -71,58 +71,78 @@
 </nav>
 
 <div class="container">
-  <p><span class="fa fa-building" aria-hidden="true"></span> <i>under construction yet!</i></p><p class="img-container"><img src="assets/logo.png" alt="Logo"></p>
-<h1 id="heringsfish-command-line-interface-(cli)"><a class="header-link" href="#heringsfish-command-line-interface-(cli)"></a>Heringsfish Command Line Interface (cli)</h1>
-<blockquote>
-<p>Command Line Interface to manages the <a href="https://glassfish.java.net/">Glassfish</a> / <a href="http://www.payara.fish/">Payara</a> Application Server
-and the deployment on local or server machine.</p>
-</blockquote>
-<h2 id="overview"><a class="header-link" href="#overview"></a>Overview</h2>
-<p>The <em>Command Line Interface</em> allows you to a <a href="https://glassfish.java.net/">GlassFish</a> or <a href="http://www.payara.fish/">Payara</a> Application Server easy to use and a encapsulated development environment for your JEE 7 project.</p>
-<h2 id="requirement"><a class="header-link" href="#requirement"></a>Requirement</h2>
-<p>The following programs or modules are necessary:</p>
-<ul class="list">
-<li><a href="https://nodejs.org/">Node JS</a>: This cli is tested with the version 6.x or higher</li>
-<li>Set the environment variable <code>JAVA_HOME</code> must be set (Java 8).</li>
-<li>Application Server <a href="https://glassfish.java.net/">Glassfish 4.1</a> or <a href="http://www.payara.fish/">Payara 4.1</a>: Just install the server somewhere on your computer or in the project.</li>
-<li><a href="https://maven.apache.org/">Maven</a>: When using Maven, Maven should be installed on your computer or in the project.</li>
-<li><a href="https://ant.apache.org">Ant</a>: <strong>Coming Soon</strong> When using Ant, Ant should be installed on your computer or in the project.</li>
-<li>An Java IDE :-)</li>
-</ul>
-<h2 id="installation"><a class="header-link" href="#installation"></a>Installation</h2>
-<p>It is recommended to install <code>Heringsfish</code> globally. This makes it possible to execute the <code>Heringsfish actions directly in each project.</code></p>
-<pre class="hljs"><code>$ npm install -g heringsfish-cli</code></pre><h2 id="quick-setup"><a class="header-link" href="#quick-setup"></a>Quick Setup</h2>
-<blockquote>
-<p><a href="config/setup-project.html">A full setup is described here</a>.</p>
-</blockquote>
-<p>The following instructions shows the basic steps. <a href="config/setup-project.html">You must edit the configuration</a> between steps 2 and 3.</p>
-<pre class="hljs"><code>( 1) $ <span class="hljs-built_in">cd</span> /your/project
-( 2) $ hf init
-( 3) $ hf create-domain
-( 4) $ hf start-server
-( 5) $ hf jdbc create --name <span class="hljs-built_in">test</span>DB
-( 6) $ hf deploy-maven
-( 7) $ open <span class="hljs-string">"http://localhost:30048/"</span>
-( 8) $ open <span class="hljs-string">"http://localhost:30080/your-project"</span>
-( 9) $ hf undeploy
-(10) $ hf stop-server
-(11) $ hf remove-domain</code></pre><ol class="list">
-<li>Change into your project</li>
-<li>Initialize the configuration for your project.<ul class="list">
-<li>Edit the Configuration</li>
-</ul>
-</li>
-<li>Create the domain</li>
-<li>Start the application server</li>
-<li>Create a JDB connection pool and JDBC resource</li>
-<li>Start the deployment</li>
-<li>Open the Admin Console of the application server</li>
-<li>Open your deployed web/rest (etc) application</li>
-<li>Undeploy the deployed application</li>
-<li>Stop the application server</li>
-<li>Remove and delete the domain.</li>
-</ol>
-</div>
+  <p><span class="fa fa-building" aria-hidden="true"></span> <i>under construction yet!</i></p><h1 id="default-configuration"><a class="header-link" href="#default-configuration"></a>Default Configuration</h1>
+<p>The section shows the default configuration If you have initialized the project for <code>Heringsfish</code>.</p>
+<p>The description for the properties / Fields of the configuration is found in <a href="config/server-config.html">Configuration</a></p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"-"</span>,
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.0.1"</span>,
+  <span class="hljs-attr">"maven"</span>: {
+    <span class="hljs-attr">"project"</span>: <span class="hljs-string">"-"</span>,
+    <span class="hljs-attr">"setting"</span>: <span class="hljs-string">"-"</span>
+  },
+  <span class="hljs-attr">"ant"</span>: {
+    <span class="hljs-attr">"task"</span>: <span class="hljs-string">"default"</span>
+  },
+  <span class="hljs-attr">"command"</span>: {
+    <span class="hljs-attr">"timeout"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"asadmin"</span>: {
+      <span class="hljs-attr">"win32"</span>: <span class="hljs-string">"{server.home}/bin/asadmin.bat"</span>,
+      <span class="hljs-attr">"unix"</span>: <span class="hljs-string">"{server.home}/bin/asadmin"</span>
+    },
+    <span class="hljs-attr">"maven"</span>: {
+      <span class="hljs-attr">"win32"</span>: <span class="hljs-string">"{maven.home}/bin/mvn.cmd"</span>,
+      <span class="hljs-attr">"unix"</span>: <span class="hljs-string">"{maven.home}/bin/mvn"</span>
+    },
+    <span class="hljs-attr">"ant"</span>: {
+      <span class="hljs-attr">"win32"</span>: <span class="hljs-string">"{ant.home}/bin/ant.bat"</span>,
+      <span class="hljs-attr">"unix"</span>: <span class="hljs-string">"{ant.home}/bin/ant"</span>
+    }
+  },
+  <span class="hljs-attr">"domain"</span>: {
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"-"</span>,
+    <span class="hljs-attr">"home"</span>: <span class="hljs-string">"{project.home}/domains"</span>,
+    <span class="hljs-attr">"deploy"</span>: {
+    },
+    <span class="hljs-attr">"jdbc"</span>: {
+      <span class="hljs-attr">"JDBC-Name"</span>: {
+        <span class="hljs-attr">"dataSourceClassName"</span>: <span class="hljs-string">"com.mysql.jdbc.Driver"</span>,
+        <span class="hljs-attr">"restype"</span>: <span class="hljs-string">"javax.sql.DataSource"</span>,
+        <span class="hljs-attr">"properties"</span>: {
+          <span class="hljs-attr">"user"</span>: <span class="hljs-string">"{database.user}"</span>,
+          <span class="hljs-attr">"password"</span>: <span class="hljs-string">"{database:password}"</span>,
+          <span class="hljs-attr">"url"</span>: <span class="hljs-string">"jdbc:mysql://localhost:{database.port}/test"</span>
+        },
+        <span class="hljs-attr">"description"</span>: <span class="hljs-string">"This is a Test Connection"</span>
+      }
+    },
+    <span class="hljs-attr">"ports"</span>: {
+      <span class="hljs-attr">"base"</span>: <span class="hljs-number">30000</span>
+    }
+  },
+  <span class="hljs-attr">"settings"</span>: {
+    <span class="hljs-attr">"server"</span>: {
+      <span class="hljs-attr">"home"</span>: <span class="hljs-string">"-"</span>
+    },
+    <span class="hljs-attr">"maven"</span>: {
+      <span class="hljs-attr">"home"</span>: <span class="hljs-string">"-"</span>
+    },
+    <span class="hljs-attr">"ant"</span>: {
+      <span class="hljs-attr">"home"</span>: <span class="hljs-string">"-"</span>
+    },
+    <span class="hljs-attr">"database"</span>: {
+      <span class="hljs-attr">"user"</span>: <span class="hljs-string">"myuser"</span>,
+      <span class="hljs-attr">"password"</span>: <span class="hljs-string">"mypassword"</span>,
+      <span class="hljs-attr">"port"</span>: <span class="hljs-number">3306</span>
+    }
+  },
+  <span class="hljs-attr">"env"</span>: {
+    <span class="hljs-attr">"project.home"</span>: <span class="hljs-string">"{project.home}"</span>,
+    <span class="hljs-attr">"user.home"</span>: <span class="hljs-string">"{user.home}"</span>,
+    <span class="hljs-attr">"project.name"</span>: <span class="hljs-string">"{project.name}"</span>,
+    <span class="hljs-attr">"project.version"</span>: <span class="hljs-string">"{project.version}"</span>
+  }
+}</code></pre></div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom navbar-footer">
   <footer class="container" >

@@ -130,12 +130,12 @@ function _processActionList(options, actionList, context) {
   const newParams = utils.parseArguments(args);
   const newOptions = options.createCopy(newParams);
 
-  newOptions.logInfo('Start "%s" (%s) ...', plugin.getName(), plugin.getDescription());
+  options.logInfo('Start "%s" (%s) ...', plugin.getName(), plugin.getDescription());
 
   return plugin.execute(newOptions)
     .then((runResult) => {
 
-      newOptions.logInfo('Finish pipeline "%s" in %s ms -> exitCode %s', plugin.getName(), runResult.duration || '?', runResult.exitCode || '0');
+      options.logInfo('Finish pipeline "%s" in %s ms -> exitCode %s', plugin.getName(), runResult.duration || '?', runResult.exitCode || '0');
       context.finished.push(plugin.getName());
 
       if (runResult.exitCode && runResult.exitCode > 0) {
