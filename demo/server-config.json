@@ -89,6 +89,12 @@
       "description": "The action overview of the project",
       "path": "hf/plugins/plugin-help.js",
       "help": "tools/help/plugin-help.txt"
+    },
+    "staging": {
+      "name": "mystaging",
+      "description": "",
+      "path": "tools/plugins/plugin-staging.js",
+      "help": "tools/help/plugin-staging.txt"
     }
   },
   "env": {

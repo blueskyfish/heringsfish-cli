@@ -14,7 +14,6 @@
  */
 (function (appHomePath, projectHomePath, args) {
 
-  const _ = require('lodash');
   const appModulePath = require('app-module-path');
 
   appModulePath.addPath(appHomePath);

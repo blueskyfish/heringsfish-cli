@@ -82,7 +82,7 @@ module.exports.hasFile = function (filename) {
  * @return {Promise<String>}
  */
 module.exports.readFile = function (filename) {
-  return new Promise(function _readFile(resolve, reject) {
+  return new Promise((resolve, reject) => {
     fs.readFile(filename, DEFINES.FILE_ENCODING, (err, content) => {
       if (err) {
         return reject({
@@ -105,7 +105,7 @@ module.exports.readFile = function (filename) {
  * @return {Promise<String|null>}
  */
 module.exports.readContent = function (filename) {
-  return new Promise(function _readContent(resolve) {
+  return new Promise((resolve) => {
     fs.readFile(filename, DEFINES.FILE_ENCODING, (err, content) => {
       if (err) {
         return resolve(null);
@@ -156,7 +156,7 @@ module.exports.readJson = function (filename, strictReading) {
  * @return {Promise<Object>}
  */
 module.exports.writeFile = function (filename, data) {
-  return new Promise(function _writeFile(resolve, reject) {
+  return new Promise((resolve, reject) => {
     if (!_.isString(data)) {
       data = JSON.stringify(data, null, 2);
     }
