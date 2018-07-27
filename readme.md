@@ -289,7 +289,7 @@ See example above.
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
-| 0.9.4      | 2018-07-27 | Update dependency node modules
+| 0.9.5      | 2018-07-27 | Update dependency node modules
 | 0.9.3      | 2017-08-18 | add command from AsAdmin and Maven if the verbose is switch on.
 | 0.9.2      | 2017-02-28 | fix: port numbers as integers
 | 0.9.1      | 2016-01-16 | delete the code of the next version. It is not complete.
