@@ -191,43 +191,43 @@ The configure settings are in the file `server-config.json`. This file is in the
 
 ### List of Action
 
-Aktion      | Optional additional Arguments  | Description
+Action      | Optional additional Arguments  | Description
 ------------|--------------------------------|------------------------------------------------------------
 `init`      | -                              | Create the config settings in the current project folder.
 `create`    | -                              | Creates the domain on the application server.
 `start`     | -                              | Starts the application server with the domain.
 `restart`   |                                | Stops and starts the application server with the domain.
-            | `-k` or `--kill`               | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
+&nbsp;      | `-k` or `--kill`               | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
 `deploy`    |                                | Build the application with maven and deploy on the application server..
-            | `application`                  | the name of the deploying application. If no application is specified, all Applications are deployed.
-            | `--nobuild`                    | Disable the maven build process before deploying.
-            | `--skip`                       | Skip to execute the test cases.
-            | `-c` or `--clean`              | Add the clean goal to the maven build process.
-            | `-p profiles`                  | Add the maven profile(s). To separated more profiles with `,`.
-            | `--profile=profiles`           | Add the maven profile(s). To separated more profiles with `,`.
+&nbsp;      | `application`                  | the name of the deploying application. If no application is specified, all Applications are deployed.
+&nbsp;      | `--nobuild`                    | Disable the maven build process before deploying.
+&nbsp;      | `--skip`                       | Skip to execute the test cases.
+&nbsp;      | `-c` or `--clean`              | Add the clean goal to the maven build process.
+&nbsp;      | `-p profiles`                  | Add the maven profile(s). To separated more profiles with `,`.
+&nbsp;      | `--profile=profiles`           | Add the maven profile(s). To separated more profiles with `,`.
 `build`     |                                | build the application with maven
-            | `--skip`                       | Skip to execute the test cases.
-            | `-c` or `--clean`              | Add the clean goal to the maven build process.
-            | `-p profiles`                  | Add the maven profile(s)
-            | `--profile=profiles`           | Add the maven profile(s)
+&nbsp;      | `--skip`                       | Skip to execute the test cases.
+&nbsp;      | `-c` or `--clean`              | Add the clean goal to the maven build process.
+&nbsp;      | `-p profiles`                  | Add the maven profile(s)
+&nbsp;      | `--profile=profiles`           | Add the maven profile(s)
 `test`      |                                | Executes the maven test goal.
-            | `-c` or `--clean`              | Add the clean goal to the maven build process.
-            | `-p profiles`                  | Add the maven profile(s)
-            | `--profile=profiles`           | Add the maven profile(s)
+&nbsp;      | `-c` or `--clean`              | Add the clean goal to the maven build process.
+&nbsp;      | `-p profiles`                  | Add the maven profile(s)
+&nbsp;      | `--profile=profiles`           | Add the maven profile(s)
 `clean`     |                                | Execute maven for clean the target directories.
 `list`      |                                | Display either the domains of the application server or the list of deployed application on the server.
-            | `--app`                        | Display the deployed application on the application server.
-            | `-d` or `--domain`             | Display the domains of the application server.
+&nbsp;      | `--app`                        | Display the deployed application on the application server.
+&nbsp;      | `-d` or `--domain`             | Display the domains of the application server.
 `undeploy`  |                                | Undeploy and remove the application from the application server.
             | `application`                  | the name of the deploying application. If no application is specified, all Applications are undeployed.
 `redeploy`  |                                | Unfortunately it is not implemented yet. Instead use the action `stop` and then `start`.
 `stop`      |                                | Stops the application server with the domain.
-            | `-k` or `--kill`               | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
+&nbsp;      | `-k` or `--kill`               | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
 `remove`    | -                              | Remove and delete the domain on the application server.
 `jdbc`      | `list`                         | Show all JDBC connection pools and JDBC resources
-            | `create -n jdbcName`           | Create the JDBC connection pool and the JDBC resource from the given jdbc name.
-            | `delete -n jdbcName`           | Delete the JDBC connection pool and the JDBC resource from the given jdbc name.
-            | `ping -n jdbcName`             | Ping and validate the JDB connection pool and the JDBC resource from given jdbc name.
+&nbsp;      | `create -n jdbcName`           | Create the JDBC connection pool and the JDBC resource from the given jdbc name.
+&nbsp;      | `delete -n jdbcName`           | Delete the JDBC connection pool and the JDBC resource from the given jdbc name.
+&nbsp;      | `ping -n jdbcName`             | Ping and validate the JDB connection pool and the JDBC resource from given jdbc name.
 
 
 ### JDBC Configuration
@@ -252,7 +252,8 @@ Aktion      | Optional additional Arguments  | Description
 Certain variables can be replaced. The Application Server can be included in the project. By means of the variable project.home the directory of the project can be used.
 
 For Example:
-```
+
+```json
 {
   "server": {
     "name": "${project.home}/tools/payara-4.1.1.154"
@@ -289,6 +290,7 @@ See example above.
 
 | Version    | Date       | Description
 |------------|------------|-----------------------------------------
+| 0.9.6      | 2019-01-07 | Update dependency node modules (lodash
 | 0.9.5      | 2018-07-27 | Update dependency node modules
 | 0.9.3      | 2017-08-18 | add command from AsAdmin and Maven if the verbose is switch on.
 | 0.9.2      | 2017-02-28 | fix: port numbers as integers
