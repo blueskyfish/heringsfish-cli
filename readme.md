@@ -219,7 +219,7 @@ Action      | Optional additional Arguments  | Description
 &nbsp;      | `--app`                        | Display the deployed application on the application server.
 &nbsp;      | `-d` or `--domain`             | Display the domains of the application server.
 `undeploy`  |                                | Undeploy and remove the application from the application server.
-            | `application`                  | the name of the deploying application. If no application is specified, all Applications are undeployed.
+&nbsp;      | `application`                  | the name of the deploying application. If no application is specified, all Applications are undeployed.
 `redeploy`  |                                | Unfortunately it is not implemented yet. Instead use the action `stop` and then `start`.
 `stop`      |                                | Stops the application server with the domain.
 &nbsp;      | `-k` or `--kill`               | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
