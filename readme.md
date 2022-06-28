@@ -118,22 +118,22 @@ The configure settings are in the file `server-config.json`. This file is in the
 
 ### Table of Configurable Settings
 
-| Settings            | Type         | Description
-|---------------------|--------------|--------------------------------------------------------------------
-| `name`              | String       | The application name
-| `version`           | String       | A version
-| `server.home`       | String       | The path to the Application Server
-| `maven.home`        | String       | The path to the Maven installation
-| `maven.setting`     | String       | The Maven settings.xml file
-| `maven.project`     | String       | The `om.xml`of the Project.
-| `domain.name`       | String       | The domain name in the Application Server.
-| `domain.home`       | String       | The path to the domain directory.
-| `domain.deploy`     | Map          | A map with the deployment files.
-| `domain.ports.base` | Number       | The base port of the application (Admin Console Port is `+ 48`, The application is on `+ 80`).
-| `domain.jdbc`       | Map          | A map with the jdbc names and their settings.
-| `command.timeout`   | Number       | The timeout in milliseconds. If the value is `0`, then it is running infinity.
-| `command.asadmin`   | Object       | The `asAdmin` command.
-| `env`               | Object       | A key value map for the environment variables that is setting for the Application Server.
+| Settings            | Type   | Description                                                                                    |
+|---------------------|--------|------------------------------------------------------------------------------------------------|
+| `name`              | String | The application name                                                                           |
+| `version`           | String | A version                                                                                      |
+| `server.home`       | String | The path to the Application Server                                                             |
+| `maven.home`        | String | The path to the Maven installation                                                             |
+| `maven.setting`     | String | The Maven settings.xml file                                                                    |
+| `maven.project`     | String | The `om.xml`of the Project.                                                                    |
+| `domain.name`       | String | The domain name in the Application Server.                                                     |
+| `domain.home`       | String | The path to the domain directory.                                                              |
+| `domain.deploy`     | Map    | A map with the deployment files.                                                               |
+| `domain.ports.base` | Number | The base port of the application (Admin Console Port is `+ 48`, The application is on `+ 80`). |
+| `domain.jdbc`       | Map    | A map with the jdbc names and their settings.                                                  |
+| `command.timeout`   | Number | The timeout in milliseconds. If the value is `0`, then it is running infinity.                 |
+| `command.asadmin`   | Object | The `asAdmin` command.                                                                         |
+| `env`               | Object | A key value map for the environment variables that is setting for the Application Server.      |
 
 ### Example of Configure
 
@@ -191,44 +191,43 @@ The configure settings are in the file `server-config.json`. This file is in the
 
 ### List of Action
 
-Action      | Optional additional Arguments  | Description
-------------|--------------------------------|------------------------------------------------------------
-`init`      | -                              | Create the config settings in the current project folder.
-`create`    | -                              | Creates the domain on the application server.
-`start`     | -                              | Starts the application server with the domain.
-`restart`   |                                | Stops and starts the application server with the domain.
-&nbsp;      | `-k` or `--kill`               | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
-`deploy`    |                                | Build the application with maven and deploy on the application server..
-&nbsp;      | `application`                  | the name of the deploying application. If no application is specified, all Applications are deployed.
-&nbsp;      | `--nobuild`                    | Disable the maven build process before deploying.
-&nbsp;      | `--skip`                       | Skip to execute the test cases.
-&nbsp;      | `-c` or `--clean`              | Add the clean goal to the maven build process.
-&nbsp;      | `-p profiles`                  | Add the maven profile(s). To separated more profiles with `,`.
-&nbsp;      | `--profile=profiles`           | Add the maven profile(s). To separated more profiles with `,`.
-`build`     |                                | build the application with maven
-&nbsp;      | `--skip`                       | Skip to execute the test cases.
-&nbsp;      | `-c` or `--clean`              | Add the clean goal to the maven build process.
-&nbsp;      | `-p profiles`                  | Add the maven profile(s)
-&nbsp;      | `--profile=profiles`           | Add the maven profile(s)
-`test`      |                                | Executes the maven test goal.
-&nbsp;      | `-c` or `--clean`              | Add the clean goal to the maven build process.
-&nbsp;      | `-p profiles`                  | Add the maven profile(s)
-&nbsp;      | `--profile=profiles`           | Add the maven profile(s)
-`clean`     |                                | Execute maven for clean the target directories.
-`list`      |                                | Display either the domains of the application server or the list of deployed application on the server.
-&nbsp;      | `--app`                        | Display the deployed application on the application server.
-&nbsp;      | `-d` or `--domain`             | Display the domains of the application server.
-`undeploy`  |                                | Undeploy and remove the application from the application server.
-&nbsp;      | `application`                  | the name of the deploying application. If no application is specified, all Applications are undeployed.
-`redeploy`  |                                | Unfortunately it is not implemented yet. Instead use the action `stop` and then `start`.
-`stop`      |                                | Stops the application server with the domain.
-&nbsp;      | `-k` or `--kill`               | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process.
-`remove`    | -                              | Remove and delete the domain on the application server.
-`jdbc`      | `list`                         | Show all JDBC connection pools and JDBC resources
-&nbsp;      | `create -n jdbcName`           | Create the JDBC connection pool and the JDBC resource from the given jdbc name.
-&nbsp;      | `delete -n jdbcName`           | Delete the JDBC connection pool and the JDBC resource from the given jdbc name.
-&nbsp;      | `ping -n jdbcName`             | Ping and validate the JDB connection pool and the JDBC resource from given jdbc name.
-
+| Action     | Optional additional Arguments | Description                                                                                                            |
+|------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| `init`     | -                             | Create the config settings in the current project folder.                                                              |
+| `create`   | -                             | Creates the domain on the application server.                                                                          |
+| `start`    | -                             | Starts the application server with the domain.                                                                         |
+| `restart`  |                               | Stops and starts the application server with the domain.                                                               |
+| &nbsp;     | `-k` or `--kill`              | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process. |
+| `deploy`   |                               | Build the application with maven and deploy on the application server..                                                |
+| &nbsp;     | `application`                 | the name of the deploying application. If no application is specified, all Applications are deployed.                  |
+| &nbsp;     | `--nobuild`                   | Disable the maven build process before deploying.                                                                      |
+| &nbsp;     | `--skip`                      | Skip to execute the test cases.                                                                                        |
+| &nbsp;     | `-c` or `--clean`             | Add the clean goal to the maven build process.                                                                         |
+| &nbsp;     | `-p profiles`                 | Add the maven profile(s). To separated more profiles with `,`.                                                         |
+| &nbsp;     | `--profile=profiles`          | Add the maven profile(s). To separated more profiles with `,`.                                                         |
+| `build`    |                               | build the application with maven                                                                                       |
+| &nbsp;     | `--skip`                      | Skip to execute the test cases.                                                                                        |
+| &nbsp;     | `-c` or `--clean`             | Add the clean goal to the maven build process.                                                                         |
+| &nbsp;     | `-p profiles`                 | Add the maven profile(s)                                                                                               |
+| &nbsp;     | `--profile=profiles`          | Add the maven profile(s)                                                                                               |
+| `test`     |                               | Executes the maven test goal.                                                                                          |
+| &nbsp;     | `-c` or `--clean`             | Add the clean goal to the maven build process.                                                                         |
+| &nbsp;     | `-p profiles`                 | Add the maven profile(s)                                                                                               |
+| &nbsp;     | `--profile=profiles`          | Add the maven profile(s)                                                                                               |
+| `clean`    |                               | Execute maven for clean the target directories.                                                                        |
+| `list`     |                               | Display either the domains of the application server or the list of deployed application on the server.                |
+| &nbsp;     | `--app`                       | Display the deployed application on the application server.                                                            |
+| &nbsp;     | `-d` or `--domain`            | Display the domains of the application server.                                                                         |
+| `undeploy` |                               | Undeploy and remove the application from the application server.                                                       |
+| &nbsp;     | `application`                 | the name of the deploying application. If no application is specified, all Applications are undeployed.                |
+| `redeploy` |                               | Unfortunately it is not implemented yet. Instead use the action `stop` and then `start`.                               |
+| `stop`     |                               | Stops the application server with the domain.                                                                          |
+| &nbsp;     | `-k` or `--kill`              | Specifies whether the domain is killed by using functionality of the operating system to terminate the domain process. |
+| `remove`   | -                             | Remove and delete the domain on the application server.                                                                |
+| `jdbc`     | `list`                        | Show all JDBC connection pools and JDBC resources                                                                      |
+| &nbsp;     | `create -n jdbcName`          | Create the JDBC connection pool and the JDBC resource from the given jdbc name.                                        |
+| &nbsp;     | `delete -n jdbcName`          | Delete the JDBC connection pool and the JDBC resource from the given jdbc name.                                        |
+| &nbsp;     | `ping -n jdbcName`            | Ping and validate the JDB connection pool and the JDBC resource from given jdbc name.                                  |
 
 ### JDBC Configuration
 
@@ -261,17 +260,16 @@ For Example:
 }
 ```
 
-| Name              | Value or description
-|-------------------|-----------------------------------
-| `project.home`    | The directory of the project
-| `user.home`       | The user home directory
-| `domain.name`     | The name of the domain
-| `domain.home`     | The domain home directory
-| `version`         | The project version
-| `project.version` | The project version
-| `name`            | The project name
-| `project.name`    | The project name
-
+| Name              | Value or description         |
+|-------------------|------------------------------|
+| `project.home`    | The directory of the project |
+| `user.home`       | The user home directory      |
+| `domain.name`     | The name of the domain       |
+| `domain.home`     | The domain home directory    |
+| `version`         | The project version          |
+| `project.version` | The project version          |
+| `name`            | The project name             |
+| `project.name`    | The project name             |
 
 ### Environment Variables
 
@@ -288,35 +286,35 @@ See example above.
 
 ## History
 
-| Version    | Date       | Description
-|------------|------------|-----------------------------------------
-| 0.9.6      | 2019-01-07 | Update dependency node modules (lodash
-| 0.9.5      | 2018-07-27 | Update dependency node modules
-| 0.9.3      | 2017-08-18 | add command from AsAdmin and Maven if the verbose is switch on.
-| 0.9.2      | 2017-02-28 | fix: port numbers as integers
-| 0.9.1      | 2016-01-16 | delete the code of the next version. It is not complete.
-| 0.9.0      | 2017-01-06 | Simplify the app. Delete the action ~~config~~.
-| 0.8.0      | 2016-11-28 | add the task `test`.
-| 0.7.3      | 2016-11-21 | fixed: normilze path names.
-| 0.7.2      | 2016-10-07 | fixed default timeout and improve readme.
-| 0.7.1      | 2016-10-07 | fixed the timeout for commands and improve the documentation of the actions.
-| 0.7.0      | 2016-07-31 | add jdbc action
-| 0.6.3      | 2016-05-18 | fixed: add the dot
-| 0.6.2      | 2016-05-18 | fixed: read the config settings
-| 0.6.1      | 2016-05-18 | fixed: execute a command on windows.
-| 0.6.0      | 2016-05-18 | read the command.asadmin command from the server-config.json. If a platform depended command is execute, then it can be separated between `win32` and `unix`. See the `server-config.json` example
-| 0.5.3      | 2016-03-04 | show environments, some fixes.
-| 0.5.2      | 2016-02-24 | add the environments without modify the name.
-| 0.4.0      | 2016-02-11 | Update node module "lodash"
-| 0.3.0      | 2016-02-11 | add the missing actions "restart" and "redeploy"
-| 0.2.2      | 2016-02-10 | Improve conversion rules for environment name.
-| 0.2.1      | 2016-02-10 | Environment variables for executing the application server.
-| 0.1.1      | 2016-02-09 | show the current directory
-| 0.1.0      | 2016-02-09 | add setting.xml for maven
-| 0.0.3      | 2016-02-01 | fixed the server base port
-| 0.0.2      |            | Improve documentation
-| 0.0.1      | 2016-01-11 | Initial commit (all started here)
-
+| Version | Date       | Description                                                                                                                                                                                        |
+|---------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 0.9.7   | 2022-06-28 | Update and fixed dependency node modules.                                                                                                                                                          |
+| 0.9.6   | 2019-01-07 | Update dependency node modules (lodash                                                                                                                                                             |
+| 0.9.5   | 2018-07-27 | Update dependency node modules                                                                                                                                                                     |
+| 0.9.3   | 2017-08-18 | add command from AsAdmin and Maven if the verbose is switch on.                                                                                                                                    |
+| 0.9.2   | 2017-02-28 | fix: port numbers as integers                                                                                                                                                                      |
+| 0.9.1   | 2016-01-16 | delete the code of the next version. It is not complete.                                                                                                                                           |
+| 0.9.0   | 2017-01-06 | Simplify the app. Delete the action ~~config~~.                                                                                                                                                    |
+| 0.8.0   | 2016-11-28 | add the task `test`.                                                                                                                                                                               |
+| 0.7.3   | 2016-11-21 | fixed: normilze path names.                                                                                                                                                                        |
+| 0.7.2   | 2016-10-07 | fixed default timeout and improve readme.                                                                                                                                                          |
+| 0.7.1   | 2016-10-07 | fixed the timeout for commands and improve the documentation of the actions.                                                                                                                       |
+| 0.7.0   | 2016-07-31 | add jdbc action                                                                                                                                                                                    |
+| 0.6.3   | 2016-05-18 | fixed: add the dot                                                                                                                                                                                 |
+| 0.6.2   | 2016-05-18 | fixed: read the config settings                                                                                                                                                                    |
+| 0.6.1   | 2016-05-18 | fixed: execute a command on windows.                                                                                                                                                               |
+| 0.6.0   | 2016-05-18 | read the command.asadmin command from the server-config.json. If a platform depended command is execute, then it can be separated between `win32` and `unix`. See the `server-config.json` example |
+| 0.5.3   | 2016-03-04 | show environments, some fixes.                                                                                                                                                                     |
+| 0.5.2   | 2016-02-24 | add the environments without modify the name.                                                                                                                                                      |
+| 0.4.0   | 2016-02-11 | Update node module "lodash"                                                                                                                                                                        |
+| 0.3.0   | 2016-02-11 | add the missing actions "restart" and "redeploy"                                                                                                                                                   |
+| 0.2.2   | 2016-02-10 | Improve conversion rules for environment name.                                                                                                                                                     |
+| 0.2.1   | 2016-02-10 | Environment variables for executing the application server.                                                                                                                                        |
+| 0.1.1   | 2016-02-09 | show the current directory                                                                                                                                                                         |
+| 0.1.0   | 2016-02-09 | add setting.xml for maven                                                                                                                                                                          |
+| 0.0.3   | 2016-02-01 | fixed the server base port                                                                                                                                                                         |
+| 0.0.2   |            | Improve documentation                                                                                                                                                                              |
+| 0.0.1   | 2016-01-11 | Initial commit (all started here)                                                                                                                                                                  |
 
 ## License
 
