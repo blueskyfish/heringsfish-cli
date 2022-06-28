@@ -1,7 +1,7 @@
 {
   "name": "heringsfish-cli",
   "title": "Heringsfish CLI",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "description": "Command Line Interface to manages the Glassfish / Payara Application Server and the maven deployment on local machine",
   "author": "BlueSkyFish <blueskyfish@blueskyfish.de>",
   "license": "MIT",
@@ -27,19 +27,19 @@
     "url": "https://github.com/blueskyfish/heringsfish-cli.git"
   },
   "dependencies": {
-    "app-module-path": "2.2.0",
-    "colors": "1.3.3",
-    "lodash": "4.17.11",
-    "minimist": "1.2.0",
-    "moment": "2.23.0",
-    "q": "1.5.1"
+    "app-module-path": "^2.2.0",
+    "colors": "^1.4.0",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.6",
+    "moment": "^2.29.3",
+    "q": "^1.5.1"
   },
   "devDependencies": {
     "@types/colors": "1.2.1",
-    "@types/lodash": "4.14.119",
-    "@types/minimist": "1.2.0",
-    "@types/mocha": "^5.2.5",
-    "@types/q": "1.5.1",
-    "mocha": "5.2.0"
+    "@types/lodash": "4.14.182",
+    "@types/minimist": "1.2.2",
+    "@types/mocha": "^9.1.1",
+    "@types/q": "^1.5.5",
+    "mocha": "^10.0.0"
   }
 }
